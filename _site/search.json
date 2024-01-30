@@ -254,7 +254,7 @@
     "href": "Projects/project1.html#questiontask-1",
     "title": "Client Report - [Insert Project Title]",
     "section": "QUESTION|TASK 1",
-    "text": "QUESTION|TASK 1\nCOPY PASTE QUESTION|TASK 1 FROM THE PROJECT HERE\ntype your results and analysis here\n\n\nRead and format data\n# Include and execute your code here\n\n\ninclude figures in chunks and discuss your findings in the figure.\n::: {#cell-Q1 chart .cell execution_count=4}\n\nplot example\n# Include and execute your code here\nchart = px.bar(df.head(200),\n    x=\"name\", \n    y=\"AK\"\n)\nchart.show()\n\n\n                                                \nMy useless chart\n\n:::\n::: {#cell-Q1 table .cell .tbl-cap-location-top tbl-cap=‘Not much of a table’ execution_count=5}\n\ntable example\n# Include and execute your code here\nmydat = df.head(1000)\\\n    .groupby('year')\\\n    .sum()\\\n    .reset_index()\\\n    .tail(10)\\\n    .filter([\"year\", \"AK\",\"AR\"])\n\ndisplay(mydat)\n\n\n\n\n\n\n\n\n\nyear\nAK\nAR\n\n\n\n\n96\n2006\n21.0\n183.0\n\n\n97\n2007\n28.0\n153.0\n\n\n98\n2008\n36.0\n212.0\n\n\n99\n2009\n34.0\n179.0\n\n\n100\n2010\n22.0\n196.0\n\n\n101\n2011\n41.0\n148.0\n\n\n102\n2012\n28.0\n140.0\n\n\n103\n2013\n26.0\n134.0\n\n\n104\n2014\n20.0\n114.0\n\n\n105\n2015\n28.0\n121.0\n\n\n\n\n\n\n:::",
+    "text": "QUESTION|TASK 1\nHow does your name at your birth year compare to its use historically?\ntype your results and analysis here\n\n\nRead and format data\n# Include and execute your code here\n\n\ninclude figures in chunks and discuss your findings in the figure.\n::: {#cell-Q1 chart .cell execution_count=4}\n\nplot example\n# Include and execute your code here\nchart = px.bar(df.head(200),\n    x=\"name\", \n    y=\"AK\"\n)\nchart.show()\n\n\n                                                \nMy useless chart\n\n:::\n::: {#cell-Q1 table .cell .tbl-cap-location-top tbl-cap=‘Not much of a table’ execution_count=5}\n\ntable example\n# Include and execute your code here\nmydat = df.head(1000)\\\n    .groupby('year')\\\n    .sum()\\\n    .reset_index()\\\n    .tail(10)\\\n    .filter([\"year\", \"AK\",\"AR\"])\n\ndisplay(mydat)\n\n\n\n\n\n\n\n\n\nyear\nAK\nAR\n\n\n\n\n96\n2006\n21.0\n183.0\n\n\n97\n2007\n28.0\n153.0\n\n\n98\n2008\n36.0\n212.0\n\n\n99\n2009\n34.0\n179.0\n\n\n100\n2010\n22.0\n196.0\n\n\n101\n2011\n41.0\n148.0\n\n\n102\n2012\n28.0\n140.0\n\n\n103\n2013\n26.0\n134.0\n\n\n104\n2014\n20.0\n114.0\n\n\n105\n2015\n28.0\n121.0\n\n\n\n\n\n\n:::",
     "crumbs": [
       "DS250 Projects",
       "Project 1"
@@ -265,7 +265,7 @@
     "href": "Projects/project1.html#questiontask-2",
     "title": "Client Report - [Insert Project Title]",
     "section": "QUESTION|TASK 2",
-    "text": "QUESTION|TASK 2\nCOPY PASTE QUESTION|TASK 2 FROM THE PROJECT HERE\ntype your results and analysis here\n\n\nRead and format data\n# Include and execute your code here\n\n\ninclude figures in chunks and discuss your findings in the figure.\n::: {#cell-Q2 chart .cell execution_count=7}\n\nplot example\n# Include and execute your code here\nchart = px.bar(df.head(200),\n    x=\"name\", \n    y=\"AK\"\n)\nchart.show()\n\n\n                                                \nMy useless chart\n\n:::\n::: {#cell-Q2 table .cell .tbl-cap-location-top tbl-cap=‘Not much of a table’ execution_count=8}\n\ntable example\n# Include and execute your code here\nmydat = df.head(1000)\\\n    .groupby('year')\\\n    .sum()\\\n    .reset_index()\\\n    .tail(10)\\\n    .filter([\"year\", \"AK\",\"AR\"])\n\ndisplay(mydat)\n\n\n\n\n\n\n\n\n\nyear\nAK\nAR\n\n\n\n\n96\n2006\n21.0\n183.0\n\n\n97\n2007\n28.0\n153.0\n\n\n98\n2008\n36.0\n212.0\n\n\n99\n2009\n34.0\n179.0\n\n\n100\n2010\n22.0\n196.0\n\n\n101\n2011\n41.0\n148.0\n\n\n102\n2012\n28.0\n140.0\n\n\n103\n2013\n26.0\n134.0\n\n\n104\n2014\n20.0\n114.0\n\n\n105\n2015\n28.0\n121.0\n\n\n\n\n\n\n:::",
+    "text": "QUESTION|TASK 2\nIf you talked to someone named Brittany on the phone, what is your guess of his or her age? What ages would you not guess?\ntype your results and analysis here\n\n\nRead and format data\n# Include and execute your code here\n\n\ninclude figures in chunks and discuss your findings in the figure.\n::: {#cell-Q2 chart .cell execution_count=7}\n\nplot example\n# Include and execute your code here\nchart = px.bar(df.head(200),\n    x=\"name\", \n    y=\"AK\"\n)\nchart.show()\n\n\n                                                \nMy useless chart\n\n:::\n::: {#cell-Q2 table .cell .tbl-cap-location-top tbl-cap=‘Not much of a table’ execution_count=8}\n\ntable example\n# Include and execute your code here\nmydat = df.head(1000)\\\n    .groupby('year')\\\n    .sum()\\\n    .reset_index()\\\n    .tail(10)\\\n    .filter([\"year\", \"AK\",\"AR\"])\n\ndisplay(mydat)\n\n\n\n\n\n\n\n\n\nyear\nAK\nAR\n\n\n\n\n96\n2006\n21.0\n183.0\n\n\n97\n2007\n28.0\n153.0\n\n\n98\n2008\n36.0\n212.0\n\n\n99\n2009\n34.0\n179.0\n\n\n100\n2010\n22.0\n196.0\n\n\n101\n2011\n41.0\n148.0\n\n\n102\n2012\n28.0\n140.0\n\n\n103\n2013\n26.0\n134.0\n\n\n104\n2014\n20.0\n114.0\n\n\n105\n2015\n28.0\n121.0\n\n\n\n\n\n\n:::",
     "crumbs": [
       "DS250 Projects",
       "Project 1"
@@ -276,7 +276,7 @@
     "href": "Projects/project1.html#questiontask-3",
     "title": "Client Report - [Insert Project Title]",
     "section": "QUESTION|TASK 3",
-    "text": "QUESTION|TASK 3\nCOPY PASTE QUESTION|TASK 3 FROM THE PROJECT HERE\ntype your results and analysis here\n\n\nRead and format data\n# Include and execute your code here\n\n\ninclude figures in chunks and discuss your findings in the figure.\n::: {#cell-Q3 chart .cell execution_count=10}\n\nplot example\n# Include and execute your code here\nchart = px.bar(df.head(200),\n    x=\"name\", \n    y=\"AK\"\n)\nchart.show()\n\n\n                                                \nMy useless chart\n\n:::\n::: {#cell-Q3 table .cell .tbl-cap-location-top tbl-cap=‘Not much of a table’ execution_count=11}\n\ntable example\n# Include and execute your code here\nmydat = df.head(1000)\\\n    .groupby('year')\\\n    .sum()\\\n    .reset_index()\\\n    .tail(10)\\\n    .filter([\"year\", \"AK\",\"AR\"])\n\ndisplay(mydat)\n\n\n\n\n\n\n\n\n\nyear\nAK\nAR\n\n\n\n\n96\n2006\n21.0\n183.0\n\n\n97\n2007\n28.0\n153.0\n\n\n98\n2008\n36.0\n212.0\n\n\n99\n2009\n34.0\n179.0\n\n\n100\n2010\n22.0\n196.0\n\n\n101\n2011\n41.0\n148.0\n\n\n102\n2012\n28.0\n140.0\n\n\n103\n2013\n26.0\n134.0\n\n\n104\n2014\n20.0\n114.0\n\n\n105\n2015\n28.0\n121.0\n\n\n\n\n\n\n:::",
+    "text": "QUESTION|TASK 3\nMary, Martha, Peter, and Paul are all Christian names. From 1920 - 2000, compare the name usage of each of the four names. What trends do you notice?\ntype your results and analysis here\n\n\nRead and format data\n# Include and execute your code here\n\n\ninclude figures in chunks and discuss your findings in the figure.\n::: {#cell-Q3 chart .cell execution_count=10}\n\nplot example\n# Include and execute your code here\nchart = px.bar(df.head(200),\n    x=\"name\", \n    y=\"AK\"\n)\nchart.show()\n\n\n                                                \nMy useless chart\n\n:::\n::: {#cell-Q3 table .cell .tbl-cap-location-top tbl-cap=‘Not much of a table’ execution_count=11}\n\ntable example\n# Include and execute your code here\nmydat = df.head(1000)\\\n    .groupby('year')\\\n    .sum()\\\n    .reset_index()\\\n    .tail(10)\\\n    .filter([\"year\", \"AK\",\"AR\"])\n\ndisplay(mydat)\n\n\n\n\n\n\n\n\n\nyear\nAK\nAR\n\n\n\n\n96\n2006\n21.0\n183.0\n\n\n97\n2007\n28.0\n153.0\n\n\n98\n2008\n36.0\n212.0\n\n\n99\n2009\n34.0\n179.0\n\n\n100\n2010\n22.0\n196.0\n\n\n101\n2011\n41.0\n148.0\n\n\n102\n2012\n28.0\n140.0\n\n\n103\n2013\n26.0\n134.0\n\n\n104\n2014\n20.0\n114.0\n\n\n105\n2015\n28.0\n121.0\n\n\n\n\n\n\n:::",
     "crumbs": [
       "DS250 Projects",
       "Project 1"
@@ -397,7 +397,7 @@
     "href": "resume.html",
     "title": "Darren Chambers CV",
     "section": "",
-    "text": "Physicist, Mathematician, Cambridge professor.\n\nisaac@applesdofall.org | My wikipedia page\n\n\n\nStudying Computer Science, Ethical Hacker, Japanese, R\n\n\nCyber Security, Computer Science, French\n\n\n\nCyber Security, Computer Hardware, drones\n\n\n\n\n2023-2024 Brigham YOung University- Idaho\nJune 1661 - now Cisco Skills For All\n\nSizar\n\n1667 - death Trinity College, Cambridge\n\nFellow\n\n\n\n\n2012\n\n\n\n\n\n\n\n\n\n\n\n\n2020-2023 United States Army, North Carolina\n2019 Sales Manager,"
+    "text": "Computer Science, Cyber Security, French\n\nisaac@applesdofall.org | My wikipedia page\n\n\n\nStudying Computer Science, Ethical Hacker, Japanese, R\n\n\nCyber Security, Computer Science, French\n\n\n\nCyber Security, Computer Hardware, drones\n\n\n\n\n2023-2024 Brigham YOung University- Idaho 2023-2024 Cisco Skills For All\n\n\n\n\n\n\n2020-2023 United States Army, North Carolina\n2019 Sales Manager,"
   },
   {
     "objectID": "resume.html#currently",
@@ -411,14 +411,7 @@
     "href": "resume.html#education",
     "title": "Darren Chambers CV",
     "section": "",
-    "text": "2023-2024 Brigham YOung University- Idaho\nJune 1661 - now Cisco Skills For All\n\nSizar\n\n1667 - death Trinity College, Cambridge\n\nFellow"
-  },
-  {
-    "objectID": "resume.html#awards",
-    "href": "resume.html#awards",
-    "title": "Darren Chambers CV",
-    "section": "",
-    "text": "2012"
+    "text": "2023-2024 Brigham YOung University- Idaho 2023-2024 Cisco Skills For All"
   },
   {
     "objectID": "resume.html#occupation",
