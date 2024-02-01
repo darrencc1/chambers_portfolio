@@ -53,7 +53,7 @@ df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-
 
 __How does your name at your birth year compare to its use historically?__
 
-_In the year 1947 there were only 5 children named Darren. The name started to gain popularity in 1958 with 385 kids given the name and peaking at 5931 children given this name in 1965. From the name starting to gain popularity in 1958 to its peak in 1965 is a 1440.2% increase in popularity over 7 years. After this peak popularity continued to drop ba      _
+_In the year 1947 there were only 5 children named Darren. The name started to gain popularity in 1958 with 385 kids given the name and peaking at 5931 children given this name in 1965. From the name starting to gain popularity in 1958 to its peak in 1965 is a 1440.2% increase in popularity over 7 years. After this peak popularity continued to drop until in the year 2015 there 484 kids named Darren.       _
 
 ```{python}
 #| label: Q1
@@ -112,14 +112,16 @@ chart.show()
 #| tbl-cap: "Not much of a table"
 #| tbl-cap-location: top
 # Include and execute your code here
-mydat = darren_df.head(1000)\
-    .groupby('year')\
-    .sum()\
-    .reset_index()\
-    .tail(10)\
-    .filter(["year", "AK","AR"])
 
-display(mydat)
+
+# mydat = darren_df.head(1000)\
+#     .groupby('year')\
+#     .sum()\
+#     .reset_index()\
+#     .tail(10)\
+#     .filter(["year", "AK","AR"])
+
+# display(mydat)
 
 ```
 
@@ -128,13 +130,17 @@ display(mydat)
 
 __If you talked to someone named Brittany on the phone, what is your guess of his or her age? What ages would you not guess?__
 
-_I would not guess any ages between 1969 and 1983 20015 - 2006._
+_I would guess they would be born between the years 1985 and 1996.Which would be between the ages of 27 and 38. The reason why I would choose this range of age is because the majority of people named brittany were born in these years. 241847 out of 327718 were born in these years. That is 
+73.8% of people named Brittany in a 11 year period.I would not choose any date from 1968 - 1984 and 1997 and 2015 because that is only 26.2 % of people name Brittany were born in these years.  _
 
 ```{python}
 #| label: Q2
 #| code-summary: Read and format data
 # Include and execute your code here
-df.query("name == 'Brittany'").filter(["name", "year", "Total"])
+
+df.query("name == 'Brittany'").filter(["name", "year",
+ "Total"])
+
 
 ```
 
