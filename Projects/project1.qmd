@@ -139,12 +139,12 @@ _I would guess they would be born between the years 1985 and 1996.Which would be
 # Include and execute your code here
 
 df.query("name == 'Brittany'").filter(["name", "year",
- "Total"])
+ "Total"]).query("year > 1984 and year < 1997")
 
 
 ```
 
-_include figures in chunks and discuss your findings in the figure._
+_This is isolating the years that hold over 70% of people named Brittany_
 
 ```{python}
 #| label: Q2 chart
@@ -155,8 +155,20 @@ _include figures in chunks and discuss your findings in the figure._
 filtered_df = df[df['name'] == 'Brittany']
 chart = px.bar(filtered_df.head(200),
     x="year", 
-    y="Total"
+    y="Total",
+    title = "Brittany name usage over the years"
 )
+chart.add_shape(
+    type="line",
+    x0= 1985,
+    y0=14000,
+    x1=1996,
+    y1=14000,
+    line=dict(
+        color="red",
+        width=3,
+        dash="dashdot")
+        )
 chart.show()
 ```
 
