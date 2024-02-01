@@ -49,13 +49,11 @@ df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-
 
 ```
 
-__Highlight the Questions and Tasks__
-
 ## QUESTION|TASK 1
 
 __How does your name at your birth year compare to its use historically?__
 
-_In 1965 the use of the Name Darren peaked with 5931 kids being named Darren. For the following 5 years there were 4000 - 4500 kids names Darren. After this the name lost some of its popularity and within another 6 years there would only be around 1500 kids named Darren a year. I was born in 1996 and there were 1109 other kids named Darren.  _
+_In the year 1947 there were only 5 children named Darren. The name started to gain popularity in 1958 with 385 kids given the name and peaking at 5931 children given this name in 1965. From the name starting to gain popularity in 1958 to its peak in 1965 is a 1440.2% increase in popularity over 7 years. After this peak popularity continued to drop ba      _
 
 ```{python}
 #| label: Q1
@@ -70,10 +68,10 @@ _In 1965 the use of the Name Darren peaked with 5931 kids being named Darren. Fo
 
 # Gives the size, so rows times columns so with year, how many years you have, name: how many times the specified name occurs. 
 # pd.unique(df.query("name == 'Darren' ").year).size
-df.query("name == 'Darren'").filter(["name", "year","VA","Total"]).query("year > 1960 and year < 2000")
+df.query("name == 'Darren'").filter(["name", "year", "Total"]).query("year > 1957 and year < 1966")
 ```
 
-_include figures in chunks and discuss your findings in the figure._
+_The green line indicates the start of when Darren was becoming popular. This shows the rapid increase in popularity over 7 years. _
 
 ```{python}
 #| label: Q1 chart
@@ -85,10 +83,26 @@ darren_df = df[df['name'] == 'Darren']
 chart = px.bar(darren_df.head(200),
     x="year", 
     y="Total",
-    title = "Usage of Darren over the years"
+    title = "Usage of the name Darren"
 
 )
+highlight_year = 1958
+
+# Add a vertical line
+chart.add_shape(
+    type="line",
+    x0=highlight_year,
+    y0=darren_df['Total'].min(),
+    x1=highlight_year,
+    y1=darren_df['Total'].max(),
+    line=dict(
+        color="green",
+        width=3,
+        dash="dashdot"
+    )
+)
 chart.show()
+
 ```
 
 
