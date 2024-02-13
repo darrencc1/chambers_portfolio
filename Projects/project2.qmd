@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
+title: "Client Report - [Airline Delays by Airport for the U.S]"
 subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+author: "[Darren Chambers]"
 format:
   html:
     self-contained: true
@@ -44,13 +44,15 @@ _A SHORT (4-5 SENTENCES) PARAGRAPH THAT `DESCRIBES KEY INSIGHTS` TAKEN FROM METR
 #| code-summary: Read and format project data
 # Include and execute your code here
 df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv")
+flight_delays = df
+flight_delays
 ```
 
 __Highlight the Questions and Tasks__
 
 ## QUESTION|TASK 1
 
-__COPY PASTE QUESTION|TASK 1 FROM THE PROJECT HERE__
+__Fix all of the varied missing data types in the data to be consistent (all missing values should be displayed as “NaN”)__
 
 _type your results and analysis here_
 
@@ -58,6 +60,7 @@ _type your results and analysis here_
 #| label: Q1
 #| code-summary: Read and format data
 # Include and execute your code here
+
 
 
 ```
@@ -98,7 +101,7 @@ display(mydat)
 
 ## QUESTION|TASK 2
 
-__COPY PASTE QUESTION|TASK 2 FROM THE PROJECT HERE__
+__Which airport has the worst delays?__
 
 _type your results and analysis here_
 
@@ -146,7 +149,7 @@ display(mydat)
 
 ## QUESTION|TASK 3
 
-__COPY PASTE QUESTION|TASK 3 FROM THE PROJECT HERE__
+__What is the best month to fly if you want to avoid delays of any length?__
 
 _type your results and analysis here_
 
@@ -190,3 +193,11 @@ mydat = df.head(1000)\
 display(mydat)
 
 ```
+
+__QUESTION|TASK 4__
+
+__Your job is to create a new column that calculates the total number of flights delayed by weather (both severe and mild).__
+
+__QUESTION|TASK 5__
+
+__Using the new weather variable calculated above, create a barplot showing the proportion of all flights that are delayed by weather at each airport. Discuss what you learn from this graph.__
