@@ -46,6 +46,9 @@ _A SHORT (4-5 SENTENCES) PARAGRAPH THAT `DESCRIBES KEY INSIGHTS` TAKEN FROM METR
 df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv")
 flight_delays = df
 flight_delays
+
+# replace 999 and -999 with the mean, 1500+ replace w/ 1500. 
+# 
 ```
 
 __Highlight the Questions and Tasks__
@@ -61,7 +64,27 @@ _type your results and analysis here_
 #| code-summary: Read and format data
 # Include and execute your code here
 
-
+#%% assign function lets each of these columns get added to the data frame. 
+# makes the new column = to another column in the df. (Like excel)
+# So minutes total delays will be another affed colimn at the end (severe)
+#lambda just returns whatever you do to x, it is an inline function. 
+weather = (flights.assign(
+    severe = flights.num_of_delays_weather, # no# missing, severe 
+    nodla_nona = lambda x: (x.num_of_delays_late_aircraft
+        .replace(-999, np.nan)), #missing is -999, this is taking any missing data and replacing it with nan, copies the data but gives nan for 999
+    mild_late = lambda x: x.nodla_nona.fillna(x.nodla_nona.mean())*0.3,
+    mild = np.where(
+        flights.month.isin(['April', 'May', 'June', 'July', 'August']), 
+            flights.num_of_delays_nas*0.4, 
+            flights.num_of_delays_nas*0.65),
+    weather = lambda x: x.severe + x.mild_late + x.mild,
+    proportion_weather_delay = lambda x: x.weather / x.num_of_delays_total,
+    proportion_weather_total = lambda x:  x.weather / x.num_of_flights_total)
+    .filter(['airport_code','month','year', 'severe','mild', 'mild_late',
+    'weather', 'proportion_weather_total', 
+    'proportion_weather_delay', 'num_of_flights_total', 'num_of_delays_total']))
+weather.head()
+```
 
 ```
 
@@ -110,6 +133,7 @@ _type your results and analysis here_
 #| code-summary: Read and format data
 # Include and execute your code here
 
+```
 
 ```
 
@@ -194,10 +218,10 @@ display(mydat)
 
 ```
 
-__QUESTION|TASK 4__
+## __QUESTION|TASK 4__
 
 __Your job is to create a new column that calculates the total number of flights delayed by weather (both severe and mild).__
 
-__QUESTION|TASK 5__
+## __QUESTION|TASK 5__
 
 __Using the new weather variable calculated above, create a barplot showing the proportion of all flights that are delayed by weather at each airport. Discuss what you learn from this graph.__
