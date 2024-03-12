@@ -78,7 +78,7 @@ _I made sure to only display unique values in this table, meaning I used distinc
 df = pd.read_sql_query(q, con)
 
 # Close the SQLite database connection
-# con.close()
+#con.close()
 
 # Print the DataFrame
 print(df)
@@ -92,20 +92,26 @@ __This three-part question requires you to calculate batting average (number of 
 
 Write an SQL query that provides playerID, yearID, and batting average for players with at least 1 at bat that year. Sort the table from highest batting average to lowest, and then by playerid alphabetically. Show the top 5 results in your report.
 
-Use the same query as above, but only include players with at least 10 at bats that year. Print the top 5 results.
+Use the same query as above, but only include players with at least 10 at bats that year. Print the top 5 results. 
 
 Now calculate the batting average for players over their entire careers (all years combined). Only include players with at least 100 at bats, and print the top 5 results.__
 
 _type your results and analysis here_
 ```{python}
 q = '''
-SELECT playerID, yearID, 
+SELECT playerID, yearID, AB, H, (H * 100) / AB *1 AS "Average Hits %
 FROM batting
-WHERE 
+WHERE AB >= 1 
+GROUP BY playerID
+ORDER BY H * 100/AB *1.0 ASC, playerID DESC
 '''
 ```
 
+```{python}
+result = pd.read_sql_query(q, con)
 
+print(result)
+```
 
 ```{python}
 #| label: Q2
