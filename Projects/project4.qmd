@@ -79,13 +79,13 @@ __Highlight the Questions and Tasks__
 
 __Create 2-3 charts that evaluate potential relationships between the home variables and before1980. Explain what you learn from the charts that could help a machine learning algorithm.__
 
-_Looking at the chart we see that almost 25% was from one-story buildings. After this the effectivness of the potential relationships drop drastically. So figuring out which data is almost irrelevant meaning well below 1% may actually help algorithms predict and learn._
+_There are many factors that we can use to help our algorithms learn and predict homes that were made before 1980._
 
 ```{python}
 X_pred = dwellings_ml.drop(dwellings_ml.filter(regex = 'before1980|yrbuilt|parcel').columns, axis = 1)
 y_pred = dwellings_ml.filter(regex = "before1980")
 X_train, X_test, y_train, y_test = train_test_split(
-    X_pred, y_pred, test_size = .36, random_state = 66)
+    X_pred, y_pred, test_size = .34, random_state = 66)
 
     #70, .30, 66, .34, 80,.20
 ```
@@ -114,7 +114,7 @@ y_pred = clf.predict(X_test)
 
 
 
-_include figures in chunks and discuss your findings in the figure._
+_Looking at the chart we see that almost 25% was from one-story buildings. After this the effectivness of the potential relationships drop drastically. So figuring out which data is almost irrelevant, in this case meaning well below 1% helpts my algorithms learn and predict houses made before 1980._
 
 ```{python}
 
@@ -159,7 +159,8 @@ chart.update_layout(yaxis={'categoryorder':'total ascending'})
 
 __Build a classification model labeling houses as being built “before 1980” or “during or after 1980”. Your goal is to reach or exceed 90% accuracy. Explain your final model choice (algorithm, tuning parameters, etc) and describe what other models you tried.__
 
-_Below I will show you some different results based on tst size as well as how RandomForest Algorithm vs Decision Tree algorithm._
+_Below I will show you some different results based on test size as well as
+RandomForest Algorithm vs Decision Tree algorithm. This first test size is 34 and random state 66._
 
 ```{python}
 
@@ -246,7 +247,7 @@ print("Decision Tree Accuracy with Top 20 Features 34/66:", accuracy_score_filte
 # XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)
 ```
 
-_This next set of data shows how changing the test from 34|66 to 30|70 affected the accuracy. In both cases the accuracy dropped by .4 or .3 % dropping the Decision Tree Algorithm below the 90% accuracy requirement._
+_This next set of data shows how changing the test from 34|66 to 30|70 affected the accuracy. In both cases the accuracy dropped by .2 - .4% depending on the learning._
 
 ```{python}
 
@@ -334,6 +335,33 @@ X_train, X_test, y_train, y_test = train_test_split(
     #70, .30, 66, .34, 80,.20
 ```
 
+```{python}
+top_20_features = df_features.head(20)['f_names'].tolist()
+
+# Now, filter X_train and X_test to include only the top 10 features
+X_train_filtered = X_train[top_20_features]
+X_test_filtered = X_test[top_20_features]
+
+# Training your model using these filtered datasets
+clf_filtered = tree.DecisionTreeClassifier()
+clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel())  # .values.ravel() to convert y_train to 1D array if needed
+
+# Making predictions with the test set filtered to top 10 features
+y_pred_filtered = clf_filtered.predict(X_test_filtered)
+# clf is a classifier.
+clf = tree.DecisionTreeClassifier() #Rand Forest is similar, try it. 
+#linear regression, 
+clf = clf.fit(X_train, y_train)
+# Fit: fit the model to said data
+y_pred = clf.predict(X_test)
+y_probs = clf.predict_proba(X_test)
+# %% this is the y_pred and y_probes from cell above
+print(metrics.classification_report(y_pred, y_test))
+accuracy_score(y_test, y_pred)
+print("Decision Tree Accuracy with Top 20 Features 20/80:", accuracy_score_filtered)
+```
+
+
 ```{python}  
 
     #70, .30, 66, .34, 80,.20
@@ -374,43 +402,6 @@ accuracy_score(y_test, y_pred)
 ```
 
 
-
-
-
-`
-
-_This next set of data shows how changing the test from 34|66 to 30|70 affected the accuracy. In both cases the accuracy dropped by .4 or .3 % dropping the Decision Tree Algorithm below the 90% accuracy requirement._
-
-```{python}
-
-X_pred = dwellings_ml.drop(dwellings_ml.filter(regex = 'before1980|yrbuilt|parcel').columns, axis = 1)
-y_pred = dwellings_ml.filter(regex = "before1980")
-X_train, X_test, y_train, y_test = train_test_split(
-    X_pred, y_pred, test_size = .30, random_state = 70)
-    #70, .30, 66, .34, 80,.20
-```
-
-```{python}  
-
-    #70, .30, 66, .34, 80,.20
-    #     x='parcel',
-#     y='abstrpod',
-#     color='yrbuilt',
-#     title='Does age affect whether a passenger survived?',
-#     # marginal="box", # or violin, rug
-#     # hover_data=
-# )
-clf = RandomForestClassifier() #Rand Forest is similar, try it. 
-#linear regression, 
-clf = clf.fit(X_train, y_train)
-# Fit: fit the model to said data
-y_pred = clf.predict(X_test)
-y_probs = clf.predict_proba(X_test)
-y_pred = clf.predict(X_test)
-print(metrics.classification_report(y_pred, y_test))
-accuracy_score(y_test, y_pred)
-```
-
 ```{python}
 
 
@@ -428,57 +419,31 @@ accuracy_score(y_test, y_pred)
 
 # XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)
 ```
-
-_For this set I am using the 80/20 test and with this the accuracy went back up reaching 92.45% this dropped to 92.34% When using on;y the top 10. for the random Tree algorithm which is the highest of all the tests so far._
-
-
 
 ## QUESTION|TASK 3
 
 __Justify your classification model by discussing the most important features selected by your model. This discussion should include a chart and a description of the features.__
 
-_type your results and analysis here_
+_This Chart shows the top 20 features I selected. The reason Why these were selected were by the % influence they had on the learning model. Everything after status_I was under a % influence and would start to negativly impact the % accuracy of the models. _
 
 ```{python}
 #| label: Q3
 #| code-summary: Read and format data
 # Include and execute your code here
 
-
-```
-
-_include figures in chunks and discuss your findings in the figure._
-
-```{python}
-#| label: Q3 chart
-#| code-summary: plot example
-#| fig-cap: "My useless chart"
-#| fig-align: center
-# Include and execute your code here
-chart = px.bar(df.head(200),
-    x="name", 
-    y="AK"
+#%%
+chart = px.bar(df_features.head(20), #You can change this 10 based on top features you want to see.
+    x='f_values', 
+    y='f_names'
 )
-chart.show()
+
+chart.update_layout(yaxis={'categoryorder':'total ascending'})
+# 0-1 is based on % 1 is 100% 
+# f(x) = y (y is target, does not change here)
+# f is algorithm, Try 4
+# (x) is features 
 ```
 
-
-```{python}
-#| label: Q3 table
-#| code-summary: table example
-#| tbl-cap: "Not much of a table"
-#| tbl-cap-location: top
-# Include and execute your code here
-mydat = df.head(1000)\
-    .groupby('year')\
-    .sum()\
-    .reset_index()\
-    .tail(10)\
-    .filter(["year", "AK","AR"])
-
-display(mydat)
-
-```
 
 ## Question|Task 4
 __Describe the quality of your classification model using 2-3 different evaluation metrics. You also need to explain how to interpret each of the evaluation metrics you use.__
