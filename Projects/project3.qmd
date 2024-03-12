@@ -34,6 +34,16 @@ import plotly.express as px
 import sqlite3
 ```
 
+```{python}
+sqlite_file = 'lahmansbaseballdb (3).sqlite'
+con = sqlite3.connect(sqlite_file)
+
+q = 'SELECT * FROM allstarfull LIMIT 5'
+results = pd.read_sql_query(q,con)
+
+results
+```
+
 
 ## Elevator pitch
 
