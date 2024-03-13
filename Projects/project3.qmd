@@ -1,7 +1,7 @@
 ---
 title: "Client Report - [Insert Project Title]"
 subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+author: "[Darren Chambers]"
 format:
   html:
     self-contained: true
@@ -41,7 +41,7 @@ con = sqlite3.connect(sqlite_file)
 q = 'SELECT * FROM allstarfull LIMIT 5'
 results = pd.read_sql_query(q,con)
 
-results
+# results
 ```
 
 
@@ -59,9 +59,7 @@ __Highlight the Questions and Tasks__
 __Write an SQL query to create a new dataframe about baseball players who attended BYU-Idaho. The new table should contain five columns: playerID, schoolID, salary, and the yearID/teamID associated with each salary. Order the table by salary (highest to lowest) and print out the table in your report.__
 
 
-
-
-
+_I made sure to only display unique values in this table, meaning I used distinct to ensure there were no repeating values and it is ordered by salary. We can see that there are only 2 players who had attented byui._
 ```{python}
 
 q = '''SELECT DISTINCT cp.playerID, cp.schoolID, s.salary, s.yearID, s.teamID
@@ -69,50 +67,77 @@ FROM collegeplaying cp
 JOIN salaries s ON cp.playerID = s.playerID
 WHERE cp.schoolID = 'idbyuid'
 ORDER BY s.salary DESC'''
+
+result = pd.read_sql_query(q, con)
+
+print(result)
 ```
 
-_I made sure to only display unique values in this table, meaning I used distinct to ensure there were no repeating values and it is ordered by salary. We can see that there are only 3 players who had attented byui._
+```{python}
+sqlite_file = 'lahmansbaseballdb.sqlite'
+con = sqlite3.connect(sqlite_file)
+
+q = 'SELECT * FROM allstarfull LIMIT 5'
+results = pd.read_sql_query(q,con)
+
+results
+```
 
 ```{python}
 # Use pandas to read the SQL query into a DataFrame
-df = pd.read_sql_query(q, con)
+# df = pd.read_sql_query(q, con)
 
-# Close the SQLite database connection
-#con.close()
+# # Close the SQLite database connection
+# #con.close()
 
-# Print the DataFrame
-print(df)
+# # Print the DataFrame
+# print(df)
 ```
 
 
 
 ## QUESTION|TASK 2
 
-__This three-part question requires you to calculate batting average (number of hits divided by the number of at-bats)
+__This three-part question requires you to calculate batting average (number of hits divided by the number of at-bats)__
 
-Write an SQL query that provides playerID, yearID, and batting average for players with at least 1 at bat that year. Sort the table from highest batting average to lowest, and then by playerid alphabetically. Show the top 5 results in your report.
+__Write an SQL query that provides playerID, yearID, and batting average for players with at least 1 at bat that year. Sort the table from highest batting average to lowest, and then by playerid alphabetically. Show the top 5 results in your report.__
 
-Use the same query as above, but only include players with at least 10 at bats that year. Print the top 5 results. 
+__Use the same query as above, but only include players with at least 10 at bats that year. Print the top 5 results.__
 
-Now calculate the batting average for players over their entire careers (all years combined). Only include players with at least 100 at bats, and print the top 5 results.__
+__Now calculate the batting average for players over their entire careers (all years combined). Only include players with at least 100 at bats, and print the top 5 results.__
 
-_type your results and analysis here_
+_The top hitters in this situation have an average hit rate of 100%. If you look in the H (hits) row you will see they have only hit once, as well as been at bat once. 
 ```{python}
 q = '''
-SELECT playerID, yearID, AB, H, (H * 100) / AB *1 AS "Average Hits %
+SELECT playerID, yearID, H, AB, (H * 100) / AB * 1.0 AS "Average Hits %"
 FROM batting
 WHERE AB >= 1 
 GROUP BY playerID
-ORDER BY H * 100/AB *1.0 ASC, playerID DESC
-'''
-```
+ORDER BY H * 100/AB *1.0 DESC 
+LIMIT 5'''
 
-```{python}
 result = pd.read_sql_query(q, con)
 
 print(result)
 ```
 
+_When you take the At Bats and increase it to at least 10 times you see that the highest stat is 64% instead of 100% like the previous chart. These percentiles are much more useful as they have at least some data behind them. These top five batters all were at bat 11-16 times._
+
+```{python}
+q = '''
+SELECT playerID, yearID, H, AB, (H * 100) / AB * 1.0 AS "Average Hits %"
+FROM batting
+WHERE AB >= 10 
+GROUP BY playerID
+ORDER BY H * 100/AB *1.0 DESC 
+LIMIT 5'''
+
+result = pd.read_sql_query(q, con)
+
+print(result)
+```
+
+_In this last set of data you see the Average Hits go down even further from before. However, this is the most useful of the charts. All of these batters had well over 100 bats, meaning that they have many actual data points to use for their average hits. If you were to look at players you were interested in hiring for a team, the amount of Hits and at bats influencing the Average hits would be important to note. Concistency over long periods / many data points and average hits at 49% would be much more indicative of good hitters than someone who has been at bat 14 times and has a 64% average hit rate. 
 ```{python}
 #| label: Q2
 #| code-summary: Read and format data
@@ -123,34 +148,13 @@ SELECT playerID, yearID, H, AB, (H * 100) / AB * 1.0 AS "Average hits %"
 FROM batting 
 WHERE AB >= 100
 GROUP BY playerID 
-ORDER BY  H * 100/AB *1.0 DESC, playerID asc
+ORDER BY  H * 100/AB *1.0 DESC
+LIMIT 5
 """
+result = pd.read_sql_query(q, con)
 
+print(result) 
 ```
-
-
-```{python}
-results = pd.read_sql_query(q, con)
-
-# Close the database connection
-# con.close()
-
-# Print the DataFrame
-print(results)
-
-# SUM(H) / SUM(AB) * 100
-# FROM batting
-# HAVING AB >= 100 
-```
-
-
-
-_include figures in chunks and discuss your findings in the figure._
-
-
-
-
-
 
 
 ## QUESTION|TASK 3
@@ -159,22 +163,38 @@ __Pick any two baseball teams and compare them using a metric of your choice (av
 
 _type your results and analysis here_
 
-```{python}
-#| label: Q3
-#| code-summary: Read and format data
-# Include and execute your code here
 
+```{python}
+# q = '''
+# SELECT teamID, yearID, HR, H, AB, (HR * 100) / H * 1.0 AS "Average Home Runs %"
+# FROM teams AS t
+# JOIN batting AS b
+#   ON b.teamID = t.teamID 
+# WHERE teamID = FW1 AND NY2
+# GROUP BY 
+# ORDER BY (HR * 100) / H * 1.0 DESC 
+# '''
+q= '''SELECT teamID, 
+       yearID, 
+       SUM(HR) AS Total_Home_Runs, 
+       SUM(H) AS Total_Hits, 
+       SUM(AB) AS Total_At_Bats, 
+       (SUM(HR) * 100.0) / SUM(H) AS "Average Home Runs %"
+FROM teams
+WHERE teamID IN ('FW1', 'NY2')
+GROUP BY teamID, yearID
+ORDER BY "Average_Home_Runs_Percentage" DESC'''
+
+result = pd.read_sql_query(q, con)
+
+print(result)
 
 ```
 
 _include figures in chunks and discuss your findings in the figure._
 
 ```{python}
-#| label: Q3 chart
-#| code-summary: plot example
-#| fig-cap: "My useless chart"
-#| fig-align: center
-# Include and execute your code here
+
 chart = px.bar(df.head(200),
     x="name", 
     y="AK"
