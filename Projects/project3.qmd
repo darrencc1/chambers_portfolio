@@ -1,5 +1,5 @@
 ---
-title: "Client Report - [Basebal Over the Years]"
+title: "Client Report - [Baseball Over the Years]"
 subtitle: "Course DS 250"
 author: "[Darren Chambers]"
 format:
@@ -47,19 +47,14 @@ results = pd.read_sql_query(q,con)
 
 ## Elevator pitch
 
-_paste your elevator pitch here_
 _When considering baseball players it is important to look at their average hits. Within this average we see that the number of total hits and At bats is very important for choosing players for a team. Somebody with a couple thousand at bats but a lower % is better than someone with 10 at bats and 60% hit rate. _
-
-
-
-__Highlight the Questions and Tasks__
 
 ## QUESTION|TASK 1
 
 __Write an SQL query to create a new dataframe about baseball players who attended BYU-Idaho. The new table should contain five columns: playerID, schoolID, salary, and the yearID/teamID associated with each salary. Order the table by salary (highest to lowest) and print out the table in your report.__
 
 
-_I made sure to only display unique values in this table, meaning I used distinct to ensure there were no repeating values and it is ordered by salary. We can see that there are only 2 players who had attented byui._
+_I made sure to only display unique values in this table, meaning I used distinct to ensure there were no repeating values and it is ordered by salary. We can see that there are only 2 players who had attented byui. One thing to note is that as these two players gained experience their salaries increased. Lindsman though lost some pay in 2013 comapared to his previous 2 years._
 ```{python}
 
 q = '''SELECT DISTINCT cp.playerID, cp.schoolID, s.salary, s.yearID, s.teamID
@@ -74,13 +69,13 @@ print(result)
 ```
 
 ```{python}
-sqlite_file = 'lahmansbaseballdb.sqlite'
-con = sqlite3.connect(sqlite_file)
+# sqlite_file = 'lahmansbaseballdb.sqlite'
+# con = sqlite3.connect(sqlite_file)
 
-q = 'SELECT * FROM allstarfull LIMIT 5'
-results = pd.read_sql_query(q,con)
+# q = 'SELECT * FROM allstarfull LIMIT 5'
+# results = pd.read_sql_query(q,con)
 
-results
+# results
 ```
 
 ```{python}
@@ -139,9 +134,6 @@ print(result)
 
 _In this last set of data you see the Average Hits go down even further from before. However, this is the most useful of the charts. All of these batters had well over 100 bats, meaning that they have many actual data points to use for their average hits. If you were to look at players you were interested in hiring for a team, the amount of Hits and at bats influencing the Average hits would be important to note. Concistency over long periods / many data points and average hits at 49% would be much more indicative of good hitters than someone who has been at bat 14 times and has a 64% average hit rate. 
 ```{python}
-#| label: Q2
-#| code-summary: Read and format data
-# Include and execute your code here
 
 q = """ 
 SELECT playerID, sum(H), sum(AB), (SUM(H) * 100) / sum(AB) * 1.0 AS "Average hits %"
