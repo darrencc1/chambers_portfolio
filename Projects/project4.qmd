@@ -181,7 +181,10 @@ X_train, X_test, y_train, y_test = train_test_split(
 
     #70, .30, 66, .34, 80,.20
 ```
-
+```{python}
+# clf_filtered = RandomForestClassifier()
+# clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel())
+```
 ```{python}
 # Assuming df_features is already created and sorted by feature importance
 top_20_features = df_features.head(20)['f_names'].tolist()
@@ -440,10 +443,10 @@ X_train, X_test, y_train, y_test = train_test_split(
     # Extract the top 10 feature names
 
 
-X_pred = dwellings_ml.drop(dwellings_ml.filter(regex = 'before1980|yrbuilt|parcel').columns, axis = 1)
-y_pred = dwellings_ml.filter(regex = "before1980")
-X_train, X_test, y_train, y_test = train_test_split(
-    X_pred, y_pred, test_size = .34, random_state = 66)
+# X_pred = dwellings_ml.drop(dwellings_ml.filter(regex = 'before1980|yrbuilt|parcel').columns, axis = 1)
+# y_pred = dwellings_ml.filter(regex = "before1980")
+# X_train, X_test, y_train, y_test = train_test_split(
+#     X_pred, y_pred, test_size = .34, random_state = 66)
 
 
     #70, .30, 66, .34, 80,.20
@@ -456,7 +459,7 @@ clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel())
 
 ```{python}
 # Assuming df_features is already created and sorted by feature importance
-top_20_features = df_features.head(25)['f_names'].tolist()
+top_20_features = df_features.head(10)['f_names'].tolist()
 
 # Now, filter X_train and X_test to include only the top 10 features
 X_train_filtered = X_train[top_20_features]
@@ -498,7 +501,16 @@ clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel())
 ```
 
 ```{python}
-top_20_features = df_features.head(25)['f_names'].tolist()
+
+X_pred = dwellings_ml.drop(dwellings_ml.filter(regex = 'before1980|yrbuilt|parcel').columns, axis = 1)
+y_pred = dwellings_ml.filter(regex = "before1980")
+X_train, X_test, y_train, y_test = train_test_split(
+    X_pred, y_pred, test_size = .34, random_state = 66)
+
+```
+
+```{python}
+top_20_features = df_features.head(10)['f_names'].tolist()
 
 # Now, filter X_train and X_test to include only the top 10 features
 X_train_filtered = X_train[top_20_features]
