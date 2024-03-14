@@ -113,7 +113,7 @@ SELECT playerID, yearID, H, AB, (H * 100) / AB * 1.0 AS "Average Hits %"
 FROM batting
 WHERE AB >= 1 
 GROUP BY playerID
-ORDER BY H * 100/AB *1.0 DESC 
+ORDER BY H * 100/AB *1.0 DESC, playerID 
 LIMIT 5'''
 
 result = pd.read_sql_query(q, con)
@@ -144,11 +144,11 @@ _In this last set of data you see the Average Hits go down even further from bef
 # Include and execute your code here
 
 q = """ 
-SELECT playerID, yearID, H, AB, (H * 100) / AB * 1.0 AS "Average hits %"
+SELECT playerID, sum(H), sum(AB), (SUM(H) * 100) / sum(AB) * 1.0 AS "Average hits %"
 FROM batting 
-WHERE AB >= 100
 GROUP BY playerID 
-ORDER BY  H * 100/AB *1.0 DESC
+HAVING SUM(AB) >= 100
+ORDER BY  sum(H) * 100/ sum(AB) *1.0 DESC
 LIMIT 5
 """
 result = pd.read_sql_query(q, con)
