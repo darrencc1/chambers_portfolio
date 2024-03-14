@@ -195,11 +195,11 @@ _include figures in chunks and discuss your findings in the figure._
 
 ```{python}
 
-chart = px.bar(df.head(200),
-    x="name", 
-    y="AK"
-)
-chart.show()
+# chart = px.bar(df.head(200),
+#     x="name", 
+#     y="AK"
+# )
+# chart.show()
 ```
 
 
@@ -209,13 +209,13 @@ chart.show()
 #| tbl-cap: "Not much of a table"
 #| tbl-cap-location: top
 # Include and execute your code here
-mydat = df.head(1000)\
-    .groupby('year')\
-    .sum()\
-    .reset_index()\
-    .tail(10)\
-    .filter(["year", "AK","AR"])
+# mydat = df.head(1000)\
+#     .groupby('year')\
+#     .sum()\
+#     .reset_index()\
+#     .tail(10)\
+#     .filter(["year", "AK","AR"])
 
-display(mydat)
+# display(mydat)
 
 ```
