@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="[STUDENT NAME]">
+<meta name="author" content="[Darren Chambers]">
 
-<title>Darren Chambers Data Science Portfolio - Client Report - [Insert Project Title]</title>
+<title>Darren Chambers Data Science Portfolio - Client Report - [Prediction of Houses Built Before 1980 in Colorado]</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4754,7 +4754,7 @@ require(['plotly'], function(Plotly) {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-right">
-      <div class="quarto-title-block"><div><h1 class="title">Client Report - [Insert Project Title]</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> See code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+      <div class="quarto-title-block"><div><h1 class="title">Client Report - [Prediction of Houses Built Before 1980 in Colorado]</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> See code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
             <p class="subtitle lead">Course DS 250</p>
                       </div>
   </div>
@@ -4765,7 +4765,7 @@ require(['plotly'], function(Plotly) {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>[STUDENT NAME] </p>
+               <p>[Darren Chambers] </p>
             </div>
     </div>
       
@@ -4842,45 +4842,277 @@ require(['plotly'], function(Plotly) {
   <li><a href="#questiontask-1" id="toc-questiontask-1">QUESTION|TASK 1</a></li>
   <li><a href="#questiontask-2" id="toc-questiontask-2">QUESTION|TASK 2</a></li>
   <li><a href="#questiontask-3" id="toc-questiontask-3">QUESTION|TASK 3</a></li>
+  <li><a href="#questiontask-4" id="toc-questiontask-4">Question|Task 4</a></li>
   </ul>
 </nav>
+<div id="18e2999d" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> tree </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> RocCurveDisplay</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> metrics</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> uniform, randint</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> auc, accuracy_score, confusion_matrix, mean_squared_error</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score, GridSearchCV, KFold, RandomizedSearchCV, train_test_split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <section id="elevator-pitch" class="level2">
 <h2 class="anchored" data-anchor-id="elevator-pitch">Elevator pitch</h2>
 <p><em>paste your elevator pitch here</em> <em>A SHORT (4-5 SENTENCES) PARAGRAPH THAT <code>DESCRIBES KEY INSIGHTS</code> TAKEN FROM METRICS IN THE PROJECT RESULTS THINK TOP OR MOST IMPORTANT RESULTS.</em></p>
-<div id="project-data" class="cell" data-execution_count="2">
+<p>::: {#cell-project data .cell execution_count=3}</p>
 <details class="code-fold">
 <summary>Read and format project data</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>dwellings_ml <span class="op">=</span> pd.read_csv(<span class="st">&#39;https://github.com/byuidatascience/data4dwellings/raw/master/data-raw/dwellings_ml/dwellings_ml.csv&#39;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.read_csv(<span class="st">&quot;https://raw.githubusercontent.com/byuidatascience/data4dwellings/master/data-raw/dwellings_neighborhoods_ml/dwellings_neighborhoods_ml.csv&quot;</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>dwellings_ml.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div id="project-data" class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">parcel</th>
+<th data-quarto-table-cell-role="th">abstrprd</th>
+<th data-quarto-table-cell-role="th">livearea</th>
+<th data-quarto-table-cell-role="th">finbsmnt</th>
+<th data-quarto-table-cell-role="th">basement</th>
+<th data-quarto-table-cell-role="th">yrbuilt</th>
+<th data-quarto-table-cell-role="th">totunits</th>
+<th data-quarto-table-cell-role="th">stories</th>
+<th data-quarto-table-cell-role="th">nocars</th>
+<th data-quarto-table-cell-role="th">numbdrm</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">arcstyle_THREE-STORY</th>
+<th data-quarto-table-cell-role="th">arcstyle_TRI-LEVEL</th>
+<th data-quarto-table-cell-role="th">arcstyle_TRI-LEVEL WITH BASEMENT</th>
+<th data-quarto-table-cell-role="th">arcstyle_TWO AND HALF-STORY</th>
+<th data-quarto-table-cell-role="th">arcstyle_TWO-STORY</th>
+<th data-quarto-table-cell-role="th">qualified_Q</th>
+<th data-quarto-table-cell-role="th">qualified_U</th>
+<th data-quarto-table-cell-role="th">status_I</th>
+<th data-quarto-table-cell-role="th">status_V</th>
+<th data-quarto-table-cell-role="th">before1980</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>00102-08-065-065</td>
+<td>1130</td>
+<td>1346</td>
+<td>0</td>
+<td>0</td>
+<td>2004</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>00102-08-073-073</td>
+<td>1130</td>
+<td>1249</td>
+<td>0</td>
+<td>0</td>
+<td>2005</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>00102-08-078-078</td>
+<td>1130</td>
+<td>1346</td>
+<td>0</td>
+<td>0</td>
+<td>2005</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>00102-08-081-081</td>
+<td>1130</td>
+<td>1146</td>
+<td>0</td>
+<td>0</td>
+<td>2005</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>00102-08-086-086</td>
+<td>1130</td>
+<td>1249</td>
+<td>0</td>
+<td>0</td>
+<td>2005</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 51 columns</p>
 </div>
+</div>
+<p>:::</p>
 <p><strong>Highlight the Questions and Tasks</strong></p>
 </section>
 <section id="questiontask-1" class="level2">
 <h2 class="anchored" data-anchor-id="questiontask-1">QUESTION|TASK 1</h2>
-<p><strong>COPY PASTE QUESTION|TASK 1 FROM THE PROJECT HERE</strong></p>
-<p><em>type your results and analysis here</em></p>
-<div id="q1" class="cell" data-execution_count="3">
+<p><strong>Create 2-3 charts that evaluate potential relationships between the home variables and before1980. Explain what you learn from the charts that could help a machine learning algorithm.</strong></p>
+<p><em>There are many factors that we can use to help our algorithms learn and predict homes that were made before 1980.</em></p>
+<div id="37777dcc" class="cell" data-execution_count="4">
 <details class="code-fold">
-<summary>Read and format data</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.34</span>, random_state <span class="op">=</span> <span class="dv">66</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><em>include figures in chunks and discuss your findings in the figure.</em></p>
-<p>::: {#cell-Q1 chart .cell execution_count=4}</p>
+<div id="be1665b6" class="cell" data-execution_count="5">
 <details class="code-fold">
-<summary>plot example</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> px.bar(df.head(<span class="dv">200</span>),</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">&quot;name&quot;</span>, </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">&quot;AK&quot;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>chart.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#     x=&#39;parcel&#39;,</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     y=&#39;abstrpod&#39;,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#     color=&#39;yrbuilt&#39;,</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     title=&#39;Does age affect whether a passenger survived?&#39;,</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     # marginal=&quot;box&quot;, # or violin, rug</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     # hover_data=</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="q1-chart" class="cell-output cell-output-display">
-<div>                            <div id="64205968-9cda-4a7c-8a70-6b47389c1ea9" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("64205968-9cda-4a7c-8a70-6b47389c1ea9")) {                    Plotly.newPlot(                        "64205968-9cda-4a7c-8a70-6b47389c1ea9",                        [{"alignmentgroup":"True","hovertemplate":"name=%{x}\u003cbr\u003eAK=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"textposition":"auto","x":["Aaden","Aaden","Aaden","Aaden","Aaden","Aaden","Aaden","Aaden","Aaden","Aaden","Aadhya","Aadhya","Aadhya","Aadhya","Aadhya","Aadhya","Aadhya","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarna","Aarna","Aarna","Aarna","Aarna","Aarna","Aarna","Aarna","Aarna","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron"],"xaxis":"x","y":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,0.0,5.0,7.0,10.0,10.0,9.0,7.0,14.0,10.0,13.0,8.0,12.0,12.0,11.0,12.0,10.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.0,0.0,0.0,5.0,7.0,0.0,0.0,0.0,0.0,6.0,6.0,9.0,8.0,17.0,26.0,37.0,23.0,33.0,42.0,41.0,35.0,53.0,54.0,52.0,55.0,59.0,54.0,54.0,62.0,61.0,58.0,60.0,44.0,56.0,57.0,55.0,35.0,42.0,30.0,35.0,33.0,29.0,24.0,25.0,22.0,29.0,22.0,10.0],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"name"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"AK"}},"legend":{"tracegroupgap":0},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
+</div>
+<p><em>Looking at the chart we see that almost 25% was from one-story buildings. After this the effectivness of the potential relationships drop drastically. So figuring out which data is almost irrelevant, in this case meaning well below 1% helpts my algorithms learn and predict houses made before 1980.</em></p>
+<div id="8b468be5" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clf is a classifier.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cfcf7e10" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_features <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;f_names&#39;</span>: X_train.columns, </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;f_values&#39;</span>: clf.feature_importances_}).sort_values(<span class="st">&#39;f_values&#39;</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="5e3b6f7f" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> px.bar(df_features.head(<span class="dv">20</span>), <span class="co">#You can change this 10 based on top features you want to see.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">&#39;f_values&#39;</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">&#39;f_names&#39;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>chart.update_layout(yaxis<span class="op">=</span>{<span class="st">&#39;categoryorder&#39;</span>:<span class="st">&#39;total ascending&#39;</span>})</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 0-1 is based on % 1 is 100% </span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># f(x) = y (y is target, does not change here)</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># f is algorithm, Try 4</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># (x) is features </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>                            <div id="a450d8c3-7921-4ec3-9de5-de82ad44c0c2" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("a450d8c3-7921-4ec3-9de5-de82ad44c0c2")) {                    Plotly.newPlot(                        "a450d8c3-7921-4ec3-9de5-de82ad44c0c2",                        [{"alignmentgroup":"True","hovertemplate":"f_values=%{x}\u003cbr\u003ef_names=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"h","showlegend":false,"textposition":"auto","x":[0.24506835948382893,0.12178181384310173,0.1163791758115147,0.10276348510101342,0.04467870785290917,0.037404846483642486,0.03558944133891653,0.033896055048202305,0.030114443765449014,0.02620315255979355,0.022031032118530757,0.021707306013127228,0.02050006797103798,0.020191808329404298,0.01829875634241161,0.01603025904516504,0.015074382232654508,0.01415729898803557,0.012910698657093982,0.010612878983425271],"xaxis":"x","y":["arcstyle_ONE-STORY","gartype_Att","quality_C","livearea","basement","stories","sprice","tasp","netprice","abstrprd","numbaths","finbsmnt","numbdrm","nocars","smonth","condition_AVG","deduct","status_I","status_V","arcstyle_ONE AND HALF-STORY"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"f_values"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"f_names"},"categoryorder":"total ascending"},"legend":{"tracegroupgap":0},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('64205968-9cda-4a7c-8a70-6b47389c1ea9');
+var gd = document.getElementById('a450d8c3-7921-4ec3-9de5-de82ad44c0c2');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -4903,167 +5135,400 @@ if (outputEl) {{
 }}
 
                         })                };                });            </script>        </div>
-<p>My useless chart</p>
-</div>
-<p>:::</p>
-<p>::: {#cell-Q1 table .cell .tbl-cap-location-top tbl-cap=‘Not much of a table’ execution_count=5}</p>
-<details class="code-fold">
-<summary>table example</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mydat <span class="op">=</span> df.head(<span class="dv">1000</span>)<span class="op">\</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">&#39;year&#39;</span>)<span class="op">\</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">sum</span>()<span class="op">\</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    .reset_index()<span class="op">\</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    .tail(<span class="dv">10</span>)<span class="op">\</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">filter</span>([<span class="st">&quot;year&quot;</span>, <span class="st">&quot;AK&quot;</span>,<span class="st">&quot;AR&quot;</span>])</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>display(mydat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div id="q1-table" class="cell-output cell-output-display">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">year</th>
-<th data-quarto-table-cell-role="th">AK</th>
-<th data-quarto-table-cell-role="th">AR</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">96</td>
-<td>2006</td>
-<td>21.0</td>
-<td>183.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">97</td>
-<td>2007</td>
-<td>28.0</td>
-<td>153.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">98</td>
-<td>2008</td>
-<td>36.0</td>
-<td>212.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">99</td>
-<td>2009</td>
-<td>34.0</td>
-<td>179.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">100</td>
-<td>2010</td>
-<td>22.0</td>
-<td>196.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">101</td>
-<td>2011</td>
-<td>41.0</td>
-<td>148.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">102</td>
-<td>2012</td>
-<td>28.0</td>
-<td>140.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">103</td>
-<td>2013</td>
-<td>26.0</td>
-<td>134.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">104</td>
-<td>2014</td>
-<td>20.0</td>
-<td>114.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">105</td>
-<td>2015</td>
-<td>28.0</td>
-<td>121.0</td>
-</tr>
-</tbody>
-</table>
-
 </div>
 </div>
-<p>:::</p>
 </section>
 <section id="questiontask-2" class="level2">
 <h2 class="anchored" data-anchor-id="questiontask-2">QUESTION|TASK 2</h2>
-<p><strong>COPY PASTE QUESTION|TASK 2 FROM THE PROJECT HERE</strong></p>
-<p><em>type your results and analysis here</em></p>
-<div id="q2" class="cell" data-execution_count="6">
+<p><strong>Build a classification model labeling houses as being built “before 1980” or “during or after 1980”. Your goal is to reach or exceed 90% accuracy. Explain your final model choice (algorithm, tuning parameters, etc) and describe what other models you tried.</strong></p>
+<p><em>Below I will show you some different results based on test size as well as RandomForest Algorithm vs Decision Tree algorithm. This first test size is 34 and random state 66.</em></p>
+<div id="79fc821f" class="cell" data-execution_count="9">
 <details class="code-fold">
-<summary>Read and format data</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.34</span>, random_state <span class="op">=</span> <span class="dv">66</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract the top 10 feature names</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.34</span>, random_state <span class="op">=</span> <span class="dv">66</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><em>include figures in chunks and discuss your findings in the figure.</em></p>
-<p>::: {#cell-Q2 chart .cell execution_count=7}</p>
+<div id="1c50bfb6" class="cell" data-execution_count="10">
 <details class="code-fold">
-<summary>plot example</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> px.bar(df.head(<span class="dv">200</span>),</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">&quot;name&quot;</span>, </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">&quot;AK&quot;</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>chart.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clf_filtered = RandomForestClassifier()</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="q2-chart" class="cell-output cell-output-display">
-<div>                            <div id="c7db586d-e1e6-4264-8ec7-2d13cdc26f6a" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("c7db586d-e1e6-4264-8ec7-2d13cdc26f6a")) {                    Plotly.newPlot(                        "c7db586d-e1e6-4264-8ec7-2d13cdc26f6a",                        [{"alignmentgroup":"True","hovertemplate":"name=%{x}\u003cbr\u003eAK=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"textposition":"auto","x":["Aaden","Aaden","Aaden","Aaden","Aaden","Aaden","Aaden","Aaden","Aaden","Aaden","Aadhya","Aadhya","Aadhya","Aadhya","Aadhya","Aadhya","Aadhya","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarna","Aarna","Aarna","Aarna","Aarna","Aarna","Aarna","Aarna","Aarna","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron"],"xaxis":"x","y":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,0.0,5.0,7.0,10.0,10.0,9.0,7.0,14.0,10.0,13.0,8.0,12.0,12.0,11.0,12.0,10.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.0,0.0,0.0,5.0,7.0,0.0,0.0,0.0,0.0,6.0,6.0,9.0,8.0,17.0,26.0,37.0,23.0,33.0,42.0,41.0,35.0,53.0,54.0,52.0,55.0,59.0,54.0,54.0,62.0,61.0,58.0,60.0,44.0,56.0,57.0,55.0,35.0,42.0,30.0,35.0,33.0,29.0,24.0,25.0,22.0,29.0,22.0,10.0],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"name"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"AK"}},"legend":{"tracegroupgap":0},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
-                            
-var gd = document.getElementById('c7db586d-e1e6-4264-8ec7-2d13cdc26f6a');
-var x = new MutationObserver(function (mutations, observer) {{
-        var display = window.getComputedStyle(gd).display;
-        if (!display || display === 'none') {{
-            console.log([gd, 'removed!']);
-            Plotly.purge(gd);
-            observer.disconnect();
-        }}
-}});
-
-// Listen for the removal of the full notebook cells
-var notebookContainer = gd.closest('#notebook-container');
-if (notebookContainer) {{
-    x.observe(notebookContainer, {childList: true});
-}}
-
-// Listen for the clearing of the current output cell
-var outputEl = gd.closest('.output');
-if (outputEl) {{
-    x.observe(outputEl, {childList: true});
-}}
-
-                        })                };                });            </script>        </div>
-<p>My useless chart</p>
 </div>
-<p>:::</p>
-<p>::: {#cell-Q2 table .cell .tbl-cap-location-top tbl-cap=‘Not much of a table’ execution_count=8}</p>
+<div id="458f0278" class="cell" data-execution_count="11">
 <details class="code-fold">
-<summary>table example</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mydat <span class="op">=</span> df.head(<span class="dv">1000</span>)<span class="op">\</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">&#39;year&#39;</span>)<span class="op">\</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">sum</span>()<span class="op">\</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    .reset_index()<span class="op">\</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    .tail(<span class="dv">10</span>)<span class="op">\</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">filter</span>([<span class="st">&quot;year&quot;</span>, <span class="st">&quot;AK&quot;</span>,<span class="st">&quot;AR&quot;</span>])</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>display(mydat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">20</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> RandomForestClassifier()</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model with the accuracy score using Top 10 Features</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>accuracy_score_filtered <span class="op">=</span> accuracy_score(y_test, y_pred_filtered)</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;RandomForest Accuracy with Top 20 Features 34/66:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="q2-table" class="cell-output cell-output-display">
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.88      0.90      0.89      2837
+           1       0.94      0.93      0.94      4954
+
+    accuracy                           0.92      7791
+   macro avg       0.91      0.92      0.92      7791
+weighted avg       0.92      0.92      0.92      7791
+
+RandomForest Accuracy with Top 20 Features 34/66: 0.9256834809395457</code></pre>
+</div>
+</div>
+<div id="78077844" class="cell" data-execution_count="12">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.34</span>, random_state <span class="op">=</span> <span class="dv">66</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="668ee172" class="cell" data-execution_count="13">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">20</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> tree.DecisionTreeClassifier()</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># clf is a classifier.</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Decision Tree Accuracy with Top 20 Features 34/66:&quot;</span>, accuracy_score_filtered)</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Decision matrix 0 and 1. </span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co"># XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.87      0.87      0.87      2902
+           1       0.92      0.92      0.92      4889
+
+    accuracy                           0.90      7791
+   macro avg       0.89      0.90      0.90      7791
+weighted avg       0.90      0.90      0.90      7791
+
+Decision Tree Accuracy with Top 20 Features 34/66: 0.9256834809395457</code></pre>
+</div>
+</div>
+<p><em>This next set of data shows how changing the test from 34|66 to 30|70 affected the accuracy. In both cases the accuracy dropped by .2 - .4% depending on the learning.</em></p>
+<div id="4bf589ba" class="cell" data-execution_count="14">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.30</span>, random_state <span class="op">=</span> <span class="dv">70</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="73764fb8" class="cell" data-execution_count="15">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">20</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> RandomForestClassifier()</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model with the accuracy score using Top 10 Features</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>accuracy_score_filtered <span class="op">=</span> accuracy_score(y_test, y_pred_filtered)</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;RandomForest Accuracy with Top 20 Features 30/70:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.90      0.90      0.90      2587
+           1       0.94      0.94      0.94      4287
+
+    accuracy                           0.92      6874
+   macro avg       0.92      0.92      0.92      6874
+weighted avg       0.92      0.92      0.92      6874
+
+RandomForest Accuracy with Top 20 Features 30/70: 0.9230433517602561</code></pre>
+</div>
+</div>
+<div id="bc94c2d5" class="cell" data-execution_count="16">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.30</span>, random_state <span class="op">=</span> <span class="dv">70</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="a09cba7d" class="cell" data-execution_count="17">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">20</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> tree.DecisionTreeClassifier()</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># clf is a classifier.</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Decision Tree Accuracy with Top 20 Features 30/70:&quot;</span>, accuracy_score_filtered)</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Decision matrix 0 and 1. </span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="co"># XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.87      0.86      0.87      2631
+           1       0.92      0.92      0.92      4243
+
+    accuracy                           0.90      6874
+   macro avg       0.89      0.89      0.89      6874
+weighted avg       0.90      0.90      0.90      6874
+
+Decision Tree Accuracy with Top 20 Features 30/70: 0.9230433517602561</code></pre>
+</div>
+</div>
+<p><em>For this set I am using the 80/20 test and with this the accuracy went back up reaching 92.45% this dropped to 92.34% When using only the top 10 and up to 92.77 if I used the top 20 for the random Tree algorithm which is the highest of all the tests so far.</em></p>
+<div id="fb9dfc53" class="cell" data-execution_count="18">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.2</span>, random_state <span class="op">=</span> <span class="dv">80</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="2a03386e" class="cell" data-execution_count="19">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">20</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> tree.DecisionTreeClassifier()</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co"># clf is a classifier.</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Decision Tree Accuracy with Top 20 Features 20/80:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.88      0.86      0.87      1752
+           1       0.91      0.93      0.92      2831
+
+    accuracy                           0.90      4583
+   macro avg       0.90      0.89      0.90      4583
+weighted avg       0.90      0.90      0.90      4583
+
+Decision Tree Accuracy with Top 20 Features 20/80: 0.9230433517602561</code></pre>
+</div>
+</div>
+<div id="fb100dc1" class="cell" data-execution_count="20">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#     x=&#39;parcel&#39;,</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     y=&#39;abstrpod&#39;,</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">#     color=&#39;yrbuilt&#39;,</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     title=&#39;Does age affect whether a passenger survived?&#39;,</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     # marginal=&quot;box&quot;, # or violin, rug</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     # hover_data=</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.90      0.90      0.90      1712
+           1       0.94      0.94      0.94      2871
+
+    accuracy                           0.92      4583
+   macro avg       0.92      0.92      0.92      4583
+weighted avg       0.92      0.92      0.92      4583
+</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>0.9238490072005237</code></pre>
+</div>
+</div>
+<div id="807f6f93" class="cell" data-execution_count="21">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clf is a classifier.</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Decision matrix 0 and 1. </span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="co"># XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.88      0.86      0.87      1741
+           1       0.91      0.93      0.92      2842
+
+    accuracy                           0.90      4583
+   macro avg       0.90      0.89      0.89      4583
+weighted avg       0.90      0.90      0.90      4583
+</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>0.9005018546803404</code></pre>
+</div>
+</div>
+<div id="c7e3d982" class="cell" data-execution_count="22">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clf is a classifier.</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Decision matrix 0 and 1. </span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="co"># XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.88      0.86      0.87      1736
+           1       0.92      0.93      0.92      2847
+
+    accuracy                           0.90      4583
+   macro avg       0.90      0.89      0.89      4583
+weighted avg       0.90      0.90      0.90      4583
+</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>0.9011564477416539</code></pre>
+</div>
+</div>
+<div id="477e2ab9" class="cell" data-execution_count="23">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df.join(df2, lsuffix<span class="op">=</span><span class="st">&quot;parcel&quot;</span>, rsuffix<span class="op">=</span><span class="st">&quot;parcel&quot;</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># print(&quot;This is the joined dataframe of Neighborhood dwellings and dwellings ml. &quot;)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 
 
@@ -5071,104 +5536,734 @@ if (outputEl) {{
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
 <th data-quarto-table-cell-role="th">year</th>
 <th data-quarto-table-cell-role="th">AK</th>
+<th data-quarto-table-cell-role="th">AL</th>
 <th data-quarto-table-cell-role="th">AR</th>
+<th data-quarto-table-cell-role="th">AZ</th>
+<th data-quarto-table-cell-role="th">CA</th>
+<th data-quarto-table-cell-role="th">CO</th>
+<th data-quarto-table-cell-role="th">CT</th>
+<th data-quarto-table-cell-role="th">DC</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">nbhd_802</th>
+<th data-quarto-table-cell-role="th">nbhd_803</th>
+<th data-quarto-table-cell-role="th">nbhd_804</th>
+<th data-quarto-table-cell-role="th">nbhd_805</th>
+<th data-quarto-table-cell-role="th">nbhd_901</th>
+<th data-quarto-table-cell-role="th">nbhd_902</th>
+<th data-quarto-table-cell-role="th">nbhd_903</th>
+<th data-quarto-table-cell-role="th">nbhd_904</th>
+<th data-quarto-table-cell-role="th">nbhd_905</th>
+<th data-quarto-table-cell-role="th">nbhd_906</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">96</td>
-<td>2006</td>
-<td>21.0</td>
-<td>183.0</td>
+<td data-quarto-table-cell-role="th">0</td>
+<td>Aaden</td>
+<td>2005</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">97</td>
+<td data-quarto-table-cell-role="th">1</td>
+<td>Aaden</td>
 <td>2007</td>
-<td>28.0</td>
-<td>153.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">98</td>
-<td>2008</td>
-<td>36.0</td>
-<td>212.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">99</td>
-<td>2009</td>
-<td>34.0</td>
-<td>179.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">100</td>
-<td>2010</td>
-<td>22.0</td>
-<td>196.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">101</td>
-<td>2011</td>
-<td>41.0</td>
-<td>148.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">102</td>
-<td>2012</td>
-<td>28.0</td>
-<td>140.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">103</td>
-<td>2013</td>
-<td>26.0</td>
-<td>134.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">104</td>
-<td>2014</td>
+<td>0.0</td>
+<td>5.0</td>
+<td>0.0</td>
+<td>5.0</td>
 <td>20.0</td>
-<td>114.0</td>
+<td>6.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Aaden</td>
+<td>2008</td>
+<td>0.0</td>
+<td>15.0</td>
+<td>13.0</td>
+<td>20.0</td>
+<td>135.0</td>
+<td>10.0</td>
+<td>9.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">105</td>
-<td>2015</td>
+<td data-quarto-table-cell-role="th">3</td>
+<td>Aaden</td>
+<td>2009</td>
+<td>0.0</td>
 <td>28.0</td>
-<td>121.0</td>
+<td>20.0</td>
+<td>23.0</td>
+<td>158.0</td>
+<td>22.0</td>
+<td>12.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Aaden</td>
+<td>2010</td>
+<td>0.0</td>
+<td>8.0</td>
+<td>6.0</td>
+<td>12.0</td>
+<td>62.0</td>
+<td>9.0</td>
+<td>5.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">393379</td>
+<td>Zyon</td>
+<td>2011</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>6.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">393380</td>
+<td>Zyon</td>
+<td>2012</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>5.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">393381</td>
+<td>Zyon</td>
+<td>2013</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>6.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">393382</td>
+<td>Zyon</td>
+<td>2014</td>
+<td>0.0</td>
+<td>7.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>5.0</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">393383</td>
+<td>Zyon</td>
+<td>2015</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>7.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
 </tr>
 </tbody>
 </table>
 
+<p>393384 rows × 328 columns</p>
 </div>
 </div>
-<p>:::</p>
+</div>
+<div id="5c6a89c2" class="cell" data-execution_count="24">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;This is the joined dataframe of Neighborhood dwellings and dwellings ml. &quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>This is the joined dataframe of Neighborhood dwellings and dwellings ml. </code></pre>
+</div>
+</div>
+<div id="14eb789a" class="cell" data-execution_count="25">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.34</span>, random_state <span class="op">=</span> <span class="dv">66</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract the top 10 feature names</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co"># X_pred = dwellings_ml.drop(dwellings_ml.filter(regex = &#39;before1980|yrbuilt|parcel&#39;).columns, axis = 1)</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co"># y_pred = dwellings_ml.filter(regex = &quot;before1980&quot;)</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="co"># X_train, X_test, y_train, y_test = train_test_split(</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co">#     X_pred, y_pred, test_size = .34, random_state = 66)</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="b058f07c" class="cell" data-execution_count="26">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clf_filtered = RandomForestClassifier()</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel()) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="e915a1ac" class="cell" data-execution_count="27">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">10</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> RandomForestClassifier()</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model with the accuracy score using Top 10 Features</span></span>
+<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>accuracy_score_filtered <span class="op">=</span> accuracy_score(y_test, y_pred_filtered)</span>
+<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;RandomForest Accuracy with Top 20 Features, 34/66 and joined with neighborhood dwellings  (df2):&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.89      0.91      0.90      2834
+           1       0.95      0.93      0.94      4957
+
+    accuracy                           0.92      7791
+   macro avg       0.92      0.92      0.92      7791
+weighted avg       0.92      0.92      0.92      7791
+
+RandomForest Accuracy with Top 20 Features, 34/66 and joined with neighborhood dwellings  (df2): 0.9046335515338211</code></pre>
+</div>
+</div>
+<div id="7ca23a9c" class="cell" data-execution_count="28">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.34</span>, random_state <span class="op">=</span> <span class="dv">66</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="1f7ad980" class="cell" data-execution_count="29">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> tree.DecisionTreeClassifier()</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel()) </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print(metrics.classification_report(y_pred, y_test))</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># accuracy_score(y_test, y_pred)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="c0896687" class="cell" data-execution_count="30">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.34</span>, random_state <span class="op">=</span> <span class="dv">66</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="872b0329" class="cell" data-execution_count="31">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">10</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co"># clf_filtered = tree.DecisionTreeClassifier()</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co"># clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel())  # .values.ravel() to convert y_train to 1D array if needed</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="co"># clf is a classifier.</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Decision Tree Accuracy with Top 20 Features 34/66:&quot;</span>, accuracy_score_filtered)</span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Decision matrix 0 and 1. </span></span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a><span class="co"># XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.87      0.87      0.87      2907
+           1       0.92      0.92      0.92      4884
+
+    accuracy                           0.90      7791
+   macro avg       0.89      0.89      0.89      7791
+weighted avg       0.90      0.90      0.90      7791
+
+Decision Tree Accuracy with Top 20 Features 34/66: 0.9046335515338211</code></pre>
+</div>
+</div>
+<p><em>This next set of data shows how changing the test from 34|66 to 30|70 affected the accuracy. In both cases the accuracy dropped by .2 - .4% depending on the learning.</em></p>
+<div id="1e2297d2" class="cell" data-execution_count="32">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.30</span>, random_state <span class="op">=</span> <span class="dv">70</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="3053c200" class="cell" data-execution_count="33">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">20</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> RandomForestClassifier()</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model with the accuracy score using Top 10 Features</span></span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>accuracy_score_filtered <span class="op">=</span> accuracy_score(y_test, y_pred_filtered)</span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;RandomForest Accuracy with Top 20 Features 30/70:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.89      0.90      0.89      2571
+           1       0.94      0.93      0.94      4303
+
+    accuracy                           0.92      6874
+   macro avg       0.91      0.92      0.92      6874
+weighted avg       0.92      0.92      0.92      6874
+
+RandomForest Accuracy with Top 20 Features 30/70: 0.9233343031713703</code></pre>
+</div>
+</div>
+<div id="c76b349c" class="cell" data-execution_count="34">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.30</span>, random_state <span class="op">=</span> <span class="dv">70</span>)</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="96f29af0" class="cell" data-execution_count="35">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">20</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> tree.DecisionTreeClassifier()</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="co"># clf is a classifier.</span></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb49-23"><a href="#cb49-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Decision Tree Accuracy with Top 20 Features 30/70:&quot;</span>, accuracy_score_filtered)</span>
+<span id="cb49-24"><a href="#cb49-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Decision matrix 0 and 1. </span></span>
+<span id="cb49-25"><a href="#cb49-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-26"><a href="#cb49-26" aria-hidden="true" tabindex="-1"></a><span class="co"># XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.87      0.86      0.86      2636
+           1       0.91      0.92      0.92      4238
+
+    accuracy                           0.90      6874
+   macro avg       0.89      0.89      0.89      6874
+weighted avg       0.90      0.90      0.90      6874
+
+Decision Tree Accuracy with Top 20 Features 30/70: 0.9233343031713703</code></pre>
+</div>
+</div>
+<p><em>For this set I am using the 80/20 test and with this the accuracy went back up reaching 92.45% this dropped to 92.34% When using only the top 10 and up to 92.77 if I used the top 20 for the random Tree algorithm which is the highest of all the tests so far.</em></p>
+<div id="0af61998" class="cell" data-execution_count="36">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.2</span>, random_state <span class="op">=</span> <span class="dv">80</span>)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="a80f53f6" class="cell" data-execution_count="37">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">20</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> tree.DecisionTreeClassifier()</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="co"># clf is a classifier.</span></span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Decision Tree Accuracy with Top 20 Features 20/80:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.87      0.86      0.87      1738
+           1       0.91      0.92      0.92      2845
+
+    accuracy                           0.90      4583
+   macro avg       0.89      0.89      0.89      4583
+weighted avg       0.90      0.90      0.90      4583
+
+Decision Tree Accuracy with Top 20 Features 20/80: 0.9233343031713703</code></pre>
+</div>
+</div>
+<div id="e5388d11" class="cell" data-execution_count="38">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#     x=&#39;parcel&#39;,</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     y=&#39;abstrpod&#39;,</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co">#     color=&#39;yrbuilt&#39;,</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     title=&#39;Does age affect whether a passenger survived?&#39;,</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     # marginal=&quot;box&quot;, # or violin, rug</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     # hover_data=</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.90      0.90      0.90      1719
+           1       0.94      0.94      0.94      2864
+
+    accuracy                           0.92      4583
+   macro avg       0.92      0.92      0.92      4583
+weighted avg       0.92      0.92      0.92      4583
+</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>0.9249399956360462</code></pre>
+</div>
+</div>
+<div id="ee66ee01" class="cell" data-execution_count="39">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clf is a classifier.</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Decision matrix 0 and 1. </span></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a><span class="co"># XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.87      0.86      0.87      1733
+           1       0.92      0.92      0.92      2850
+
+    accuracy                           0.90      4583
+   macro avg       0.90      0.89      0.89      4583
+weighted avg       0.90      0.90      0.90      4583
+</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>0.9009382500545494</code></pre>
+</div>
+</div>
+<div id="b06ffc68" class="cell" data-execution_count="40">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clf is a classifier.</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Decision matrix 0 and 1. </span></span>
+<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a><span class="co"># XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.88      0.85      0.87      1752
+           1       0.91      0.93      0.92      2831
+
+    accuracy                           0.90      4583
+   macro avg       0.89      0.89      0.89      4583
+weighted avg       0.90      0.90      0.90      4583
+</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>0.8985380754963997</code></pre>
+</div>
+</div>
 </section>
 <section id="questiontask-3" class="level2">
 <h2 class="anchored" data-anchor-id="questiontask-3">QUESTION|TASK 3</h2>
-<p><strong>COPY PASTE QUESTION|TASK 3 FROM THE PROJECT HERE</strong></p>
-<p><em>type your results and analysis here</em></p>
-<div id="q3" class="cell" data-execution_count="9">
+<p><strong>Justify your classification model by discussing the most important features selected by your model. This discussion should include a chart and a description of the features.</strong></p>
+<p><em>This Chart shows the top 20 features I selected. The reason Why these were selected were by the % influence they had on the learning model. Everything after status_I was under a % influence and would start to negativly impact the % accuracy of the models. </em></p>
+<div id="cell-Q3" class="cell" data-execution_count="41">
 <details class="code-fold">
 <summary>Read and format data</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> px.bar(df_features.head(<span class="dv">20</span>), <span class="co">#You can change this 10 based on top features you want to see.</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">&#39;f_values&#39;</span>, </span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">&#39;f_names&#39;</span></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>chart.update_layout(yaxis<span class="op">=</span>{<span class="st">&#39;categoryorder&#39;</span>:<span class="st">&#39;total ascending&#39;</span>})</span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 0-1 is based on % 1 is 100% </span></span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a><span class="co"># f(x) = y (y is target, does not change here)</span></span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a><span class="co"># f is algorithm, Try 4</span></span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a><span class="co"># (x) is features </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-</div>
-<p><em>include figures in chunks and discuss your findings in the figure.</em></p>
-<p>::: {#cell-Q3 chart .cell execution_count=10}</p>
-<details class="code-fold">
-<summary>plot example</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> px.bar(df.head(<span class="dv">200</span>),</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">&quot;name&quot;</span>, </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">&quot;AK&quot;</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>chart.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div id="q3-chart" class="cell-output cell-output-display">
-<div>                            <div id="6cd9a6c9-6f05-4fa3-a715-fc89bda06d25" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("6cd9a6c9-6f05-4fa3-a715-fc89bda06d25")) {                    Plotly.newPlot(                        "6cd9a6c9-6f05-4fa3-a715-fc89bda06d25",                        [{"alignmentgroup":"True","hovertemplate":"name=%{x}\u003cbr\u003eAK=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"textposition":"auto","x":["Aaden","Aaden","Aaden","Aaden","Aaden","Aaden","Aaden","Aaden","Aaden","Aaden","Aadhya","Aadhya","Aadhya","Aadhya","Aadhya","Aadhya","Aadhya","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aaliyah","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aamir","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aanya","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarav","Aarna","Aarna","Aarna","Aarna","Aarna","Aarna","Aarna","Aarna","Aarna","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron","Aaron"],"xaxis":"x","y":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,0.0,5.0,7.0,10.0,10.0,9.0,7.0,14.0,10.0,13.0,8.0,12.0,12.0,11.0,12.0,10.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.0,0.0,0.0,5.0,7.0,0.0,0.0,0.0,0.0,6.0,6.0,9.0,8.0,17.0,26.0,37.0,23.0,33.0,42.0,41.0,35.0,53.0,54.0,52.0,55.0,59.0,54.0,54.0,62.0,61.0,58.0,60.0,44.0,56.0,57.0,55.0,35.0,42.0,30.0,35.0,33.0,29.0,24.0,25.0,22.0,29.0,22.0,10.0],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"name"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"AK"}},"legend":{"tracegroupgap":0},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
+<div id="q3" class="cell-output cell-output-display">
+<div>                            <div id="96b5b9e7-c14f-4054-82bf-7af977345853" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("96b5b9e7-c14f-4054-82bf-7af977345853")) {                    Plotly.newPlot(                        "96b5b9e7-c14f-4054-82bf-7af977345853",                        [{"alignmentgroup":"True","hovertemplate":"f_values=%{x}\u003cbr\u003ef_names=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"h","showlegend":false,"textposition":"auto","x":[0.24506835948382893,0.12178181384310173,0.1163791758115147,0.10276348510101342,0.04467870785290917,0.037404846483642486,0.03558944133891653,0.033896055048202305,0.030114443765449014,0.02620315255979355,0.022031032118530757,0.021707306013127228,0.02050006797103798,0.020191808329404298,0.01829875634241161,0.01603025904516504,0.015074382232654508,0.01415729898803557,0.012910698657093982,0.010612878983425271],"xaxis":"x","y":["arcstyle_ONE-STORY","gartype_Att","quality_C","livearea","basement","stories","sprice","tasp","netprice","abstrprd","numbaths","finbsmnt","numbdrm","nocars","smonth","condition_AVG","deduct","status_I","status_V","arcstyle_ONE AND HALF-STORY"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"f_values"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"f_names"},"categoryorder":"total ascending"},"legend":{"tracegroupgap":0},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('6cd9a6c9-6f05-4fa3-a715-fc89bda06d25');
+var gd = document.getElementById('96b5b9e7-c14f-4054-82bf-7af977345853');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -5191,102 +6286,12 @@ if (outputEl) {{
 }}
 
                         })                };                });            </script>        </div>
-<p>My useless chart</p>
-</div>
-<p>:::</p>
-<p>::: {#cell-Q3 table .cell .tbl-cap-location-top tbl-cap=‘Not much of a table’ execution_count=11}</p>
-<details class="code-fold">
-<summary>table example</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>mydat <span class="op">=</span> df.head(<span class="dv">1000</span>)<span class="op">\</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">&#39;year&#39;</span>)<span class="op">\</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">sum</span>()<span class="op">\</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    .reset_index()<span class="op">\</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    .tail(<span class="dv">10</span>)<span class="op">\</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">filter</span>([<span class="st">&quot;year&quot;</span>, <span class="st">&quot;AK&quot;</span>,<span class="st">&quot;AR&quot;</span>])</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>display(mydat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div id="q3-table" class="cell-output cell-output-display">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">year</th>
-<th data-quarto-table-cell-role="th">AK</th>
-<th data-quarto-table-cell-role="th">AR</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">96</td>
-<td>2006</td>
-<td>21.0</td>
-<td>183.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">97</td>
-<td>2007</td>
-<td>28.0</td>
-<td>153.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">98</td>
-<td>2008</td>
-<td>36.0</td>
-<td>212.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">99</td>
-<td>2009</td>
-<td>34.0</td>
-<td>179.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">100</td>
-<td>2010</td>
-<td>22.0</td>
-<td>196.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">101</td>
-<td>2011</td>
-<td>41.0</td>
-<td>148.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">102</td>
-<td>2012</td>
-<td>28.0</td>
-<td>140.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">103</td>
-<td>2013</td>
-<td>26.0</td>
-<td>134.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">104</td>
-<td>2014</td>
-<td>20.0</td>
-<td>114.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">105</td>
-<td>2015</td>
-<td>28.0</td>
-<td>121.0</td>
-</tr>
-</tbody>
-</table>
-
 </div>
 </div>
-<p>:::</p>
+</section>
+<section id="questiontask-4" class="level2">
+<h2 class="anchored" data-anchor-id="questiontask-4">Question|Task 4</h2>
+<p><strong>Describe the quality of your classification model using 2-3 different evaluation metrics. You also need to explain how to interpret each of the evaluation metrics you use.</strong></p>
 
 
 </section>
