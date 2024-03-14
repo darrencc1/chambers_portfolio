@@ -8,7 +8,7 @@
 
 <meta name="author" content="[Darren Chambers]">
 
-<title>Darren Chambers Data Science Portfolio - Client Report - [Insert Project Title]</title>
+<title>Darren Chambers Data Science Portfolio - Client Report - [Basebal Over the Years]</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4738,7 +4738,7 @@ vertical-align: -.125em;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-right">
-      <div class="quarto-title-block"><div><h1 class="title">Client Report - [Insert Project Title]</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> See code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+      <div class="quarto-title-block"><div><h1 class="title">Client Report - [Basebal Over the Years]</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> See code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
             <p class="subtitle lead">Course DS 250</p>
                       </div>
   </div>
@@ -4828,7 +4828,7 @@ vertical-align: -.125em;
   <li><a href="#questiontask-3" id="toc-questiontask-3">QUESTION|TASK 3</a></li>
   </ul>
 </nav>
-<div id="62559689" class="cell" data-execution_count="2">
+<div id="1187d633" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sqlite_file <span class="op">=</span> <span class="st">&#39;lahmansbaseballdb.sqlite&#39;</span></span>
@@ -4842,14 +4842,14 @@ vertical-align: -.125em;
 </div>
 <section id="elevator-pitch" class="level2">
 <h2 class="anchored" data-anchor-id="elevator-pitch">Elevator pitch</h2>
-<p><em>paste your elevator pitch here</em> <em>A SHORT (4-5 SENTENCES) PARAGRAPH THAT <code>DESCRIBES KEY INSIGHTS</code> TAKEN FROM METRICS IN THE PROJECT RESULTS THINK TOP OR MOST IMPORTANT RESULTS.</em></p>
+<p><em>paste your elevator pitch here</em> <em>When considering baseball players it is important to look at their average hits. Within this average we see that the number of total hits and At bats is very important for choosing players for a team. Somebody with a couple thousand at bats but a lower % is better than someone with 10 at bats and 60% hit rate. </em></p>
 <p><strong>Highlight the Questions and Tasks</strong></p>
 </section>
 <section id="questiontask-1" class="level2">
 <h2 class="anchored" data-anchor-id="questiontask-1">QUESTION|TASK 1</h2>
 <p><strong>Write an SQL query to create a new dataframe about baseball players who attended BYU-Idaho. The new table should contain five columns: playerID, schoolID, salary, and the yearID/teamID associated with each salary. Order the table by salary (highest to lowest) and print out the table in your report.</strong></p>
 <p><em>I made sure to only display unique values in this table, meaning I used distinct to ensure there were no repeating values and it is ordered by salary. We can see that there are only 2 players who had attented byui.</em></p>
-<div id="9944fa7b" class="cell" data-execution_count="3">
+<div id="94e8fd65" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT DISTINCT cp.playerID, cp.schoolID, s.salary, s.yearID, s.teamID</span></span>
@@ -4881,7 +4881,7 @@ vertical-align: -.125em;
 14  stephga01  idbyuid   150000.0    1997    PHI</code></pre>
 </div>
 </div>
-<div id="66a67214" class="cell" data-execution_count="4">
+<div id="651487a6" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sqlite_file <span class="op">=</span> <span class="st">&#39;lahmansbaseballdb.sqlite&#39;</span></span>
@@ -4984,7 +4984,7 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
-<div id="c87eb3a1" class="cell" data-execution_count="5">
+<div id="4e4f584f" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pandas to read the SQL query into a DataFrame</span></span>
@@ -5005,7 +5005,7 @@ vertical-align: -.125em;
 <p><strong>Use the same query as above, but only include players with at least 10 at bats that year. Print the top 5 results.</strong></p>
 <p><strong>Now calculate the batting average for players over their entire careers (all years combined). Only include players with at least 100 at bats, and print the top 5 results.</strong></p>
 <p>_The top hitters in this situation have an average hit rate of 100%. If you look in the H (hits) row you will see they have only hit once, as well as been at bat once.</p>
-<div id="668726fb" class="cell" data-execution_count="6">
+<div id="4664fe19" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="st">&#39;&#39;&#39;</span></span>
@@ -5013,7 +5013,7 @@ vertical-align: -.125em;
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">FROM batting</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE AB &gt;= 1 </span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY playerID</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY H * 100/AB *1.0 DESC </span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY H * 100/AB *1.0 DESC, playerID </span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">LIMIT 5&#39;&#39;&#39;</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> pd.read_sql_query(q, con)</span>
@@ -5030,7 +5030,7 @@ vertical-align: -.125em;
 </div>
 </div>
 <p><em>When you take the At Bats and increase it to at least 10 times you see that the highest stat is 64% instead of 100% like the previous chart. These percentiles are much more useful as they have at least some data behind them. These top five batters all were at bat 11-16 times.</em></p>
-<div id="25de1633" class="cell" data-execution_count="7">
+<div id="5737e6e7" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="st">&#39;&#39;&#39;</span></span>
@@ -5061,11 +5061,11 @@ vertical-align: -.125em;
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="st">&quot;&quot;&quot; </span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT playerID, yearID, H, AB, (H * 100) / AB * 1.0 AS &quot;Average hits %&quot;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT playerID, sum(H), sum(AB), (SUM(H) * 100) / sum(AB) * 1.0 AS &quot;Average hits %&quot;</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="st">FROM batting </span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE AB &gt;= 100</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY playerID </span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY  H * 100/AB *1.0 DESC</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY playerID </span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="st">HAVING SUM(AB) &gt;= 100</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY  sum(H) * 100/ sum(AB) *1.0 DESC</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="st">LIMIT 5</span></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;&quot;&quot;</span></span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> pd.read_sql_query(q, con)</span>
@@ -5073,88 +5073,122 @@ vertical-align: -.125em;
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>    playerID  yearID    H   AB  Average hits %
-0  meyerle01    1871   64  130            49.0
-1  mcveyca01    1871   66  153            43.0
-2  barnero01    1871   63  157            40.0
-3  hazlebo01    1957   54  134            40.0
-4  jacksjo01    1911  233  571            40.0</code></pre>
+<pre><code>    playerID  sum(H)  sum(AB)  Average hits %
+0   cobbty01    4189    11436            36.0
+1  barnero01     860     2391            35.0
+2  hornsro01    2930     8173            35.0
+3  jacksjo01    1772     4981            35.0
+4   kingst01      96      272            35.0</code></pre>
 </div>
 </div>
 </section>
 <section id="questiontask-3" class="level2">
 <h2 class="anchored" data-anchor-id="questiontask-3">QUESTION|TASK 3</h2>
 <p><strong>Pick any two baseball teams and compare them using a metric of your choice (average salary, home runs, number of wins, etc). Write an SQL query to get the data you need, then make a graph using Plotly Express to visualize the comparison. What do you learn?</strong></p>
-<p><em>type your results and analysis here</em></p>
-<div id="d44c48f7" class="cell" data-execution_count="9">
+<p><em>Philidelfia Phillies vs New York Yankies for 10 years. That is 2006 - 2016. I chose these two popular teams to see how they average over time. This chart shows their average Home Runs with the New York Yankies averaging higher by 2%.</em></p>
+<div id="532bdc52" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># q = &#39;&#39;&#39;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT teamID, yearID, HR, H, AB, (HR * 100) / H * 1.0 AS &quot;Average Home Runs %&quot;</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># FROM teams AS t</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># JOIN batting AS b</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   ON b.teamID = t.teamID </span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># WHERE teamID = FW1 AND NY2</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># GROUP BY </span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ORDER BY (HR * 100) / H * 1.0 DESC </span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;&#39;&#39;</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>q<span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT teamID, </span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="st">       yearID, </span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="st">       SUM(HR) AS Total_Home_Runs, </span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="st">       SUM(H) AS Total_Hits, </span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="st">       SUM(AB) AS Total_At_Bats, </span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="st">       (SUM(HR) * 100.0) / SUM(H) AS &quot;Average Home Runs %&quot;</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="st">FROM teams</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE teamID IN (&#39;FW1&#39;, &#39;NY2&#39;)</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY teamID, yearID</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY &quot;Average_Home_Runs_Percentage&quot; DESC&#39;&#39;&#39;</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> pd.read_sql_query(q, con)</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>q<span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT DISTINCT teamID, </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="st">       SUM(HR) AS Total_Home_Runs, </span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="st">       SUM(H) AS Total_Hits, </span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="st">       SUM(AB) AS Total_At_Bats, </span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="st">       (SUM(HR) * 100.0) / SUM(H) AS &quot;Average Home Runs %&quot;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="st">FROM teams</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE teamID IN (&#39;PHI&#39;, &#39;NYA&#39;) AND yearID &gt;= 2006</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY teamID</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY &quot;Average_Home_Runs_Percentage&quot; DESC&#39;&#39;&#39;</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> pd.read_sql_query(q, con)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>  teamID  yearID  Total_Home_Runs  Total_Hits  Total_At_Bats  \
-0    FW1    1871                2         178            746   
-1    NY2    1871                1         403           1404   
-2    NY2    1872                4         670           2426   
-3    NY2    1873                5         622           2211   
-4    NY2    1874                7         714           2730   
-5    NY2    1875                7         633           2685   
-
-   Average Home Runs %  
-0             1.123596  
-1             0.248139  
-2             0.597015  
-3             0.803859  
-4             0.980392  
-5             1.105845  </code></pre>
+<pre><code>  teamID  Total_Home_Runs  Total_Hits  Total_At_Bats  Average Home Runs %
+0    PHI             2475       19607          77718            12.623043
+1    NYA             3003       20554          77872            14.610295</code></pre>
 </div>
 </div>
-<p><em>include figures in chunks and discuss your findings in the figure.</em></p>
-<div id="97417d93" class="cell" data-execution_count="10">
+<p><em>This chart is looking at the total pay to players over ten years and the average pay of players over the same period of time. New York Yankes paid 2.26 billion dollars over 10 years to their players, this is 870million dollars more than the Phillidelphia Phillies</em></p>
+<div id="165c7f2b" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chart = px.bar(df.head(200),</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     x=&quot;name&quot;, </span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     y=&quot;AK&quot;</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># chart.show()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT teamID, </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="st">              ROUND(SUM(salary), 3) AS Total_Player_Pay, </span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="st">              ROUND((SUM(salary) / COUNT(playerID)), 3) AS Average_Player_Salary</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="st">       FROM salaries</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="st">       WHERE teamID IN (&#39;PHI&#39;, &#39;NYA&#39;) AND yearID &gt;= 2006</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="st">       GROUP BY teamID</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="st">       ORDER BY Average_Player_Salary DESC&#39;&#39;&#39;</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> pd.read_sql_query(q, con)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  teamID  Total_Player_Pay  Average_Player_Salary
+0    NYA      2.263671e+09            7349582.305
+1    PHI      1.399510e+09            4471278.990</code></pre>
 </div>
-<div id="q3-table" class="cell tbl-cap-location-top" data-tbl-cap="Not much of a table" data-execution_count="11">
+</div>
+<p><em>These First Chart shown is the top 10 teams with highest total player pay over ten years and their average player salaries. The Second Chart is those same teams Average % Home Runs. When comparing these charts we see that the New York Yankies pay the most as well as have a 2% higher Home Run Average. However, the other top 8 teams are within 1.3% of each other and pay does not seem to affect their results significantly. Example is that Boston (BOS) has payed about 500 million more than the Chicogo White Socks (CHA) Yet BOS is in 5th place and CHA is in 2nd for Average Home Runs. A million dollar difference in average player salary between the two and BOS is .52% below on Home Runs. </em></p>
+<div id="9bfbd5e8" class="cell" data-execution_count="11">
 <details class="code-fold">
-<summary>table example</summary>
-<div class="sourceCode cell-code" id="cb15" data-cap-location="top"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mydat = df.head(1000)\</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     .groupby(&#39;year&#39;)\</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#     .sum()\</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     .reset_index()\</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     .tail(10)\</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     .filter([&quot;year&quot;, &quot;AK&quot;,&quot;AR&quot;])</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># display(mydat)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT teamID, </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="st">              ROUND(SUM(salary), 3) AS Total_Player_Pay, </span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="st">              ROUND((SUM(salary) / COUNT(playerID)), 3) AS Average_Player_Salary</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="st">       FROM salaries</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="st">       WHERE yearID &gt;= 2006</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="st">       GROUP BY teamID</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="st">       ORDER BY Average_Player_Salary DESC</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="st">       LIMIT 10 &#39;&#39;&#39;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>q2 <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT DISTINCT teamID, </span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="st">       SUM(HR) AS Total_Home_Runs, </span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="st">       SUM(H) AS Total_Hits, </span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="st">       SUM(AB) AS Total_At_Bats, </span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="st">       (SUM(HR) * 100.0) / SUM(H) AS &quot;Average Home Runs %&quot;</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="st">FROM teams</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE teamID IN (&#39;NYA&#39;,&#39;BOS&#39;,&#39;LAN&#39;,&#39;DET&#39;,&#39;PHI&#39;,&#39;LAA&#39;,&#39;SFN&#39;,&#39;CHN&#39;,&#39;CHA&#39;,&#39;NYN&#39;) AND yearID &gt;= 2006</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY teamID</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY &quot;Average Home Runs %&quot; DESC&#39;&#39;&#39;</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> pd.read_sql_query(q, con)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>result2 <span class="op">=</span> pd.read_sql_query(q2, con)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  teamID  Total_Player_Pay  Average_Player_Salary
+0    NYA      2.263671e+09            7349582.305
+1    BOS      1.675458e+09            5187175.192
+2    LAN      1.598053e+09            4902001.856
+3    DET      1.457055e+09            4840714.173
+4    PHI      1.399510e+09            4471278.990
+5    LAA      1.347061e+09            4387819.583
+6    SFN      1.315003e+09            4354313.089
+7    CHN      1.243140e+09            4214034.678
+8    CHA      1.186187e+09            4133055.666
+9    NYN      1.215769e+09            3973102.520
+  teamID  Total_Home_Runs  Total_Hits  Total_At_Bats  Average Home Runs %
+0    NYA             3003       20554          77872            14.610295
+1    CHA             2544       19839          77372            12.823227
+2    PHI             2475       19607          77718            12.623043
+3    CHN             2441       19715          77357            12.381435
+4    BOS             2613       21239          78881            12.302839
+5    LAA             2382       20168          77379            11.810789
+6    NYN             2305       19593          77356            11.764406
+7    LAN             2300       19994          77067            11.503451
+8    DET             2411       20961          78357            11.502314
+9    SFN             1829       19735          77454             9.267798</code></pre>
+</div>
 </div>
 
 
