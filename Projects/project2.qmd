@@ -90,22 +90,22 @@ print(flight_delays.columns)
 #     'weather', 'proportion_weather_total', 
 #     'proportion_weather_delay', 'num_of_flights_total', 'num_of_delays_total']))
 # weather.head()
-weather = (flight_delays.assign(
-    severe = flight_delays.num_of_delays_weather, # no# missing, severe 
-    nodla_nona = lambda x: (x.num_of_delays_late_aircraft
-        .replace(-999, np.nan)), #missing is -999, this is taking any missing data and replacing it with nan, copies the data but gives nan for 999
-    mild_late = lambda x: x.nodla_nona.fillna(x.nodla_nona.mean())*0.3,
-    mild = np.where(
-        flight_delays.month.isin(['April', 'May', 'June', 'July', 'August']), 
-            flight_delays.num_of_delays_nas*0.4, 
-            flight_delays.num_of_delays_nas*0.65),
-    weather = lambda x: x.severe + x.mild_late + x.mild,
-    proportion_weather_delay = lambda x: x.weather / x.num_of_delays_total,
-    proportion_weather_total = lambda x:  x.weather / x.num_of_flights_total)
-    .filter(['airport_code','month','year', 'severe','mild', 'mild_late',
-    'weather', 'proportion_weather_total', 
-    'proportion_weather_delay', 'num_of_flights_total', 'num_of_delays_total']))
-weather.head()
+# weather = (flight_delays.assign(
+#     severe = flight_delays.num_of_delays_weather, # no# missing, severe 
+#     nodla_nona = lambda x: (x.num_of_delays_late_aircraft
+#         .replace(-999, np.nan)), #missing is -999, this is taking any missing data and replacing it with nan, copies the data but gives nan for 999
+#     mild_late = lambda x: x.nodla_nona.fillna(x.nodla_nona.mean())*0.3,
+#     mild = np.where(
+#         flight_delays.month.isin(['April', 'May', 'June', 'July', 'August']), 
+#             flight_delays.num_of_delays_nas*0.4, 
+#             flight_delays.num_of_delays_nas*0.65),
+#     weather = lambda x: x.severe + x.mild_late + x.mild,
+#     proportion_weather_delay = lambda x: x.weather / x.num_of_delays_total,
+#     proportion_weather_total = lambda x:  x.weather / x.num_of_flights_total)
+#     .filter(['airport_code','month','year', 'severe','mild', 'mild_late',
+#     'weather', 'proportion_weather_total', 
+#     'proportion_weather_delay', 'num_of_flights_total', 'num_of_delays_total']))
+# weather.head()
 
 
 
