@@ -31,7 +31,7 @@ execute:
 import pandas as pd
 import numpy as np
 import plotly.express as px
-
+import xgboost as xg
 
 
 ```
@@ -48,11 +48,17 @@ from scipy.stats import uniform, randint
 
 from sklearn.metrics import auc, accuracy_score, confusion_matrix, mean_squared_error
 from sklearn.model_selection import cross_val_score, GridSearchCV, KFold, RandomizedSearchCV, train_test_split
-
-
-
+from scipy.stats import uniform, randint
+from sklearn.metrics import auc, accuracy_score, confusion_matrix, mean_squared_error
+from sklearn.model_selection import cross_val_score, GridSearchCV, KFold, RandomizedSearchCV, train_test_split
+from xgboost import XGBClassifier
+from xgboost import XGBRegressor
+from sklearn.metrics import accuracy_score
 ```
 
+```{python}
+rng = np.random.RandomState(31337)
+```
 
 
 ## Elevator pitch
@@ -90,6 +96,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 
     #70, .30, 66, .34, 80,.20
 ```
+
 
 
 ```{python}
@@ -153,6 +160,9 @@ chart.update_layout(yaxis={'categoryorder':'total ascending'})
 # f is algorithm, Try 4
 # (x) is features 
 ```
+
+_This is the XGboost top 20 that I am using._
+
 
 
 
@@ -233,6 +243,49 @@ accuracy_score_filtered = accuracy_score(y_test, y_pred_filtered)
 print("DecisionTreeClassifier Accuracy with Top 20 Features 34/66:", accuracy_score_filtered)
 ```
 
+```{python}
+# Correct the syntax for dropping columns and selecting the target variable
+X = dwellings_ml.drop(['before1980', 'yrbuilt', 'parcel'], axis=1) # Assuming you want to drop these columns
+y = dwellings_ml['before1980'] # Correct way to select the target variable
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.34, random_state=66)
+
+# Initialize the XGBClassifier model
+xgb_model = XGBClassifier(objective='binary:logistic', n_estimators=500, learning_rate=0.34, random_state=66)
+
+# Fit the model
+xgb_model.fit(X_train, y_train)
+
+# Predictions
+y_pred = xgb_model.predict(X_test)
+
+# Evaluation
+accuracy = accuracy_score(y_test, y_pred)
+print(f'XGboost Accuracy 34/66: {accuracy}')
+```
+
+```{python}
+X = dwellings_ml.drop(['before1980', 'yrbuilt', 'parcel'], axis=1) # Assuming you want to drop these columns
+y = dwellings_ml['before1980'] # Correct way to select the target variable
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.34, random_state=64)
+
+# Initialize the XGBClassifier model
+xgb_model = XGBClassifier(objective='binary:logistic', n_estimators=500, learning_rate=0.3, random_state=43)
+
+# Fit the model
+xgb_model.fit(X_train, y_train)
+
+# Predictions
+y_pred = xgb_model.predict(X_test)
+
+# Evaluation
+accuracy = accuracy_score(y_test, y_pred)
+print(f'XGboost Accuracy: {accuracy}')
+```
+
 
 _This next set of data shows how changing the test from 34|66 to 30|70 affected the accuracy. In both cases the accuracy dropped by .2 - .4% depending on the learning._
 
@@ -302,6 +355,28 @@ accuracy_score(y_test, y_pred)
 # Evaluating the model with the accuracy score using Top 10 Features
 accuracy_score_filtered = accuracy_score(y_test, y_pred_filtered)
 print("DecisionTreeClassifier Accuracy with Top 20 Features 30/70:", accuracy_score_filtered)
+```
+
+```{python}
+# Correct the syntax for dropping columns and selecting the target variable
+X = dwellings_ml.drop(['before1980', 'yrbuilt', 'parcel'], axis=1) # Assuming you want to drop these columns
+y = dwellings_ml['before1980'] # Correct way to select the target variable
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=70)
+
+# Initialize the XGBClassifier model
+xgb_model = XGBClassifier(objective='binary:logistic', n_estimators=500, learning_rate=0.3, random_state=43)
+
+# Fit the model
+xgb_model.fit(X_train, y_train)
+
+# Predictions
+y_pred = xgb_model.predict(X_test)
+
+# Evaluation
+accuracy = accuracy_score(y_test, y_pred)
+print(f'XGboost Accuracy: {accuracy}')
 ```
 
 
@@ -375,7 +450,27 @@ accuracy_score_filtered = accuracy_score(y_test, y_pred_filtered)
 print("DecisionTreeClassifier Accuracy with Top 20 Features 20/80:", accuracy_score_filtered)
 ```
 
+```{python}
+# Correct the syntax for dropping columns and selecting the target variable
+X = dwellings_ml.drop(['before1980', 'yrbuilt', 'parcel'], axis=1) # Assuming you want to drop these columns
+y = dwellings_ml['before1980'] # Correct way to select the target variable
 
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=80)
+
+# Initialize the XGBClassifier model
+xgb_model = XGBClassifier(objective='binary:logistic', n_estimators=500, learning_rate=0.3, random_state=43)
+
+# Fit the model
+xgb_model.fit(X_train, y_train)
+
+# Predictions
+y_pred = xgb_model.predict(X_test)
+
+# Evaluation
+accuracy = accuracy_score(y_test, y_pred)
+print(f'XGboost Accuracy 20/80: {accuracy}')
+```
 
 ```{python}
 df.join(df2, lsuffix="parcel", rsuffix="parcel")
