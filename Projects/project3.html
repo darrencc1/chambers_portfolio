@@ -4823,7 +4823,7 @@ vertical-align: -.125em;
   <li><a href="#questiontask-3" id="toc-questiontask-3">QUESTION|TASK 3</a></li>
   </ul>
 </nav>
-<div id="0111a785" class="cell" data-execution_count="2">
+<div id="8fccce6f" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sqlite_file <span class="op">=</span> <span class="st">&#39;lahmansbaseballdb.sqlite&#39;</span></span>
@@ -4843,7 +4843,7 @@ vertical-align: -.125em;
 <h2 class="anchored" data-anchor-id="questiontask-1">QUESTION|TASK 1</h2>
 <p><strong>Write an SQL query to create a new dataframe about baseball players who attended BYU-Idaho. The new table should contain five columns: playerID, schoolID, salary, and the yearID/teamID associated with each salary. Order the table by salary (highest to lowest) and print out the table in your report.</strong></p>
 <p><em>I made sure to only display unique values in this table, meaning I used distinct to ensure there were no repeating values and it is ordered by salary. We can see that there are only 2 players who had attented byui. One thing to note is that as these two players gained experience their salaries increased. Lindsman though lost some pay in 2013 comapared to his previous 2 years.</em></p>
-<div id="2d27aeb6" class="cell" data-execution_count="3">
+<div id="f44db05a" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT DISTINCT cp.playerID, cp.schoolID, s.salary, s.yearID, s.teamID</span></span>
@@ -4875,7 +4875,7 @@ vertical-align: -.125em;
 14  stephga01  idbyuid   150000.0    1997    PHI</code></pre>
 </div>
 </div>
-<div id="fd8e9fda" class="cell" data-execution_count="4">
+<div id="715f2480" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sqlite_file = &#39;lahmansbaseballdb.sqlite&#39;</span></span>
@@ -4887,7 +4887,7 @@ vertical-align: -.125em;
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># results</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="8c14d759" class="cell" data-execution_count="5">
+<div id="5039b2cc" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pandas to read the SQL query into a DataFrame</span></span>
@@ -4908,7 +4908,7 @@ vertical-align: -.125em;
 <p><strong>Use the same query as above, but only include players with at least 10 at bats that year. Print the top 5 results.</strong></p>
 <p><strong>Now calculate the batting average for players over their entire careers (all years combined). Only include players with at least 100 at bats, and print the top 5 results.</strong></p>
 <p>_The top hitters in this situation have an average hit rate of 100%. If you look in the H (hits) row you will see they have only hit once, as well as been at bat once.</p>
-<div id="b959104e" class="cell" data-execution_count="6">
+<div id="2901c7dd" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="st">&#39;&#39;&#39;</span></span>
@@ -4933,7 +4933,7 @@ vertical-align: -.125em;
 </div>
 </div>
 <p><em>When you take the At Bats and increase it to at least 10 times you see that the highest stat is 64% instead of 100% like the previous chart. These percentiles are much more useful as they have at least some data behind them. These top five batters all were at bat 11-16 times.</em></p>
-<div id="d749f015" class="cell" data-execution_count="7">
+<div id="f3295e5f" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="st">&#39;&#39;&#39;</span></span>
@@ -4958,7 +4958,7 @@ vertical-align: -.125em;
 </div>
 </div>
 <p>_In this last set of data you see the Average Hits go down even further from before. However, this is the most useful of the charts. All of these batters had well over 100 bats, meaning that they have many actual data points to use for their average hits. If you were to look at players you were interested in hiring for a team, the amount of Hits and at bats influencing the Average hits would be important to note. Concistency over long periods / many data points and average hits at 49% would be much more indicative of good hitters than someone who has been at bat 14 times and has a 64% average hit rate.</p>
-<div id="c49d81d3" class="cell" data-execution_count="8">
+<div id="36b949eb" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="st">&quot;&quot;&quot; </span></span>
@@ -4987,7 +4987,7 @@ vertical-align: -.125em;
 <h2 class="anchored" data-anchor-id="questiontask-3">QUESTION|TASK 3</h2>
 <p><strong>Pick any two baseball teams and compare them using a metric of your choice (average salary, home runs, number of wins, etc). Write an SQL query to get the data you need, then make a graph using Plotly Express to visualize the comparison. What do you learn?</strong></p>
 <p><em>Philidelfia Phillies vs New York Yankies for 10 years. That is 2006 - 2016. I chose these two popular teams to see how they average over time. This chart shows their average Home Runs with the New York Yankies averaging higher by 2%.</em></p>
-<div id="497bacdb" class="cell" data-execution_count="9">
+<div id="70e9f8d9" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>q<span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT DISTINCT teamID, </span></span>
@@ -5011,7 +5011,7 @@ vertical-align: -.125em;
 </div>
 </div>
 <p><em>This chart is looking at the total pay to players over ten years and the average pay of players over the same period of time. New York Yankes paid 2.26 billion dollars over 10 years to their players, this is 870million dollars more than the Phillidelphia Phillies</em></p>
-<div id="5f931605" class="cell" data-execution_count="10">
+<div id="9e568648" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT teamID, </span></span>
@@ -5034,7 +5034,7 @@ vertical-align: -.125em;
 </div>
 </div>
 <p><em>These First Chart shown is the top 10 teams with highest total player pay over ten years and their average player salaries. The Second Chart is those same teams Average % Home Runs. When comparing these charts we see that the New York Yankies pay the most as well as have a 2% higher Home Run Average. However, the other top 8 teams are within 1.3% of each other and pay does not seem to affect their results significantly. Example is that Boston (BOS) has payed about 500 million more than the Chicogo White Socks (CHA) Yet BOS is in 5th place and CHA is in 2nd for Average Home Runs. A million dollar difference in average player salary between the two and BOS is .52% below on Home Runs. </em></p>
-<div id="a49aac46" class="cell" data-execution_count="11">
+<div id="8cb03a76" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT teamID, </span></span>
