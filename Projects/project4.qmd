@@ -104,7 +104,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 #     # marginal="box", # or violin, rug
 #     # hover_data=
 # )
-clf = RandomForestClassifier() #Rand Forest is similar, try it. 
+clf = tree.DecisionTreeClassifier() #Rand Forest is similar, try it. 
 #linear regression, 
 clf = clf.fit(X_train, y_train)
 # Fit: fit the model to said data
@@ -120,12 +120,12 @@ _Looking at the chart we see that almost 25% was from one-story buildings. After
 ```{python}
 
 # # clf is a classifier.
-# clf = tree.DecisionTreeClassifier() #Rand Forest is similar, try it. 
+clf = tree.DecisionTreeClassifier() #Rand Forest is similar, try it. 
 # #linear regression, 
-# clf = clf.fit(X_train, y_train)
-# # Fit: fit the model to said data
-# y_pred = clf.predict(X_test)
-# y_probs = clf.predict_proba(X_test)
+clf = clf.fit(X_train, y_train)
+# Fit: fit the model to said data
+y_pred = clf.predict(X_test)
+y_probs = clf.predict_proba(X_test)
 
 # XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)
 ```
@@ -274,6 +274,7 @@ accuracy_score_filtered = accuracy_score(y_test, y_pred_filtered)
 print("RandomForest Accuracy with Top 20 Features 30/70:", accuracy_score_filtered)
 ```
 
+
 ```{python}
 # Assuming df_features is already created and sorted by feature importance
 top_20_features = df_features.head(20)['f_names'].tolist()
@@ -404,13 +405,8 @@ X_train, X_test, y_train, y_test = train_test_split(
 ```
 
 ```{python}
-# clf_filtered = RandomForestClassifier()
-# clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel()) 
-```
-
-```{python}
 # Assuming df_features is already created and sorted by feature importance
-top_20_features = df_features.head(10)['f_names'].tolist()
+top_20_features = df_features.head(20)['f_names'].tolist()
 
 # Now, filter X_train and X_test to include only the top 10 features
 X_train_filtered = X_train[top_20_features]
@@ -434,46 +430,24 @@ print(metrics.classification_report(y_pred, y_test))
 accuracy_score(y_test, y_pred)
 # Evaluating the model with the accuracy score using Top 10 Features
 accuracy_score_filtered = accuracy_score(y_test, y_pred_filtered)
-print("RandomForest Accuracy with Top 20 Features, 34/66 and joined with neighborhood dwellings  (df2):", accuracy_score_filtered)
+print("RandomForest Accuracy with Top 20 Features 34/64:", accuracy_score_filtered)
 ```
 
 ```{python}
-X_pred = dwellings_ml.drop(dwellings_ml.filter(regex = 'before1980|yrbuilt|parcel').columns, axis = 1)
-y_pred = dwellings_ml.filter(regex = "before1980")
-X_train, X_test, y_train, y_test = train_test_split(
-    X_pred, y_pred, test_size = .34, random_state = 66)
-```
-
-```{python}
-clf_filtered = tree.DecisionTreeClassifier()
-clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel()) 
-# print(metrics.classification_report(y_pred, y_test))
-# accuracy_score(y_test, y_pred)
-```
-
-```{python}
-
-X_pred = dwellings_ml.drop(dwellings_ml.filter(regex = 'before1980|yrbuilt|parcel').columns, axis = 1)
-y_pred = dwellings_ml.filter(regex = "before1980")
-X_train, X_test, y_train, y_test = train_test_split(
-    X_pred, y_pred, test_size = .34, random_state = 66)
-
-```
-
-```{python}
-top_20_features = df_features.head(10)['f_names'].tolist()
+# Assuming df_features is already created and sorted by feature importance
+top_20_features = df_features.head(20)['f_names'].tolist()
 
 # Now, filter X_train and X_test to include only the top 10 features
 X_train_filtered = X_train[top_20_features]
 X_test_filtered = X_test[top_20_features]
 
 # Training your model using these filtered datasets
-# clf_filtered = tree.DecisionTreeClassifier()
-# clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel())  # .values.ravel() to convert y_train to 1D array if needed
+clf_filtered = tree.DecisionTreeClassifier()
+clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel())  # .values.ravel() to convert y_train to 1D array if needed
 
 # Making predictions with the test set filtered to top 10 features
 y_pred_filtered = clf_filtered.predict(X_test_filtered)
-# clf is a classifier.
+
 clf = tree.DecisionTreeClassifier() #Rand Forest is similar, try it. 
 #linear regression, 
 clf = clf.fit(X_train, y_train)
@@ -483,11 +457,11 @@ y_probs = clf.predict_proba(X_test)
 # %% this is the y_pred and y_probes from cell above
 print(metrics.classification_report(y_pred, y_test))
 accuracy_score(y_test, y_pred)
-print("Decision Tree Accuracy with Top 20 Features 34/66:", accuracy_score_filtered)
-# Decision matrix 0 and 1. 
-
-# XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)
+# Evaluating the model with the accuracy score using Top 10 Features
+accuracy_score_filtered = accuracy_score(y_test, y_pred_filtered)
+print("DecisionTreeClassifier Accuracy with Top 20 Features 34/64:", accuracy_score_filtered)
 ```
+
 
 _This next set of data shows how changing the test from 34|66 to 30|70 affected the accuracy. In both cases the accuracy dropped by .2 - .4% depending on the learning._
 
@@ -530,15 +504,7 @@ print("RandomForest Accuracy with Top 20 Features 30/70:", accuracy_score_filter
 ```
 
 ```{python}
-
-X_pred = dwellings_ml.drop(dwellings_ml.filter(regex = 'before1980|yrbuilt|parcel').columns, axis = 1)
-y_pred = dwellings_ml.filter(regex = "before1980")
-X_train, X_test, y_train, y_test = train_test_split(
-    X_pred, y_pred, test_size = .30, random_state = 70)
-    #70, .30, 66, .34, 80,.20
-```
-
-```{python}
+# Assuming df_features is already created and sorted by feature importance
 top_20_features = df_features.head(20)['f_names'].tolist()
 
 # Now, filter X_train and X_test to include only the top 10 features
@@ -551,7 +517,7 @@ clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel())  # .va
 
 # Making predictions with the test set filtered to top 10 features
 y_pred_filtered = clf_filtered.predict(X_test_filtered)
-# clf is a classifier.
+
 clf = tree.DecisionTreeClassifier() #Rand Forest is similar, try it. 
 #linear regression, 
 clf = clf.fit(X_train, y_train)
@@ -561,11 +527,11 @@ y_probs = clf.predict_proba(X_test)
 # %% this is the y_pred and y_probes from cell above
 print(metrics.classification_report(y_pred, y_test))
 accuracy_score(y_test, y_pred)
-print("Decision Tree Accuracy with Top 20 Features 30/70:", accuracy_score_filtered)
-# Decision matrix 0 and 1. 
-
-# XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)
+# Evaluating the model with the accuracy score using Top 10 Features
+accuracy_score_filtered = accuracy_score(y_test, y_pred_filtered)
+print("DecisionTreeClassifier Accuracy with Top 20 Features 30/70:", accuracy_score_filtered)
 ```
+
 
 _For this set I am using the 80/20 test and with this the accuracy went back up reaching 92.45% this dropped to 92.34% When using only the top 10 and up to 92.77 if I used the top 20 for the random Tree algorithm which is the highest of all the tests so far._
 
@@ -578,6 +544,36 @@ X_train, X_test, y_train, y_test = train_test_split(
 ```
 
 ```{python}
+# Assuming df_features is already created and sorted by feature importance
+top_20_features = df_features.head(20)['f_names'].tolist()
+
+# Now, filter X_train and X_test to include only the top 10 features
+X_train_filtered = X_train[top_20_features]
+X_test_filtered = X_test[top_20_features]
+
+# Training your model using these filtered datasets
+clf_filtered = RandomForestClassifier()
+clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel())  # .values.ravel() to convert y_train to 1D array if needed
+
+# Making predictions with the test set filtered to top 10 features
+y_pred_filtered = clf_filtered.predict(X_test_filtered)
+
+clf = RandomForestClassifier() #Rand Forest is similar, try it. 
+#linear regression, 
+clf = clf.fit(X_train, y_train)
+# Fit: fit the model to said data
+y_pred = clf.predict(X_test)
+y_probs = clf.predict_proba(X_test)
+# %% this is the y_pred and y_probes from cell above
+print(metrics.classification_report(y_pred, y_test))
+accuracy_score(y_test, y_pred)
+# Evaluating the model with the accuracy score using Top 10 Features
+accuracy_score_filtered = accuracy_score(y_test, y_pred_filtered)
+print("RandomForest Accuracy with Top 20 Features 20/80:", accuracy_score_filtered)
+```
+
+```{python}
+# Assuming df_features is already created and sorted by feature importance
 top_20_features = df_features.head(20)['f_names'].tolist()
 
 # Now, filter X_train and X_test to include only the top 10 features
@@ -590,7 +586,7 @@ clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel())  # .va
 
 # Making predictions with the test set filtered to top 10 features
 y_pred_filtered = clf_filtered.predict(X_test_filtered)
-# clf is a classifier.
+
 clf = tree.DecisionTreeClassifier() #Rand Forest is similar, try it. 
 #linear regression, 
 clf = clf.fit(X_train, y_train)
@@ -600,67 +596,11 @@ y_probs = clf.predict_proba(X_test)
 # %% this is the y_pred and y_probes from cell above
 print(metrics.classification_report(y_pred, y_test))
 accuracy_score(y_test, y_pred)
-print("Decision Tree Accuracy with Top 20 Features 20/80:", accuracy_score_filtered)
+# Evaluating the model with the accuracy score using Top 10 Features
+accuracy_score_filtered = accuracy_score(y_test, y_pred_filtered)
+print("DecisionTreeClassifier Accuracy with Top 20 Features 20/80:", accuracy_score_filtered)
 ```
 
-
-```{python}  
-
-    #70, .30, 66, .34, 80,.20
-    #     x='parcel',
-#     y='abstrpod',
-#     color='yrbuilt',
-#     title='Does age affect whether a passenger survived?',
-#     # marginal="box", # or violin, rug
-#     # hover_data=
-# )
-clf = RandomForestClassifier() #Rand Forest is similar, try it. 
-#linear regression, 
-clf = clf.fit(X_train, y_train)
-# Fit: fit the model to said data
-y_pred = clf.predict(X_test)
-y_probs = clf.predict_proba(X_test)
-y_pred = clf.predict(X_test)
-print(metrics.classification_report(y_pred, y_test))
-accuracy_score(y_test, y_pred)
-```
-
-```{python}
-
-
-# clf is a classifier.
-clf = tree.DecisionTreeClassifier() #Rand Forest is similar, try it. 
-#linear regression, 
-clf = clf.fit(X_train, y_train)
-# Fit: fit the model to said data
-y_pred = clf.predict(X_test)
-y_probs = clf.predict_proba(X_test)
-# %% this is the y_pred and y_probes from cell above
-print(metrics.classification_report(y_pred, y_test))
-accuracy_score(y_test, y_pred)
-# Decision matrix 0 and 1. 
-
-# XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)
-```
-
-
-```{python}
-
-
-# clf is a classifier.
-clf = tree.DecisionTreeClassifier() #Rand Forest is similar, try it. 
-#linear regression, 
-clf = clf.fit(X_train, y_train)
-# Fit: fit the model to said data
-y_pred = clf.predict(X_test)
-y_probs = clf.predict_proba(X_test)
-# %% this is the y_pred and y_probes from cell above
-print(metrics.classification_report(y_pred, y_test))
-accuracy_score(y_test, y_pred)
-# Decision matrix 0 and 1. 
-
-# XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)
-```
 
 
 ## QUESTION|TASK 3
