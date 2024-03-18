@@ -4845,7 +4845,7 @@ require(['plotly'], function(Plotly) {
   <li><a href="#questiontask-4" id="toc-questiontask-4">Question|Task 4</a></li>
   </ul>
 </nav>
-<div id="a47994cd" class="cell" data-execution_count="2">
+<div id="72dafebf" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
@@ -4867,7 +4867,7 @@ require(['plotly'], function(Plotly) {
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="5e92df80" class="cell" data-execution_count="3">
+<div id="0372a5e5" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.RandomState(<span class="dv">31337</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -4875,7 +4875,7 @@ require(['plotly'], function(Plotly) {
 </div>
 <section id="elevator-pitch" class="level2">
 <h2 class="anchored" data-anchor-id="elevator-pitch">Elevator pitch</h2>
-<p><em>paste your elevator pitch here</em> <em>A SHORT (4-5 SENTENCES) PARAGRAPH THAT <code>DESCRIBES KEY INSIGHTS</code> TAKEN FROM METRICS IN THE PROJECT RESULTS THINK TOP OR MOST IMPORTANT RESULTS.</em></p>
+<p><em>Looking at Random Forest, Decision Tree and XGboost the highest accuracy rate was xgboost at 93.1% using 20/80.</em></p>
 <p>::: {#cell-project data .cell execution_count=4}</p>
 <details class="code-fold">
 <summary>Read and format project data</summary>
@@ -5051,8 +5051,8 @@ require(['plotly'], function(Plotly) {
 <section id="questiontask-1" class="level2">
 <h2 class="anchored" data-anchor-id="questiontask-1">QUESTION|TASK 1</h2>
 <p><strong>Create 2-3 charts that evaluate potential relationships between the home variables and before1980. Explain what you learn from the charts that could help a machine learning algorithm.</strong></p>
-<p><em>There are many factors that we can use to help our algorithms learn and predict homes that were made before 1980.</em></p>
-<div id="22351aba" class="cell" data-execution_count="5">
+<p><em>There are many factors that we can use to help our algorithms learn and predict homes that were made before 1980. It is important to not flood the algorithm with unneeded data. So I spent time testing different numbers of variables used in the algorithms.</em></p>
+<div id="05b10df5" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
@@ -5063,7 +5063,7 @@ require(['plotly'], function(Plotly) {
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="3c684e9d" class="cell" data-execution_count="6">
+<div id="ba30597d" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span>
@@ -5074,31 +5074,33 @@ require(['plotly'], function(Plotly) {
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     # marginal=&quot;box&quot;, # or violin, rug</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     # hover_data=</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># clf = xgb_model #Rand Forest is similar, try it. </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression,</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># clf = RandomForestClassifier </span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># clf = clf.fit(X_train, y_train)</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># # Fit: fit the model to said data</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># y_pred = clf.predict(X_test)</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># y_probs = clf.predict_proba(X_test)</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># y_pred = clf.predict(X_test)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><em>Looking at the chart we see that almost 25% was from one-story buildings. After this the effectivness of the potential relationships drop drastically. So figuring out which data is almost irrelevant, in this case meaning well below 1% helpts my algorithms learn and predict houses made before 1980.</em></p>
-<div id="426c2ab4" class="cell" data-execution_count="7">
+<p><em>Looking at the chart we see that almost 25% was from one-story buildings. After this the effectivness of the potential relationships drop drastically. So figuring out which data is almost irrelevant, in this case removing data that is well below 1% helpts my algorithms learn and predict houses made before 1980.</em></p>
+<div id="1aff48a7" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # clf is a classifier.</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># #linear regression, </span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># clf = RandomForestClassifier()</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="c993772a" class="cell" data-execution_count="8">
+<div id="0c6093f9" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_features <span class="op">=</span> pd.DataFrame(</span>
@@ -5106,7 +5108,7 @@ require(['plotly'], function(Plotly) {
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;f_values&#39;</span>: clf.feature_importances_}).sort_values(<span class="st">&#39;f_values&#39;</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="12601b1d" class="cell" data-execution_count="9">
+<div id="187fb8a9" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span>
@@ -5122,9 +5124,9 @@ require(['plotly'], function(Plotly) {
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># (x) is features </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div>                            <div id="585592f5-fa0f-4f01-bf46-0a769be26b05" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("585592f5-fa0f-4f01-bf46-0a769be26b05")) {                    Plotly.newPlot(                        "585592f5-fa0f-4f01-bf46-0a769be26b05",                        [{"alignmentgroup":"True","hovertemplate":"f_values=%{x}\u003cbr\u003ef_names=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"h","showlegend":false,"textposition":"auto","x":[0.24506835948382888,0.1217818138431017,0.11599897463732718,0.10253264031031266,0.04319079818079304,0.039224775822363694,0.03867082172285036,0.03645463259286209,0.025790276140511638,0.02417829968676249,0.023446262921397645,0.021261014532762124,0.020887679418760283,0.020018114508672524,0.019841845862426582,0.019718971558617418,0.015008781850796005,0.01465280603956221,0.01061287898342527,0.008321424426856704],"xaxis":"x","y":["arcstyle_ONE-STORY","gartype_Att","quality_C","livearea","basement","sprice","stories","tasp","abstrprd","finbsmnt","status_V","numbaths","nocars","numbdrm","netprice","smonth","condition_AVG","deduct","arcstyle_ONE AND HALF-STORY","syear"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"f_values"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"f_names"},"categoryorder":"total ascending"},"legend":{"tracegroupgap":0},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
+<div>                            <div id="279fa9fb-bf55-45ca-9e97-fad38ebfbee1" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("279fa9fb-bf55-45ca-9e97-fad38ebfbee1")) {                    Plotly.newPlot(                        "279fa9fb-bf55-45ca-9e97-fad38ebfbee1",                        [{"alignmentgroup":"True","hovertemplate":"f_values=%{x}\u003cbr\u003ef_names=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"h","showlegend":false,"textposition":"auto","x":[0.2450683594838289,0.12178181384310172,0.11666197082942122,0.10337021852365111,0.04507548570742113,0.042509759762280205,0.03832398505423172,0.030442536033950814,0.02645019139353926,0.026024726946520582,0.024346932047041775,0.02204103778063099,0.020860965287499044,0.020727630774055875,0.020310956058791386,0.01697776367688757,0.0158494446742853,0.014953780900460527,0.010612878983425271,0.007985835577325153],"xaxis":"x","y":["arcstyle_ONE-STORY","gartype_Att","quality_C","livearea","sprice","basement","stories","tasp","abstrprd","status_I","netprice","finbsmnt","numbaths","numbdrm","nocars","smonth","condition_AVG","deduct","arcstyle_ONE AND HALF-STORY","syear"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"f_values"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"f_names"},"categoryorder":"total ascending"},"legend":{"tracegroupgap":0},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('585592f5-fa0f-4f01-bf46-0a769be26b05');
+var gd = document.getElementById('279fa9fb-bf55-45ca-9e97-fad38ebfbee1');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -5149,13 +5151,12 @@ if (outputEl) {{
                         })                };                });            </script>        </div>
 </div>
 </div>
-<p><em>This is the XGboost top 20 that I am using.</em></p>
 </section>
 <section id="questiontask-2" class="level2">
 <h2 class="anchored" data-anchor-id="questiontask-2">QUESTION|TASK 2</h2>
 <p><strong>Build a classification model labeling houses as being built “before 1980” or “during or after 1980”. Your goal is to reach or exceed 90% accuracy. Explain your final model choice (algorithm, tuning parameters, etc) and describe what other models you tried.</strong></p>
-<p><em>Below I will show you some different results based on test size as well as RandomForest Algorithm vs Decision Tree algorithm. This first test size is 34 and random state 66.</em></p>
-<div id="b20dacbe" class="cell" data-execution_count="10">
+<p><em>Below I will show you some different results based on test size and 3 different Algorithms. These algorithms are RandomForest, Decision Tree and XGboost. This first test size is 34 and random state 66. For all of these I used the top 20 features and for XGboost I found using an n_estimator = 500 to get the best results. </em></p>
+<div id="3ba3a695" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
@@ -5168,7 +5169,7 @@ if (outputEl) {{
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="43fbd09d" class="cell" data-execution_count="11">
+<div id="8b026f76" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
@@ -5201,17 +5202,17 @@ if (outputEl) {{
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.89      0.91      0.90      2841
-           1       0.95      0.93      0.94      4950
+           0       0.89      0.91      0.90      2834
+           1       0.95      0.93      0.94      4957
 
     accuracy                           0.92      7791
    macro avg       0.92      0.92      0.92      7791
-weighted avg       0.92      0.92      0.92      7791
+weighted avg       0.93      0.92      0.93      7791
 
-RandomForest Accuracy with Top 20 Features 34/66: 0.9265819535361315</code></pre>
+RandomForest Accuracy with Top 20 Features 34/66: 0.9240148889744577</code></pre>
 </div>
 </div>
-<div id="3ee72a54" class="cell" data-execution_count="12">
+<div id="00270f70" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
@@ -5244,17 +5245,17 @@ RandomForest Accuracy with Top 20 Features 34/66: 0.9265819535361315</code></pre
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.87      0.87      0.87      2897
-           1       0.92      0.92      0.92      4894
+           0       0.87      0.87      0.87      2908
+           1       0.92      0.92      0.92      4883
 
     accuracy                           0.90      7791
    macro avg       0.90      0.90      0.90      7791
 weighted avg       0.90      0.90      0.90      7791
 
-DecisionTreeClassifier Accuracy with Top 20 Features 34/66: 0.9006546014632268</code></pre>
+DecisionTreeClassifier Accuracy with Top 20 Features 34/66: 0.8992427159543063</code></pre>
 </div>
 </div>
-<div id="59d1c6fb" class="cell" data-execution_count="13">
+<div id="d2a8720f" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct the syntax for dropping columns and selecting the target variable</span></span>
@@ -5274,14 +5275,23 @@ DecisionTreeClassifier Accuracy with Top 20 Features 34/66: 0.9006546014632268</
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> xgb_model.predict(X_test)</span>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluation</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;XGboost Accuracy 34/66: </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>conf_matrix <span class="op">=</span> confusion_matrix(y_test, y_pred)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;This matrix shows the true positive, false positive, true negative, and false negative predictions.&quot;</span>)</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Confusion Matrix:&quot;</span>) </span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(conf_matrix)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;XGboost Accuracy 34/66: </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>XGboost Accuracy 34/66: 0.9246566551148762</code></pre>
+<pre><code>This matrix shows the true positive, false positive, true negative, and false negative predictions.
+Confusion Matrix:
+[[2593  312]
+ [ 275 4611]]
+XGboost Accuracy 34/66: 0.9246566551148762</code></pre>
 </div>
 </div>
-<div id="404b7cab" class="cell" data-execution_count="14">
+<div id="62f84fda" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> dwellings_ml.drop([<span class="st">&#39;before1980&#39;</span>, <span class="st">&#39;yrbuilt&#39;</span>, <span class="st">&#39;parcel&#39;</span>], axis<span class="op">=</span><span class="dv">1</span>) <span class="co"># Assuming you want to drop these columns</span></span>
@@ -5300,15 +5310,24 @@ DecisionTreeClassifier Accuracy with Top 20 Features 34/66: 0.9006546014632268</
 <span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> xgb_model.predict(X_test)</span>
 <span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluation</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;XGboost Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>conf_matrix <span class="op">=</span> confusion_matrix(y_test, y_pred)</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;This matrix shows the true positive, false positive, true negative, and false negative predictions.&quot;</span>)</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Confusion Matrix:&quot;</span>) </span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(conf_matrix)</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;XGboost Accuracy 34/66: </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>XGboost Accuracy: 0.9281221922731356</code></pre>
+<pre><code>This matrix shows the true positive, false positive, true negative, and false negative predictions.
+Confusion Matrix:
+[[2616  306]
+ [ 254 4615]]
+XGboost Accuracy 34/66: 0.9281221922731356</code></pre>
 </div>
 </div>
-<p><em>This next set of data shows how changing the test from 34|66 to 30|70 affected the accuracy. In both cases the accuracy dropped by .2 - .4% depending on the learning.</em></p>
-<div id="69b3c022" class="cell" data-execution_count="15">
+<p><em>This next set of data shows how changing the test from 34|66 to 30|70 affected the accuracy. In most cases the accuracy dropped however, I noticed there were times where the Random Forest actually went slightly higher. </em></p>
+<div id="4c50cb55" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
@@ -5318,7 +5337,7 @@ DecisionTreeClassifier Accuracy with Top 20 Features 34/66: 0.9006546014632268</
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="266a6ef4" class="cell" data-execution_count="16">
+<div id="a053e5ee" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
@@ -5351,17 +5370,17 @@ DecisionTreeClassifier Accuracy with Top 20 Features 34/66: 0.9006546014632268</
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.89      0.90      0.90      2570
-           1       0.94      0.93      0.94      4304
+           0       0.89      0.90      0.90      2574
+           1       0.94      0.93      0.94      4300
 
     accuracy                           0.92      6874
    macro avg       0.92      0.92      0.92      6874
 weighted avg       0.92      0.92      0.92      6874
 
-RandomForest Accuracy with Top 20 Features 30/70: 0.9260983415769567</code></pre>
+RandomForest Accuracy with Top 20 Features 30/70: 0.924643584521385</code></pre>
 </div>
 </div>
-<div id="4973ad85" class="cell" data-execution_count="17">
+<div id="ec6c056e" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
@@ -5394,17 +5413,17 @@ RandomForest Accuracy with Top 20 Features 30/70: 0.9260983415769567</code></pre
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.87      0.86      0.86      2638
-           1       0.91      0.92      0.92      4236
+           0       0.87      0.86      0.86      2640
+           1       0.91      0.92      0.92      4234
 
-    accuracy                           0.90      6874
+    accuracy                           0.89      6874
    macro avg       0.89      0.89      0.89      6874
-weighted avg       0.90      0.90      0.90      6874
+weighted avg       0.89      0.89      0.89      6874
 
-DecisionTreeClassifier Accuracy with Top 20 Features 30/70: 0.895112016293279</code></pre>
+DecisionTreeClassifier Accuracy with Top 20 Features 30/70: 0.8958393948210649</code></pre>
 </div>
 </div>
-<div id="0b43ff90" class="cell" data-execution_count="18">
+<div id="b9022d49" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct the syntax for dropping columns and selecting the target variable</span></span>
@@ -5424,15 +5443,22 @@ DecisionTreeClassifier Accuracy with Top 20 Features 30/70: 0.895112016293279</c
 <span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> xgb_model.predict(X_test)</span>
 <span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluation</span></span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;XGboost Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>conf_matrix <span class="op">=</span> confusion_matrix(y_test, y_pred)</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Confusion Matrix:&quot;</span>) </span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(conf_matrix)</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;XGboost Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>XGboost Accuracy: 0.927262147221414</code></pre>
+<pre><code>Confusion Matrix:
+[[2345  259]
+ [ 241 4029]]
+XGboost Accuracy: 0.927262147221414</code></pre>
 </div>
 </div>
-<p><em>For this set I am using the 80/20 test and with this the accuracy went back up reaching 92.45% this dropped to 92.34% When using only the top 10 and up to 92.77 if I used the top 20 for the random Tree algorithm which is the highest of all the tests so far.</em></p>
-<div id="30e57c44" class="cell" data-execution_count="19">
+<p><em>For this set I am using the 80/20 test and with this the accuracy went back up. The highest was XGboost reaching 93.1% accuracy. </em></p>
+<div id="c9aa58a7" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
@@ -5442,7 +5468,7 @@ DecisionTreeClassifier Accuracy with Top 20 Features 30/70: 0.895112016293279</c
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="74af43ec" class="cell" data-execution_count="20">
+<div id="e5d2d0be" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
@@ -5475,17 +5501,17 @@ DecisionTreeClassifier Accuracy with Top 20 Features 30/70: 0.895112016293279</c
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.90      0.89      0.90      1719
-           1       0.94      0.94      0.94      2864
+           0       0.90      0.90      0.90      1700
+           1       0.94      0.94      0.94      2883
 
     accuracy                           0.92      4583
    macro avg       0.92      0.92      0.92      4583
 weighted avg       0.92      0.92      0.92      4583
 
-RandomForest Accuracy with Top 20 Features 20/80: 0.9262491817586733</code></pre>
+RandomForest Accuracy with Top 20 Features 20/80: 0.9269037748199869</code></pre>
 </div>
 </div>
-<div id="5a25df4e" class="cell" data-execution_count="21">
+<div id="40a4d8ff" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
@@ -5518,17 +5544,17 @@ RandomForest Accuracy with Top 20 Features 20/80: 0.9262491817586733</code></pre
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.88      0.86      0.87      1746
-           1       0.91      0.93      0.92      2837
+           0       0.88      0.86      0.87      1751
+           1       0.91      0.93      0.92      2832
 
     accuracy                           0.90      4583
    macro avg       0.90      0.89      0.90      4583
 weighted avg       0.90      0.90      0.90      4583
 
-DecisionTreeClassifier Accuracy with Top 20 Features 20/80: 0.8978834824350862</code></pre>
+DecisionTreeClassifier Accuracy with Top 20 Features 20/80: 0.8989744708706088</code></pre>
 </div>
 </div>
-<div id="adac9d2a" class="cell" data-execution_count="22">
+<div id="51de2cdd" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct the syntax for dropping columns and selecting the target variable</span></span>
@@ -5548,14 +5574,22 @@ DecisionTreeClassifier Accuracy with Top 20 Features 20/80: 0.8978834824350862</
 <span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> xgb_model.predict(X_test)</span>
 <span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluation</span></span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;XGboost Accuracy 20/80: </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>conf_matrix <span class="op">=</span> confusion_matrix(y_test, y_pred)</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Confusion Matrix:&quot;</span>) </span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(conf_matrix)</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;XGboost Accuracy 20/80: </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>XGboost Accuracy 20/80: 0.9312677285620773</code></pre>
+<pre><code>Confusion Matrix:
+[[1557  150]
+ [ 165 2711]]
+XGboost Accuracy 20/80: 0.9312677285620773</code></pre>
 </div>
 </div>
-<div id="a29e1f9a" class="cell" data-execution_count="23">
+<p><em>Here I joined two data sets, the Neighborhood dwellings and dwellings ml.</em></p>
+<div id="96bdc769" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df.join(df2, lsuffix<span class="op">=</span><span class="st">&quot;parcel&quot;</span>, rsuffix<span class="op">=</span><span class="st">&quot;parcel&quot;</span>)</span>
@@ -5864,36 +5898,63 @@ DecisionTreeClassifier Accuracy with Top 20 Features 20/80: 0.8978834824350862</
 </div>
 </div>
 </div>
-<div id="382ceff8" class="cell" data-execution_count="24">
+<div id="b392824c" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;This is the joined dataframe of Neighborhood dwellings and dwellings ml. &quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.34</span>, random_state <span class="op">=</span> <span class="dv">66</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract the top 10 feature names</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="a298dcf3" class="cell" data-execution_count="25">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">100</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> RandomForestClassifier()</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model with the accuracy score using Top 10 Features</span></span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a>accuracy_score_filtered <span class="op">=</span> accuracy_score(y_test, y_pred_filtered)</span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;RandomForest Accuracy with Top 20 Features 34/66:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>This is the joined dataframe of Neighborhood dwellings and dwellings ml. </code></pre>
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.89      0.91      0.90      2839
+           1       0.95      0.93      0.94      4952
+
+    accuracy                           0.92      7791
+   macro avg       0.92      0.92      0.92      7791
+weighted avg       0.92      0.92      0.92      7791
+
+RandomForest Accuracy with Top 20 Features 34/66: 0.923501476062123</code></pre>
 </div>
 </div>
-<div id="6fab174d" class="cell" data-execution_count="25">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.34</span>, random_state <span class="op">=</span> <span class="dv">66</span>)</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract the top 10 feature names</span></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># X_pred = dwellings_ml.drop(dwellings_ml.filter(regex = &#39;before1980|yrbuilt|parcel&#39;).columns, axis = 1)</span></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co"># y_pred = dwellings_ml.filter(regex = &quot;before1980&quot;)</span></span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="co"># X_train, X_test, y_train, y_test = train_test_split(</span></span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="co">#     X_pred, y_pred, test_size = .34, random_state = 66)</span></span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="9878b4b6" class="cell" data-execution_count="26">
+<div id="43cb241d" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
@@ -5904,13 +5965,13 @@ DecisionTreeClassifier Accuracy with Top 20 Features 20/80: 0.8978834824350862</
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
 <span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> RandomForestClassifier()</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> tree.DecisionTreeClassifier()</span>
 <span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
 <span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
 <span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
 <span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
 <span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
 <span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
 <span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
@@ -5921,119 +5982,104 @@ DecisionTreeClassifier Accuracy with Top 20 Features 20/80: 0.8978834824350862</
 <span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
 <span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model with the accuracy score using Top 10 Features</span></span>
 <span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>accuracy_score_filtered <span class="op">=</span> accuracy_score(y_test, y_pred_filtered)</span>
-<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;RandomForest Accuracy with Top 20 Features 34/64:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;DecisionTreeClassifier Accuracy with Top 20 Features 34/66:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.88      0.91      0.89      2826
-           1       0.95      0.93      0.94      4965
-
-    accuracy                           0.92      7791
-   macro avg       0.91      0.92      0.92      7791
-weighted avg       0.92      0.92      0.92      7791
-
-RandomForest Accuracy with Top 20 Features 34/64: 0.9258118341676294</code></pre>
-</div>
-</div>
-<div id="eb789852" class="cell" data-execution_count="27">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">20</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> tree.DecisionTreeClassifier()</span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
-<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
-<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
-<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
-<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
-<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
-<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
-<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
-<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
-<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model with the accuracy score using Top 10 Features</span></span>
-<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>accuracy_score_filtered <span class="op">=</span> accuracy_score(y_test, y_pred_filtered)</span>
-<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;DecisionTreeClassifier Accuracy with Top 20 Features 34/64:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>              precision    recall  f1-score   support
-
-           0       0.87      0.87      0.87      2907
-           1       0.92      0.92      0.92      4884
+           0       0.87      0.87      0.87      2897
+           1       0.92      0.92      0.92      4894
 
     accuracy                           0.90      7791
-   macro avg       0.90      0.90      0.90      7791
+   macro avg       0.89      0.89      0.89      7791
 weighted avg       0.90      0.90      0.90      7791
 
-DecisionTreeClassifier Accuracy with Top 20 Features 34/64: 0.9006546014632268</code></pre>
+DecisionTreeClassifier Accuracy with Top 20 Features 34/66: 0.9018097805159799</code></pre>
 </div>
 </div>
-<p><em>This next set of data shows how changing the test from 34|66 to 30|70 affected the accuracy. In both cases the accuracy dropped by .2 - .4% depending on the learning.</em></p>
-<div id="8bfcc0c4" class="cell" data-execution_count="28">
+<div id="00fd0a95" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.30</span>, random_state <span class="op">=</span> <span class="dv">70</span>)</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="f0818fd1" class="cell" data-execution_count="29">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">20</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> RandomForestClassifier()</span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
-<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
-<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
-<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
-<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
-<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
-<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
-<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
-<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
-<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
-<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
-<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model with the accuracy score using Top 10 Features</span></span>
-<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>accuracy_score_filtered <span class="op">=</span> accuracy_score(y_test, y_pred_filtered)</span>
-<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;RandomForest Accuracy with Top 20 Features 30/70:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct the syntax for dropping columns and selecting the target variable</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> dwellings_ml.drop([<span class="st">&#39;before1980&#39;</span>, <span class="st">&#39;yrbuilt&#39;</span>, <span class="st">&#39;parcel&#39;</span>], axis<span class="op">=</span><span class="dv">1</span>) <span class="co"># Assuming you want to drop these columns</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> dwellings_ml[<span class="st">&#39;before1980&#39;</span>] <span class="co"># Correct way to select the target variable</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and testing sets</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.34</span>, random_state<span class="op">=</span><span class="dv">66</span>)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the XGBClassifier model</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>xgb_model <span class="op">=</span> XGBClassifier(objective<span class="op">=</span><span class="st">&#39;binary:logistic&#39;</span>, n_estimators<span class="op">=</span><span class="dv">500</span>, learning_rate<span class="op">=</span><span class="fl">0.34</span>, random_state<span class="op">=</span><span class="dv">66</span>)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>xgb_model.fit(X_train, y_train)</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Predictions</span></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> xgb_model.predict(X_test)</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluation</span></span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>conf_matrix <span class="op">=</span> confusion_matrix(y_test, y_pred)</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;This matrix shows the true positive, false positive, true negative, and false negative predictions.&quot;</span>)</span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Confusion Matrix:&quot;</span>) </span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(conf_matrix)</span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;XGboost Accuracy 34/66: </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>              precision    recall  f1-score   support
-
-           0       0.89      0.90      0.90      2576
-           1       0.94      0.94      0.94      4298
-
-    accuracy                           0.92      6874
-   macro avg       0.92      0.92      0.92      6874
-weighted avg       0.92      0.92      0.92      6874
-
-RandomForest Accuracy with Top 20 Features 30/70: 0.9252254873436137</code></pre>
+<pre><code>This matrix shows the true positive, false positive, true negative, and false negative predictions.
+Confusion Matrix:
+[[2593  312]
+ [ 275 4611]]
+XGboost Accuracy 34/66: 0.9246566551148762</code></pre>
 </div>
 </div>
-<div id="465156cb" class="cell" data-execution_count="30">
+<div id="e287b755" class="cell" data-execution_count="28">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> dwellings_ml.drop([<span class="st">&#39;before1980&#39;</span>, <span class="st">&#39;yrbuilt&#39;</span>, <span class="st">&#39;parcel&#39;</span>], axis<span class="op">=</span><span class="dv">1</span>) <span class="co"># Assuming you want to drop these columns</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> dwellings_ml[<span class="st">&#39;before1980&#39;</span>] <span class="co"># Correct way to select the target variable</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and testing sets</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.34</span>, random_state<span class="op">=</span><span class="dv">64</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the XGBClassifier model</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>xgb_model <span class="op">=</span> XGBClassifier(objective<span class="op">=</span><span class="st">&#39;binary:logistic&#39;</span>, n_estimators<span class="op">=</span><span class="dv">500</span>, learning_rate<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">43</span>)</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>xgb_model.fit(X_train, y_train)</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Predictions</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> xgb_model.predict(X_test)</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluation</span></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>conf_matrix <span class="op">=</span> confusion_matrix(y_test, y_pred)</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;This matrix shows the true positive, false positive, true negative, and false negative predictions.&quot;</span>)</span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Confusion Matrix:&quot;</span>) </span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(conf_matrix)</span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;XGboost Accuracy 34/66: </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>This matrix shows the true positive, false positive, true negative, and false negative predictions.
+Confusion Matrix:
+[[2616  306]
+ [ 254 4615]]
+XGboost Accuracy 34/66: 0.9281221922731356</code></pre>
+</div>
+</div>
+<p><em>This next set of data shows how changing the test from 34|66 to 30|70 affected the accuracy. In most cases the accuracy dropped however, I noticed there were times where the Random Forest actually went slightly higher. </em></p>
+<div id="fff41486" class="cell" data-execution_count="29">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.30</span>, random_state <span class="op">=</span> <span class="dv">70</span>)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="da561e68" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
@@ -6044,13 +6090,13 @@ RandomForest Accuracy with Top 20 Features 30/70: 0.9252254873436137</code></pre
 <span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
 <span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> tree.DecisionTreeClassifier()</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> RandomForestClassifier()</span>
 <span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
 <span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
 <span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
 <span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
 <span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
 <span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
 <span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
@@ -6061,116 +6107,227 @@ RandomForest Accuracy with Top 20 Features 30/70: 0.9252254873436137</code></pre
 <span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
 <span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model with the accuracy score using Top 10 Features</span></span>
 <span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>accuracy_score_filtered <span class="op">=</span> accuracy_score(y_test, y_pred_filtered)</span>
-<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;DecisionTreeClassifier Accuracy with Top 20 Features 30/70:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;RandomForest Accuracy with Top 20 Features 30/70:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.87      0.87      0.87      2621
-           1       0.92      0.92      0.92      4253
+           0       0.89      0.90      0.90      2575
+           1       0.94      0.93      0.94      4299
+
+    accuracy                           0.92      6874
+   macro avg       0.92      0.92      0.92      6874
+weighted avg       0.92      0.92      0.92      6874
+
+RandomForest Accuracy with Top 20 Features 30/70: 0.9231888274658132</code></pre>
+</div>
+</div>
+<div id="eedce3ee" class="cell" data-execution_count="31">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">20</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> tree.DecisionTreeClassifier()</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model with the accuracy score using Top 10 Features</span></span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a>accuracy_score_filtered <span class="op">=</span> accuracy_score(y_test, y_pred_filtered)</span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;DecisionTreeClassifier Accuracy with Top 20 Features 30/70:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              precision    recall  f1-score   support
+
+           0       0.87      0.86      0.86      2642
+           1       0.91      0.92      0.92      4232
 
     accuracy                           0.90      6874
    macro avg       0.89      0.89      0.89      6874
 weighted avg       0.90      0.90      0.90      6874
 
-DecisionTreeClassifier Accuracy with Top 20 Features 30/70: 0.894239162059936</code></pre>
+DecisionTreeClassifier Accuracy with Top 20 Features 30/70: 0.895984870526622</code></pre>
 </div>
 </div>
-<p><em>For this set I am using the 80/20 test and with this the accuracy went back up reaching 92.45% this dropped to 92.34% When using only the top 10 and up to 92.77 if I used the top 20 for the random Tree algorithm which is the highest of all the tests so far.</em></p>
-<div id="0d946df9" class="cell" data-execution_count="31">
+<div id="f1afee20" class="cell" data-execution_count="32">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.2</span>, random_state <span class="op">=</span> <span class="dv">80</span>)</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct the syntax for dropping columns and selecting the target variable</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> dwellings_ml.drop([<span class="st">&#39;before1980&#39;</span>, <span class="st">&#39;yrbuilt&#39;</span>, <span class="st">&#39;parcel&#39;</span>], axis<span class="op">=</span><span class="dv">1</span>) <span class="co"># Assuming you want to drop these columns</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> dwellings_ml[<span class="st">&#39;before1980&#39;</span>] <span class="co"># Correct way to select the target variable</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and testing sets</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">70</span>)</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the XGBClassifier model</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>xgb_model <span class="op">=</span> XGBClassifier(objective<span class="op">=</span><span class="st">&#39;binary:logistic&#39;</span>, n_estimators<span class="op">=</span><span class="dv">500</span>, learning_rate<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">43</span>)</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>xgb_model.fit(X_train, y_train)</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Predictions</span></span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> xgb_model.predict(X_test)</span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluation</span></span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>conf_matrix <span class="op">=</span> confusion_matrix(y_test, y_pred)</span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Confusion Matrix:&quot;</span>) </span>
+<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(conf_matrix)</span>
+<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;XGboost Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix:
+[[2345  259]
+ [ 241 4029]]
+XGboost Accuracy: 0.927262147221414</code></pre>
+</div>
+</div>
+<p><em>For this set I am using the 80/20 test and with this the accuracy went back up. The highest was XGboost reaching 93.1% accuracy. </em></p>
+<div id="36cc84cc" class="cell" data-execution_count="33">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&quot;before1980&quot;</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    X_pred, y_pred, test_size <span class="op">=</span> <span class="fl">.2</span>, random_state <span class="op">=</span> <span class="dv">80</span>)</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="736dbcab" class="cell" data-execution_count="32">
+<div id="08402aa8" class="cell" data-execution_count="34">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">20</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> RandomForestClassifier()</span>
-<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
-<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
-<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
-<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
-<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
-<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
-<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
-<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
-<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
-<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
-<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
-<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
-<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model with the accuracy score using Top 10 Features</span></span>
-<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>accuracy_score_filtered <span class="op">=</span> accuracy_score(y_test, y_pred_filtered)</span>
-<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;RandomForest Accuracy with Top 20 Features 20/80:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">20</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> RandomForestClassifier()</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model with the accuracy score using Top 10 Features</span></span>
+<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a>accuracy_score_filtered <span class="op">=</span> accuracy_score(y_test, y_pred_filtered)</span>
+<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;RandomForest Accuracy with Top 20 Features 20/80:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.91      0.89      0.90      1733
-           1       0.93      0.94      0.94      2850
+           0       0.90      0.90      0.90      1714
+           1       0.94      0.94      0.94      2869
 
     accuracy                           0.92      4583
    macro avg       0.92      0.92      0.92      4583
 weighted avg       0.92      0.92      0.92      4583
 
-RandomForest Accuracy with Top 20 Features 20/80: 0.9253763910102553</code></pre>
+RandomForest Accuracy with Top 20 Features 20/80: 0.9266855771328824</code></pre>
 </div>
 </div>
-<div id="2fccf94e" class="cell" data-execution_count="33">
+<div id="32847b25" class="cell" data-execution_count="35">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">20</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> tree.DecisionTreeClassifier()</span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
-<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
-<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
-<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
-<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
-<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
-<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
-<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
-<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
-<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
-<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
-<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model with the accuracy score using Top 10 Features</span></span>
-<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a>accuracy_score_filtered <span class="op">=</span> accuracy_score(y_test, y_pred_filtered)</span>
-<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;DecisionTreeClassifier Accuracy with Top 20 Features 20/80:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">20</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, filter X_train and X_test to include only the top 10 features</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>X_train_filtered <span class="op">=</span> X_train[top_20_features]</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>X_test_filtered <span class="op">=</span> X_test[top_20_features]</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Training your model using these filtered datasets</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> tree.DecisionTreeClassifier()</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>clf_filtered <span class="op">=</span> clf_filtered.fit(X_train_filtered, y_train.values.ravel())  <span class="co"># .values.ravel() to convert y_train to 1D array if needed</span></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Making predictions with the test set filtered to top 10 features</span></span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>y_pred_filtered <span class="op">=</span> clf_filtered.predict(X_test_filtered)</span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier() <span class="co">#Rand Forest is similar, try it. </span></span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a><span class="co">#linear regression, </span></span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit: fit the model to said data</span></span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a>y_probs <span class="op">=</span> clf.predict_proba(X_test)</span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a><span class="co"># %% this is the y_pred and y_probes from cell above</span></span>
+<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred, y_test))</span>
+<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, y_pred)</span>
+<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model with the accuracy score using Top 10 Features</span></span>
+<span id="cb52-25"><a href="#cb52-25" aria-hidden="true" tabindex="-1"></a>accuracy_score_filtered <span class="op">=</span> accuracy_score(y_test, y_pred_filtered)</span>
+<span id="cb52-26"><a href="#cb52-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;DecisionTreeClassifier Accuracy with Top 20 Features 20/80:&quot;</span>, accuracy_score_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.88      0.86      0.87      1749
-           1       0.91      0.93      0.92      2834
+           0       0.88      0.86      0.87      1742
+           1       0.91      0.93      0.92      2841
 
     accuracy                           0.90      4583
-   macro avg       0.90      0.89      0.90      4583
+   macro avg       0.90      0.89      0.89      4583
 weighted avg       0.90      0.90      0.90      4583
 
 DecisionTreeClassifier Accuracy with Top 20 Features 20/80: 0.8985380754963997</code></pre>
+</div>
+</div>
+<div id="17fb95e9" class="cell" data-execution_count="36">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct the syntax for dropping columns and selecting the target variable</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> dwellings_ml.drop([<span class="st">&#39;before1980&#39;</span>, <span class="st">&#39;yrbuilt&#39;</span>, <span class="st">&#39;parcel&#39;</span>], axis<span class="op">=</span><span class="dv">1</span>) <span class="co"># Assuming you want to drop these columns</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> dwellings_ml[<span class="st">&#39;before1980&#39;</span>] <span class="co"># Correct way to select the target variable</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and testing sets</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">80</span>)</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the XGBClassifier model</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>xgb_model <span class="op">=</span> XGBClassifier(objective<span class="op">=</span><span class="st">&#39;binary:logistic&#39;</span>, n_estimators<span class="op">=</span><span class="dv">500</span>, learning_rate<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">43</span>)</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>xgb_model.fit(X_train, y_train)</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Predictions</span></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> xgb_model.predict(X_test)</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluation</span></span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a>conf_matrix <span class="op">=</span> confusion_matrix(y_test, y_pred)</span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Confusion Matrix:&quot;</span>) </span>
+<span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(conf_matrix)</span>
+<span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;XGboost Accuracy 20/80: </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix:
+[[1557  150]
+ [ 165 2711]]
+XGboost Accuracy 20/80: 0.9312677285620773</code></pre>
 </div>
 </div>
 </section>
@@ -6178,27 +6335,27 @@ DecisionTreeClassifier Accuracy with Top 20 Features 20/80: 0.8985380754963997</
 <h2 class="anchored" data-anchor-id="questiontask-3">QUESTION|TASK 3</h2>
 <p><strong>Justify your classification model by discussing the most important features selected by your model. This discussion should include a chart and a description of the features.</strong></p>
 <p><em>This Chart shows the top 20 features I selected. The reason Why these were selected were by the % influence they had on the learning model. Everything after status_I was under a % influence and would start to negativly impact the % accuracy of the models. </em></p>
-<div id="cell-Q3" class="cell" data-execution_count="34">
+<div id="cell-Q3" class="cell" data-execution_count="37">
 <details class="code-fold">
 <summary>Read and format data</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> px.bar(df_features.head(<span class="dv">20</span>), <span class="co">#You can change this 10 based on top features you want to see.</span></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">&#39;f_values&#39;</span>, </span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">&#39;f_names&#39;</span></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>chart.update_layout(yaxis<span class="op">=</span>{<span class="st">&#39;categoryorder&#39;</span>:<span class="st">&#39;total ascending&#39;</span>})</span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 0-1 is based on % 1 is 100% </span></span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="co"># f(x) = y (y is target, does not change here)</span></span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a><span class="co"># f is algorithm, Try 4</span></span>
-<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a><span class="co"># (x) is features </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> px.bar(df_features.head(<span class="dv">20</span>), <span class="co">#You can change this 10 based on top features you want to see.</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">&#39;f_values&#39;</span>, </span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">&#39;f_names&#39;</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>chart.update_layout(yaxis<span class="op">=</span>{<span class="st">&#39;categoryorder&#39;</span>:<span class="st">&#39;total ascending&#39;</span>})</span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 0-1 is based on % 1 is 100% </span></span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="co"># f(x) = y (y is target, does not change here)</span></span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="co"># f is algorithm, Try 4</span></span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="co"># (x) is features </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div id="q3" class="cell-output cell-output-display">
-<div>                            <div id="e7f2ffcc-1e88-49b8-8ea5-278e47cb7b92" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("e7f2ffcc-1e88-49b8-8ea5-278e47cb7b92")) {                    Plotly.newPlot(                        "e7f2ffcc-1e88-49b8-8ea5-278e47cb7b92",                        [{"alignmentgroup":"True","hovertemplate":"f_values=%{x}\u003cbr\u003ef_names=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"h","showlegend":false,"textposition":"auto","x":[0.24506835948382888,0.1217818138431017,0.11599897463732718,0.10253264031031266,0.04319079818079304,0.039224775822363694,0.03867082172285036,0.03645463259286209,0.025790276140511638,0.02417829968676249,0.023446262921397645,0.021261014532762124,0.020887679418760283,0.020018114508672524,0.019841845862426582,0.019718971558617418,0.015008781850796005,0.01465280603956221,0.01061287898342527,0.008321424426856704],"xaxis":"x","y":["arcstyle_ONE-STORY","gartype_Att","quality_C","livearea","basement","sprice","stories","tasp","abstrprd","finbsmnt","status_V","numbaths","nocars","numbdrm","netprice","smonth","condition_AVG","deduct","arcstyle_ONE AND HALF-STORY","syear"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"f_values"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"f_names"},"categoryorder":"total ascending"},"legend":{"tracegroupgap":0},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
+<div>                            <div id="2c50084e-baaa-4343-828e-bb040a00e34d" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("2c50084e-baaa-4343-828e-bb040a00e34d")) {                    Plotly.newPlot(                        "2c50084e-baaa-4343-828e-bb040a00e34d",                        [{"alignmentgroup":"True","hovertemplate":"f_values=%{x}\u003cbr\u003ef_names=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"h","showlegend":false,"textposition":"auto","x":[0.2450683594838289,0.12178181384310172,0.11666197082942122,0.10337021852365111,0.04507548570742113,0.042509759762280205,0.03832398505423172,0.030442536033950814,0.02645019139353926,0.026024726946520582,0.024346932047041775,0.02204103778063099,0.020860965287499044,0.020727630774055875,0.020310956058791386,0.01697776367688757,0.0158494446742853,0.014953780900460527,0.010612878983425271,0.007985835577325153],"xaxis":"x","y":["arcstyle_ONE-STORY","gartype_Att","quality_C","livearea","sprice","basement","stories","tasp","abstrprd","status_I","netprice","finbsmnt","numbaths","numbdrm","nocars","smonth","condition_AVG","deduct","arcstyle_ONE AND HALF-STORY","syear"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"f_values"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"f_names"},"categoryorder":"total ascending"},"legend":{"tracegroupgap":0},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('e7f2ffcc-1e88-49b8-8ea5-278e47cb7b92');
+var gd = document.getElementById('2c50084e-baaa-4343-828e-bb040a00e34d');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
