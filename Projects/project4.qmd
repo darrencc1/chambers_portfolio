@@ -69,9 +69,9 @@ _Looking at Random Forest, Decision Tree and XGboost the highest accuracy rate w
 #| label: project data
 #| code-summary: Read and format project data
 # Include and execute your code here
-df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv")
 
-dwellings_ml = pd.read_csv('https://github.com/byuidatascience/data4dwellings/raw/master/data-raw/dwellings_ml/dwellings_ml.csv')
+
+df = pd.read_csv('https://github.com/byuidatascience/data4dwellings/raw/master/data-raw/dwellings_ml/dwellings_ml.csv')
 
 df2 = pd.read_csv("https://raw.githubusercontent.com/byuidatascience/data4dwellings/master/data-raw/dwellings_neighborhoods_ml/dwellings_neighborhoods_ml.csv")
 dwellings_ml.head()
@@ -487,17 +487,27 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f'XGboost Accuracy 20/80: {accuracy}')
 ```
 
+
+
+
+
+
+
+
+
+
+
 _Here I joined two data sets, the Neighborhood dwellings and dwellings ml._
 
 ```{python}
-df.join(df2, lsuffix="parcel", rsuffix="parcel")
+join = df.join(df2, lsuffix="parcel", rsuffix="parcel")
 # print("This is the joined dataframe of Neighborhood dwellings and dwellings ml. ")
 ```
 
 ```{python}
 
-X_pred = dwellings_ml.drop(dwellings_ml.filter(regex = 'before1980|yrbuilt|parcel').columns, axis = 1)
-y_pred = dwellings_ml.filter(regex = "before1980")
+X_pred = join.drop(join.filter(regex = 'parcelparcel|parce|yrbuilt|before1980').columns, axis = 1)
+y_pred = join.filter(regex = "before1980")
 X_train, X_test, y_train, y_test = train_test_split(
     X_pred, y_pred, test_size = .34, random_state = 66)
 
@@ -507,8 +517,33 @@ X_train, X_test, y_train, y_test = train_test_split(
 ```
 
 ```{python}
-# Assuming df_features is already created and sorted by feature importance
-top_20_features = df_features.head(100)['f_names'].tolist()
+
+# # clf is a classifier.
+clf = tree.DecisionTreeClassifier() #Rand Forest is similar, try it. 
+# #linear regression, 
+# clf = RandomForestClassifier()
+clf = clf.fit(X_train, y_train)
+# Fit: fit the model to said data
+y_pred = clf.predict(X_test)
+y_probs = clf.predict_proba(X_test)
+
+# XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)
+
+
+
+```
+
+
+
+
+```{python}
+df_features = pd.DataFrame(
+    {'f_names': X_train.columns, 
+    'f_values': clf.feature_importances_}).sort_values('f_values', ascending = False)
+```
+
+```{python}
+top_20_features = df_features.head(110)['f_names'].tolist()
 
 # Now, filter X_train and X_test to include only the top 10 features
 X_train_filtered = X_train[top_20_features]
@@ -536,8 +571,25 @@ print("RandomForest Accuracy with Top 20 Features 34/66:", accuracy_score_filter
 ```
 
 ```{python}
-# Assuming df_features is already created and sorted by feature importance
-top_20_features = df_features.head(20)['f_names'].tolist()
+#%%
+chart = px.bar(df_features.head(20), #You can change this 10 based on top features you want to see.
+    x='f_values', 
+    y='f_names'
+)
+
+chart.update_layout(yaxis={'categoryorder':'total ascending'})
+# 0-1 is based on % 1 is 100% 
+# f(x) = y (y is target, does not change here)
+# f is algorithm, Try 4
+# (x) is features 
+```
+
+
+
+
+```{python}
+# top_20_features = df_features.head(150)['f_names'].tolist()
+#For XGboost using all of the data produces a better result
 
 # Now, filter X_train and X_test to include only the top 10 features
 X_train_filtered = X_train[top_20_features]
@@ -550,7 +602,7 @@ clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel())  # .va
 # Making predictions with the test set filtered to top 10 features
 y_pred_filtered = clf_filtered.predict(X_test_filtered)
 
-clf = tree.DecisionTreeClassifier() #Rand Forest is similar, try it. 
+clf = tree.DecisionTreeClassifier()#Rand Forest is similar, try it. 
 #linear regression, 
 clf = clf.fit(X_train, y_train)
 # Fit: fit the model to said data
@@ -561,15 +613,17 @@ print(metrics.classification_report(y_pred, y_test))
 accuracy_score(y_test, y_pred)
 # Evaluating the model with the accuracy score using Top 10 Features
 accuracy_score_filtered = accuracy_score(y_test, y_pred_filtered)
-print("DecisionTreeClassifier Accuracy with Top 20 Features 34/66:", accuracy_score_filtered)
+print("Decision Tree Accuracy with Top 110 Features in Joined Data 34/66:", accuracy_score_filtered)
 ```
 
 
 
 ```{python}
+
 # Correct the syntax for dropping columns and selecting the target variable
-X = dwellings_ml.drop(['before1980', 'yrbuilt', 'parcel'], axis=1) # Assuming you want to drop these columns
-y = dwellings_ml['before1980'] # Correct way to select the target variable
+X = join.drop(join.filter(regex = 'parcelparcel|parce|yrbuilt|before1980').columns, axis = 1)
+y = join.filter(regex = "before1980") # Assuming you want to drop these columns
+# Correct way to select the target variable
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.34, random_state=66)
@@ -590,49 +644,26 @@ print("This matrix shows the true positive, false positive, true negative, and f
 print("Confusion Matrix:") 
 print(conf_matrix)
 accuracy = accuracy_score(y_test, y_pred)
-print(f'XGboost Accuracy 34/66: {accuracy}')
-```
-
-```{python}
-X = dwellings_ml.drop(['before1980', 'yrbuilt', 'parcel'], axis=1) # Assuming you want to drop these columns
-y = dwellings_ml['before1980'] # Correct way to select the target variable
-
-# Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.34, random_state=64)
-
-# Initialize the XGBClassifier model
-xgb_model = XGBClassifier(objective='binary:logistic', n_estimators=500, learning_rate=0.3, random_state=43)
-
-# Fit the model
-xgb_model.fit(X_train, y_train)
-
-# Predictions
-y_pred = xgb_model.predict(X_test)
-
-# Evaluation
-
-conf_matrix = confusion_matrix(y_test, y_pred)
-print("This matrix shows the true positive, false positive, true negative, and false negative predictions.")
-print("Confusion Matrix:") 
-print(conf_matrix)
-accuracy = accuracy_score(y_test, y_pred)
-print(f'XGboost Accuracy 34/66: {accuracy}')
+print(f'XGboost Accuracy with Joined Data Frame 34/66: {accuracy}')
 ```
 
 
 _This next set of data shows how changing the test from 34|66 to 30|70 affected the accuracy. In most cases the accuracy dropped however, I noticed there were times where the Random Forest actually went slightly higher. _
 
 ```{python}
-X_pred = dwellings_ml.drop(dwellings_ml.filter(regex = 'before1980|yrbuilt|parcel').columns, axis = 1)
-y_pred = dwellings_ml.filter(regex = "before1980")
+
+X_pred = join.drop(join.filter(regex = 'parcelparcel|parce|yrbuilt|before1980').columns, axis = 1)
+y_pred = join.filter(regex = "before1980")
 X_train, X_test, y_train, y_test = train_test_split(
     X_pred, y_pred, test_size = .30, random_state = 70)
+
+    # Extract the top 10 feature names
+
     #70, .30, 66, .34, 80,.20
 ```
 
 ```{python}
-# Assuming df_features is already created and sorted by feature importance
-top_20_features = df_features.head(20)['f_names'].tolist()
+top_20_features = df_features.head(110)['f_names'].tolist()
 
 # Now, filter X_train and X_test to include only the top 10 features
 X_train_filtered = X_train[top_20_features]
@@ -656,13 +687,17 @@ print(metrics.classification_report(y_pred, y_test))
 accuracy_score(y_test, y_pred)
 # Evaluating the model with the accuracy score using Top 10 Features
 accuracy_score_filtered = accuracy_score(y_test, y_pred_filtered)
-print("RandomForest Accuracy with Top 20 Features 30/70:", accuracy_score_filtered)
+print("RandomForest Accuracy with Top 20 Features 34/66:", accuracy_score_filtered)
 ```
 
 
+
+
+
+
 ```{python}
-# Assuming df_features is already created and sorted by feature importance
-top_20_features = df_features.head(20)['f_names'].tolist()
+# top_20_features = df_features.head(150)['f_names'].tolist()
+#For XGboost using all of the data produces a better result
 
 # Now, filter X_train and X_test to include only the top 10 features
 X_train_filtered = X_train[top_20_features]
@@ -675,7 +710,7 @@ clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel())  # .va
 # Making predictions with the test set filtered to top 10 features
 y_pred_filtered = clf_filtered.predict(X_test_filtered)
 
-clf = tree.DecisionTreeClassifier() #Rand Forest is similar, try it. 
+clf = tree.DecisionTreeClassifier()#Rand Forest is similar, try it. 
 #linear regression, 
 clf = clf.fit(X_train, y_train)
 # Fit: fit the model to said data
@@ -686,19 +721,23 @@ print(metrics.classification_report(y_pred, y_test))
 accuracy_score(y_test, y_pred)
 # Evaluating the model with the accuracy score using Top 10 Features
 accuracy_score_filtered = accuracy_score(y_test, y_pred_filtered)
-print("DecisionTreeClassifier Accuracy with Top 20 Features 30/70:", accuracy_score_filtered)
+print("Decision Tree Accuracy with Top 110 Features in Joined Data 30/70:", accuracy_score_filtered)
 ```
 
+
+
 ```{python}
+
 # Correct the syntax for dropping columns and selecting the target variable
-X = dwellings_ml.drop(['before1980', 'yrbuilt', 'parcel'], axis=1) # Assuming you want to drop these columns
-y = dwellings_ml['before1980'] # Correct way to select the target variable
+X = join.drop(join.filter(regex = 'parcelparcel|parce|yrbuilt|before1980').columns, axis = 1)
+y = join.filter(regex = "before1980") # Assuming you want to drop these columns
+# Correct way to select the target variable
 
 # Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=70)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=70)
 
 # Initialize the XGBClassifier model
-xgb_model = XGBClassifier(objective='binary:logistic', n_estimators=500, learning_rate=0.3, random_state=43)
+xgb_model = XGBClassifier(objective='binary:logistic', n_estimators=500, learning_rate=0.30, random_state=70)
 
 # Fit the model
 xgb_model.fit(X_train, y_train)
@@ -707,12 +746,13 @@ xgb_model.fit(X_train, y_train)
 y_pred = xgb_model.predict(X_test)
 
 # Evaluation
-conf_matrix = confusion_matrix(y_test, y_pred)
 
+conf_matrix = confusion_matrix(y_test, y_pred)
+print("This matrix shows the true positive, false positive, true negative, and false negative predictions.")
 print("Confusion Matrix:") 
 print(conf_matrix)
 accuracy = accuracy_score(y_test, y_pred)
-print(f'XGboost Accuracy: {accuracy}')
+print(f'XGboost Accuracy with Joined Data Frame 30/70: {accuracy}')
 ```
 
 
@@ -721,16 +761,19 @@ print(f'XGboost Accuracy: {accuracy}')
 _For this set I am using the 80/20 test and with this the accuracy went back up. The highest was XGboost reaching 93.1% accuracy. _
 
 ```{python}
-X_pred = dwellings_ml.drop(dwellings_ml.filter(regex = 'before1980|yrbuilt|parcel').columns, axis = 1)
-y_pred = dwellings_ml.filter(regex = "before1980")
+
+X_pred = join.drop(join.filter(regex = 'parcelparcel|parce|yrbuilt|before1980').columns, axis = 1)
+y_pred = join.filter(regex = "before1980")
 X_train, X_test, y_train, y_test = train_test_split(
-    X_pred, y_pred, test_size = .2, random_state = 80)
+    X_pred, y_pred, test_size = .20, random_state = 80)
+
+    # Extract the top 10 feature names
+
     #70, .30, 66, .34, 80,.20
 ```
 
 ```{python}
-# Assuming df_features is already created and sorted by feature importance
-top_20_features = df_features.head(20)['f_names'].tolist()
+top_20_features = df_features.head(110)['f_names'].tolist()
 
 # Now, filter X_train and X_test to include only the top 10 features
 X_train_filtered = X_train[top_20_features]
@@ -757,9 +800,14 @@ accuracy_score_filtered = accuracy_score(y_test, y_pred_filtered)
 print("RandomForest Accuracy with Top 20 Features 20/80:", accuracy_score_filtered)
 ```
 
+
+
+
+
+
 ```{python}
-# Assuming df_features is already created and sorted by feature importance
-top_20_features = df_features.head(20)['f_names'].tolist()
+# top_20_features = df_features.head(150)['f_names'].tolist()
+#For XGboost using all of the data produces a better result
 
 # Now, filter X_train and X_test to include only the top 10 features
 X_train_filtered = X_train[top_20_features]
@@ -772,7 +820,7 @@ clf_filtered = clf_filtered.fit(X_train_filtered, y_train.values.ravel())  # .va
 # Making predictions with the test set filtered to top 10 features
 y_pred_filtered = clf_filtered.predict(X_test_filtered)
 
-clf = tree.DecisionTreeClassifier() #Rand Forest is similar, try it. 
+clf = tree.DecisionTreeClassifier()#Rand Forest is similar, try it. 
 #linear regression, 
 clf = clf.fit(X_train, y_train)
 # Fit: fit the model to said data
@@ -783,19 +831,23 @@ print(metrics.classification_report(y_pred, y_test))
 accuracy_score(y_test, y_pred)
 # Evaluating the model with the accuracy score using Top 10 Features
 accuracy_score_filtered = accuracy_score(y_test, y_pred_filtered)
-print("DecisionTreeClassifier Accuracy with Top 20 Features 20/80:", accuracy_score_filtered)
+print("Decision Tree Accuracy with Top 110 Features in Joined Data 20/80:", accuracy_score_filtered)
 ```
 
+
+
 ```{python}
+
 # Correct the syntax for dropping columns and selecting the target variable
-X = dwellings_ml.drop(['before1980', 'yrbuilt', 'parcel'], axis=1) # Assuming you want to drop these columns
-y = dwellings_ml['before1980'] # Correct way to select the target variable
+X = join.drop(join.filter(regex = 'parcelparcel|parce|yrbuilt|before1980').columns, axis = 1)
+y = join.filter(regex = "before1980") # Assuming you want to drop these columns
+# Correct way to select the target variable
 
 # Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=80)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=80)
 
 # Initialize the XGBClassifier model
-xgb_model = XGBClassifier(objective='binary:logistic', n_estimators=500, learning_rate=0.3, random_state=43)
+xgb_model = XGBClassifier(objective='binary:logistic', n_estimators=500, learning_rate=0.20, random_state=80)
 
 # Fit the model
 xgb_model.fit(X_train, y_train)
@@ -804,12 +856,13 @@ xgb_model.fit(X_train, y_train)
 y_pred = xgb_model.predict(X_test)
 
 # Evaluation
-conf_matrix = confusion_matrix(y_test, y_pred)
 
+conf_matrix = confusion_matrix(y_test, y_pred)
+print("This matrix shows the true positive, false positive, true negative, and false negative predictions.")
 print("Confusion Matrix:") 
 print(conf_matrix)
 accuracy = accuracy_score(y_test, y_pred)
-print(f'XGboost Accuracy 20/80: {accuracy}')
+print(f'XGboost Accuracy with Joined Data Frame 20/80: {accuracy}')
 ```
 
 
@@ -818,7 +871,65 @@ print(f'XGboost Accuracy 20/80: {accuracy}')
 
 __Justify your classification model by discussing the most important features selected by your model. This discussion should include a chart and a description of the features.__
 
-_This Chart shows the top 20 features I selected. The reason Why these were selected were by the % influence they had on the learning model. Everything after status_I was under a % influence and would start to negativly impact the % accuracy of the models._
+_This Chart shows the features in order of percent influence on learning model. This is with the joined Data frame and XGboost. One Story Houses had the largest influence by over 15%. After this each features drops in importance to well below 1 percent. However, with XGboost I found that using all of the features produced the best result._
+
+```{python}
+X_pred = join.drop(join.filter(regex = 'parcelparcel|parce|yrbuilt|before1980').columns, axis = 1)
+y_pred = join.filter(regex = "before1980")
+X_train, X_test, y_train, y_test = train_test_split(
+    X_pred, y_pred, test_size = .20, random_state = 80)
+
+    # Extract the top 10 feature names
+
+    #70, .30, 66, .34, 80,.20
+```
+
+```{python}
+
+# Correct the syntax for dropping columns and selecting the target variable
+X = join.drop(join.filter(regex = 'parcelparcel|parce|yrbuilt|before1980').columns, axis = 1)
+y = join.filter(regex = "before1980") # Assuming you want to drop these columns
+# Correct way to select the target variable
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=80)
+
+# Initialize the XGBClassifier model
+xgb_model = XGBClassifier(objective='binary:logistic', n_estimators=500, learning_rate=0.20, random_state=80)
+
+# Fit the model
+xgb_model.fit(X_train, y_train)
+
+# Predictions
+y_pred = xgb_model.predict(X_test)
+```
+
+```{python}
+
+# # clf is a classifier.
+clf = XGBClassifier() #Rand Forest is similar, try it. 
+# #linear regression, 
+# clf = RandomForestClassifier()
+clf = clf.fit(X_train, y_train)
+# Fit: fit the model to said data
+y_pred = clf.predict(X_test)
+y_probs = clf.predict_proba(X_test)
+
+# XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)
+
+
+
+```
+
+
+
+
+```{python}
+df_features = pd.DataFrame(
+    {'f_names': X_train.columns, 
+    'f_values': clf.feature_importances_}).sort_values('f_values', ascending = False)
+```
+
 
 ```{python}
 #| label: Q3
@@ -826,7 +937,7 @@ _This Chart shows the top 20 features I selected. The reason Why these were sele
 # Include and execute your code here
 
 #%%
-chart = px.bar(df_features.head(20), #You can change this 10 based on top features you want to see.
+chart = px.bar(df_features.head(25), #You can change this 10 based on top features you want to see.
     x='f_values', 
     y='f_names'
 )
@@ -841,3 +952,6 @@ chart.update_layout(yaxis={'categoryorder':'total ascending'})
 
 ## Question|Task 4
 __Describe the quality of your classification model using 2-3 different evaluation metrics. You also need to explain how to interpret each of the evaluation metrics you use.__
+
+True positive, false Positive explain and what they mean
+One is precision on is recall. 
