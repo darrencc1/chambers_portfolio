@@ -68,28 +68,6 @@ result = pd.read_sql_query(q, con)
 print(result)
 ```
 
-```{python}
-# sqlite_file = 'lahmansbaseballdb.sqlite'
-# con = sqlite3.connect(sqlite_file)
-
-# q = 'SELECT * FROM allstarfull LIMIT 5'
-# results = pd.read_sql_query(q,con)
-
-# results
-```
-
-```{python}
-# Use pandas to read the SQL query into a DataFrame
-# df = pd.read_sql_query(q, con)
-
-# # Close the SQLite database connection
-# #con.close()
-
-# # Print the DataFrame
-# print(df)
-```
-
-
 
 ## QUESTION|TASK 2
 
@@ -193,7 +171,7 @@ print(result)
 ```
 
 _These First Chart shown is the top 10 teams with highest total player pay over ten years and their average player salaries. The Second Chart is those same teams Average % Home Runs. When comparing these charts we see that the New York Yankies pay the most as well as have a 2% higher Home Run Average. 
-However, the other top 8 teams are within 1.3% of each other and pay does not seem to affect their results significantly. Example is that Boston (BOS) has payed about 500 million more than the Chicogo White Socks (CHA) Yet BOS is in 5th place and CHA is in 2nd for Average Home Runs. A million dollar difference in average player salary between the two and BOS is .52% below on Home Runs.   _ 
+However, the other top 8 teams are within 1.3% of each other in homeruns and pay does not seem to affect their results significantly in this area. Example is that Boston (BOS) has payed about 500 million more than the Chicogo White Socks (CHA) Yet BOS is in 5th place and CHA is in 2nd for Average Home Runs. A million dollar difference in average player salary between the two and BOS is .52% below on Home Runs.   _ 
 
 ```{python}
 q = '''SELECT teamID, 

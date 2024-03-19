@@ -818,7 +818,7 @@ print(f'XGboost Accuracy 20/80: {accuracy}')
 
 __Justify your classification model by discussing the most important features selected by your model. This discussion should include a chart and a description of the features.__
 
-_This Chart shows the top 20 features I selected. The reason Why these were selected were by the % influence they had on the learning model. Everything after status_I was under a % influence and would start to negativly impact the % accuracy of the models. _
+_This Chart shows the top 20 features I selected. The reason Why these were selected were by the % influence they had on the learning model. Everything after status_I was under a % influence and would start to negativly impact the % accuracy of the models._
 
 ```{python}
 #| label: Q3
