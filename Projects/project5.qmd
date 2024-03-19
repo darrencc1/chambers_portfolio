@@ -41,10 +41,10 @@ _A SHORT (4-5 SENTENCES) PARAGRAPH THAT `DESCRIBES KEY INSIGHTS` TAKEN FROM METR
 
 ```{python}
 
-url = pd.read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/star-wars-survey/StarWars.csv", encoding="ISO-8859-1", engine="python", nrows = 1).melt
+url = pd.read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/star-wars-survey/StarWars.csv", encoding="ISO-8859-1") #, engine="python", nrows = 1).melt
 #I was getting an encoding error so I specified the encoding, default is uaually UTF-8 but this data uses ISO-8859-1.
-star_wars = df
-print(star_wars)
+
+# print(star_wars)
 ```
 
 __Highlight the Questions and Tasks__
@@ -59,17 +59,17 @@ _type your results and analysis here_
 #Shorten the Column Names. 
 #USE regex not this manual input, This is 
 
-column_mapping = {"RespondentID" : "ID",
-"Have you seen any of the 6 films in the Star Wars franchise?" : "watch_film",
-"Some college or Associate degree" : "college",
-"Do you consider yourself to be a fan of the Star Wars film franchise?" : ""
-}
+# column_mapping = {"RespondentID" : "ID",
+# "Have you seen any of the 6 films in the Star Wars franchise?" : "watch_film",
+# "Some college or Associate degree" : "college",
+# "Do you consider yourself to be a fan of the Star Wars film franchise?" : ""
+# }
 
-# Rename columns
-star_wars_short = df.rename(columns=column_mapping, inplace=True)
+# # Rename columns
+# star_wars_short = df.rename(columns=column_mapping, inplace=True)
 
-# Save the modified DataFrame
-df.to_csv("shortened_columns.csv", index=False)
+# # Save the modified DataFrame
+# df.to_csv("shortened_columns.csv", index=False)
 
 
 
@@ -89,14 +89,14 @@ _include figures in chunks and discuss your findings in the figure._
 #| tbl-cap: "Not much of a table"
 #| tbl-cap-location: top
 # Include and execute your code here
-mydat = df.head(1000)\
-    .groupby('year')\
-    .sum()\
-    .reset_index()\
-    .tail(10)\
-    .filter(["year", "AK","AR"])
+# mydat = df.head(1000)\
+#     .groupby('year')\
+#     .sum()\
+#     .reset_index()\
+#     .tail(10)\
+#     .filter(["year", "AK","AR"])
 
-display(mydat)
+# display(mydat)
 
 ```
 
@@ -129,11 +129,11 @@ _include figures in chunks and discuss your findings in the figure._
 #| fig-cap: "My useless chart"
 #| fig-align: center
 # Include and execute your code here
-chart = px.bar(df.head(200),
-    x="name", 
-    y="AK"
-)
-chart.show()
+# chart = px.bar(df.head(200),
+#     x="name", 
+#     y="AK"
+# )
+# chart.show()
 ```
 
 
@@ -143,14 +143,14 @@ chart.show()
 #| tbl-cap: "Not much of a table"
 #| tbl-cap-location: top
 # Include and execute your code here
-mydat = df.head(1000)\
-    .groupby('year')\
-    .sum()\
-    .reset_index()\
-    .tail(10)\
-    .filter(["year", "AK","AR"])
+# mydat = df.head(1000)\
+#     .groupby('year')\
+#     .sum()\
+#     .reset_index()\
+#     .tail(10)\
+#     .filter(["year", "AK","AR"])
 
-display(mydat)
+# display(mydat)
 
 ```
 
@@ -177,11 +177,11 @@ _include figures in chunks and discuss your findings in the figure._
 #| fig-cap: "My useless chart"
 #| fig-align: center
 # Include and execute your code here
-chart = px.bar(df.head(200),
-    x="name", 
-    y="AK"
-)
-chart.show()
+# chart = px.bar(df.head(200),
+#     x="name", 
+#     y="AK"
+# )
+# chart.show()
 ```
 
 
@@ -191,14 +191,14 @@ chart.show()
 #| tbl-cap: "Not much of a table"
 #| tbl-cap-location: top
 # Include and execute your code here
-mydat = df.head(1000)\
-    .groupby('year')\
-    .sum()\
-    .reset_index()\
-    .tail(10)\
-    .filter(["year", "AK","AR"])
+# mydat = df.head(1000)\
+#     .groupby('year')\
+#     .sum()\
+#     .reset_index()\
+#     .tail(10)\
+#     .filter(["year", "AK","AR"])
 
-display(mydat)
+# display(mydat)
 
 ```
 
