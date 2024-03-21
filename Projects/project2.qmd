@@ -43,13 +43,17 @@ _A SHORT (4-5 SENTENCES) PARAGRAPH THAT `DESCRIBES KEY INSIGHTS` TAKEN FROM METR
 #| label: project data
 #| code-summary: Read and format project data
 # Include and execute your code here
-df = pd.read_csv("https://raw.githubusercontent.com/byuidatascience/data4missing/master/data-raw/flights_missing/flights_missing.json")
-flight_delays = df
-flight_delays
-print(flight_delays.columns)
-
+url_flights = 'https://github.com/byuidatascience/data4missing/raw/master/data-raw/flights_missing/flights_missing.json'
+flights = pd.read_json(url_flights)
 # replace 999 and -999 with the mean, 1500+ replace w/ 1500. 
 # 
+```
+
+```{python}
+# %%
+pd.crosstab(
+    flights.month, 
+    flights.airport_code)
 ```
 
 __Highlight the Questions and Tasks__
@@ -60,12 +64,34 @@ __Fix all of the varied missing data types in the data to be consistent (all mis
 
 _type your results and analysis here_
 ```{python}
-flight_delays = pd.json_normalize(flight_delays)
+# %%
+def missing_checks(df, column ):
+    out1 = df[column].isnull().sum(axis = 0)
+    out2 = df[column].describe()
+    out3 = df[column].describe(exclude=np.number)
+    print('\n\n\n')
+    print('Checking column' + column)
+    print('\n')
+    print('Missing summary')
+    print(out1)
+    print('\n')
+    print("Numeric summaries")
+    print(out2)
+    print('\n')
+    print('Non Numeric summaries')
+    print(out3)
 
-# # Now, you should have separate columns for each key in the JSON objects
-# # You can check the column names again to verify2
-(flight_delays.columns)
+missing_checks(flights, 'num_of_delays_nas')
+missing_checks(flights, 'num_of_delays_late_aircraft')
+missing_checks(flights, 'num_of_delays_weather')    
 ```
+
+```{python}
+# %%
+flights.num_of_delays_weather.describe()
+```
+
+
 
 ```{python}
 
@@ -111,7 +137,7 @@ flight_delays = pd.json_normalize(flight_delays)
 
 ```
 
-```
+
 
 _include figures in chunks and discuss your findings in the figure._
 
@@ -148,29 +174,15 @@ __What is the best month to fly if you want to avoid delays of any length?__
 
 
 
-```
+
 
 _include figures in chunks and discuss your findings in the figure._
 
 
 
 
-```{python}
-#| label: Q3 table
-# #| code-summary: table example
-# #| tbl-cap: "Not much of a table"
-# #| tbl-cap-location: top
-# # Include and execute your code here
-# mydat = df.head(1000)\
-#     .groupby('year')\
-#     .sum()\
-#     .reset_index()\
-#     .tail(10)\
-#     .filter(["year", "AK","AR"])
 
-# display(mydat)
 
-# ```
 
 ## __QUESTION|TASK 4__
 
