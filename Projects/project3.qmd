@@ -54,12 +54,12 @@ _When considering baseball players it is important to look at their average hits
 __Write an SQL query to create a new dataframe about baseball players who attended BYU-Idaho. The new table should contain five columns: playerID, schoolID, salary, and the yearID/teamID associated with each salary. Order the table by salary (highest to lowest) and print out the table in your report.__
 
 
-_I made sure to only display unique values in this table, meaning I used distinct to ensure there were no repeating values and it is ordered by salary. We can see that there are only 2 players who had attented byui. One thing to note is that as these two players gained experience their salaries increased. Lindsman though lost some pay in 2013 comapared to his previous 2 years._
+_I made sure to only display unique values in this table, meaning I used distinct to ensure there were no repeating values and it is ordered by salary. We can see that there are only 3 players who had attented byui. One thing to note is that as these two players gained experience their salaries increased. Lindsman though lost some pay in 2013 comapared to his previous 2 years._
 ```{python}
 
 q = '''SELECT DISTINCT cp.playerID, cp.schoolID, s.salary, s.yearID, s.teamID
 FROM collegeplaying cp
-JOIN salaries s ON cp.playerID = s.playerID
+LEFT JOIN salaries s ON cp.playerID = s.playerID
 WHERE cp.schoolID = 'idbyuid'
 ORDER BY s.salary DESC'''
 
