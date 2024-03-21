@@ -4845,7 +4845,7 @@ require(['plotly'], function(Plotly) {
   <li><a href="#questiontask-4" id="toc-questiontask-4">Question|Task 4</a></li>
   </ul>
 </nav>
-<div id="3396ebe6" class="cell" data-execution_count="2">
+<div id="824a93fa" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
@@ -4867,7 +4867,7 @@ require(['plotly'], function(Plotly) {
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="b715b8ee" class="cell" data-execution_count="3">
+<div id="05c364b2" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.RandomState(<span class="dv">31337</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5052,7 +5052,7 @@ require(['plotly'], function(Plotly) {
 <h2 class="anchored" data-anchor-id="questiontask-1">QUESTION|TASK 1</h2>
 <p><strong>Create 2-3 charts that evaluate potential relationships between the home variables and before1980. Explain what you learn from the charts that could help a machine learning algorithm.</strong></p>
 <p><em>There are many factors that we can use to help our algorithms learn and predict homes that were made before 1980. It is important to not flood the algorithm with unneeded data. So I spent time testing different numbers of variables used in the algorithms.</em></p>
-<div id="04867fed" class="cell" data-execution_count="5">
+<div id="37466e02" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
@@ -5063,7 +5063,7 @@ require(['plotly'], function(Plotly) {
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="4336398a" class="cell" data-execution_count="6">
+<div id="88dfcdbf" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span>
@@ -5085,7 +5085,7 @@ require(['plotly'], function(Plotly) {
 </details>
 </div>
 <p><em>Looking at the chart we see that almost 25% was from one-story buildings. After this the effectivness of the potential relationships drop drastically. So figuring out which data is almost irrelevant, in this case removing data that is well below 1% helpts my algorithms learn and predict houses made before 1980.</em></p>
-<div id="9dc6c6d8" class="cell" data-execution_count="7">
+<div id="02209122" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # clf is a classifier.</span></span>
@@ -5100,7 +5100,7 @@ require(['plotly'], function(Plotly) {
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="93b398a3" class="cell" data-execution_count="8">
+<div id="e31b7795" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_features <span class="op">=</span> pd.DataFrame(</span>
@@ -5108,7 +5108,7 @@ require(['plotly'], function(Plotly) {
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;f_values&#39;</span>: clf.feature_importances_}).sort_values(<span class="st">&#39;f_values&#39;</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="8301adde" class="cell" data-execution_count="9">
+<div id="1984fe34" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span>
@@ -5124,9 +5124,9 @@ require(['plotly'], function(Plotly) {
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># (x) is features </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div>                            <div id="85b31435-7b9e-4b07-8448-e82046b9c4ef" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("85b31435-7b9e-4b07-8448-e82046b9c4ef")) {                    Plotly.newPlot(                        "85b31435-7b9e-4b07-8448-e82046b9c4ef",                        [{"alignmentgroup":"True","hovertemplate":"f_values=%{x}\u003cbr\u003ef_names=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"h","showlegend":false,"textposition":"auto","x":[0.24506835948382893,0.12178181384310173,0.11734259405918918,0.10061616261438236,0.043512774400176334,0.04053432521058871,0.03832344788612815,0.03754116770120221,0.025805512098174426,0.023959487033561943,0.02369032871779547,0.02019052741878521,0.020017484188928496,0.0199550631435811,0.01749449291742834,0.016974673022643966,0.014207065319057119,0.013963964738216093,0.010612878983425271,0.009436359988831505],"xaxis":"x","y":["arcstyle_ONE-STORY","gartype_Att","quality_C","livearea","basement","sprice","tasp","stories","abstrprd","netprice","finbsmnt","nocars","numbaths","numbdrm","status_V","smonth","deduct","condition_AVG","arcstyle_ONE AND HALF-STORY","status_I"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"f_values"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"f_names"},"categoryorder":"total ascending"},"legend":{"tracegroupgap":0},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
+<div>                            <div id="7fb78f77-2377-4612-a9d1-519919ad0d40" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("7fb78f77-2377-4612-a9d1-519919ad0d40")) {                    Plotly.newPlot(                        "7fb78f77-2377-4612-a9d1-519919ad0d40",                        [{"alignmentgroup":"True","hovertemplate":"f_values=%{x}\u003cbr\u003ef_names=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"h","showlegend":false,"textposition":"auto","x":[0.24506835948382893,0.12178181384310173,0.11639817519641234,0.10089845062869278,0.04309843978778902,0.041874857793125754,0.03942017057076952,0.037658579630344906,0.024261579494523774,0.023743657957124256,0.022455878732686382,0.021696035286772792,0.02118925525676937,0.020558082833360903,0.019906787943351767,0.016334175601479806,0.014837387959523227,0.014235002875366937,0.011035561928338948,0.008573829502969465],"xaxis":"x","y":["arcstyle_ONE-STORY","gartype_Att","quality_C","livearea","basement","tasp","sprice","stories","abstrprd","finbsmnt","nocars","numbaths","status_I","netprice","numbdrm","smonth","condition_AVG","deduct","arcstyle_ONE AND HALF-STORY","syear"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"f_values"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"f_names"},"categoryorder":"total ascending"},"legend":{"tracegroupgap":0},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('85b31435-7b9e-4b07-8448-e82046b9c4ef');
+var gd = document.getElementById('7fb78f77-2377-4612-a9d1-519919ad0d40');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -5156,7 +5156,7 @@ if (outputEl) {{
 <h2 class="anchored" data-anchor-id="questiontask-2">QUESTION|TASK 2</h2>
 <p><strong>Build a classification model labeling houses as being built “before 1980” or “during or after 1980”. Your goal is to reach or exceed 90% accuracy. Explain your final model choice (algorithm, tuning parameters, etc) and describe what other models you tried.</strong></p>
 <p><em>Below I will show you some different results based on test size and 3 different Algorithms. These algorithms are RandomForest, Decision Tree and XGboost. XGboost got the highest accuracy at over 96% when dwellings and neighborhood data were joined.</em></p>
-<div id="ffb4f4a8" class="cell" data-execution_count="10">
+<div id="83982dd0" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
@@ -5169,7 +5169,7 @@ if (outputEl) {{
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="63aeca47" class="cell" data-execution_count="11">
+<div id="c8e97c23" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
@@ -5202,17 +5202,17 @@ if (outputEl) {{
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.89      0.91      0.90      2844
-           1       0.95      0.93      0.94      4947
+           0       0.88      0.91      0.90      2829
+           1       0.95      0.93      0.94      4962
 
     accuracy                           0.92      7791
    macro avg       0.92      0.92      0.92      7791
 weighted avg       0.92      0.92      0.92      7791
 
-RandomForest Accuracy with Top 20 Features 34/66: 0.925555127711462</code></pre>
+RandomForest Accuracy with Top 20 Features 34/66: 0.9232447696059556</code></pre>
 </div>
 </div>
-<div id="5cceefeb" class="cell" data-execution_count="12">
+<div id="08b0ea74" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
@@ -5245,17 +5245,17 @@ RandomForest Accuracy with Top 20 Features 34/66: 0.925555127711462</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.87      0.87      0.87      2930
-           1       0.92      0.92      0.92      4861
+           0       0.87      0.87      0.87      2913
+           1       0.92      0.92      0.92      4878
 
     accuracy                           0.90      7791
    macro avg       0.90      0.90      0.90      7791
 weighted avg       0.90      0.90      0.90      7791
 
-DecisionTreeClassifier Accuracy with Top 20 Features 34/66: 0.9006546014632268</code></pre>
+DecisionTreeClassifier Accuracy with Top 20 Features 34/66: 0.8998844820947247</code></pre>
 </div>
 </div>
-<div id="e4a72ad2" class="cell" data-execution_count="13">
+<div id="d23c1f24" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct the syntax for dropping columns and selecting the target variable</span></span>
@@ -5291,7 +5291,7 @@ Confusion Matrix:
 XGboost Accuracy 34/66: 0.9246566551148762</code></pre>
 </div>
 </div>
-<div id="839a6b23" class="cell" data-execution_count="14">
+<div id="56b0db1b" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> dwellings_ml.drop([<span class="st">&#39;before1980&#39;</span>, <span class="st">&#39;yrbuilt&#39;</span>, <span class="st">&#39;parcel&#39;</span>], axis<span class="op">=</span><span class="dv">1</span>) <span class="co"># Assuming you want to drop these columns</span></span>
@@ -5327,7 +5327,7 @@ XGboost Accuracy 34/66: 0.9281221922731356</code></pre>
 </div>
 </div>
 <p><em>This next set of data shows how changing the test from 34|66 to 30|70 affected the accuracy. In most cases the accuracy dropped however, I noticed there were times where the Random Forest actually went slightly higher. </em></p>
-<div id="c002a6fc" class="cell" data-execution_count="15">
+<div id="ad064367" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
@@ -5337,7 +5337,7 @@ XGboost Accuracy 34/66: 0.9281221922731356</code></pre>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="b34d8d4a" class="cell" data-execution_count="16">
+<div id="a56780de" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
@@ -5370,17 +5370,17 @@ XGboost Accuracy 34/66: 0.9281221922731356</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.89      0.90      0.90      2572
-           1       0.94      0.93      0.94      4302
+           0       0.90      0.90      0.90      2587
+           1       0.94      0.94      0.94      4287
 
-    accuracy                           0.92      6874
+    accuracy                           0.93      6874
    macro avg       0.92      0.92      0.92      6874
-weighted avg       0.92      0.92      0.92      6874
+weighted avg       0.93      0.93      0.93      6874
 
-RandomForest Accuracy with Top 20 Features 30/70: 0.9250800116380564</code></pre>
+RandomForest Accuracy with Top 20 Features 30/70: 0.9236252545824847</code></pre>
 </div>
 </div>
-<div id="d7a376f0" class="cell" data-execution_count="17">
+<div id="906320c1" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
@@ -5413,17 +5413,17 @@ RandomForest Accuracy with Top 20 Features 30/70: 0.9250800116380564</code></pre
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.87      0.86      0.87      2616
-           1       0.92      0.92      0.92      4258
+           0       0.87      0.85      0.86      2647
+           1       0.91      0.92      0.91      4227
 
-    accuracy                           0.90      6874
+    accuracy                           0.89      6874
    macro avg       0.89      0.89      0.89      6874
-weighted avg       0.90      0.90      0.90      6874
+weighted avg       0.89      0.89      0.89      6874
 
-DecisionTreeClassifier Accuracy with Top 20 Features 30/70: 0.8974396275821938</code></pre>
+DecisionTreeClassifier Accuracy with Top 20 Features 30/70: 0.895984870526622</code></pre>
 </div>
 </div>
-<div id="13da2c3c" class="cell" data-execution_count="18">
+<div id="31c9ff77" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct the syntax for dropping columns and selecting the target variable</span></span>
@@ -5458,7 +5458,7 @@ XGboost Accuracy: 0.927262147221414</code></pre>
 </div>
 </div>
 <p><em>For this set I am using the 80/20 test and with this the accuracy went back up. The highest was XGboost reaching 93.1% accuracy. </em></p>
-<div id="cf609af3" class="cell" data-execution_count="19">
+<div id="b702ddbe" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> dwellings_ml.drop(dwellings_ml.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;before1980|yrbuilt|parcel&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
@@ -5468,7 +5468,7 @@ XGboost Accuracy: 0.927262147221414</code></pre>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="1f504084" class="cell" data-execution_count="20">
+<div id="04449640" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
@@ -5501,17 +5501,17 @@ XGboost Accuracy: 0.927262147221414</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.90      0.90      0.90      1713
-           1       0.94      0.94      0.94      2870
+           0       0.90      0.89      0.90      1724
+           1       0.94      0.94      0.94      2859
 
     accuracy                           0.92      4583
    macro avg       0.92      0.92      0.92      4583
 weighted avg       0.92      0.92      0.92      4583
 
-RandomForest Accuracy with Top 20 Features 20/80: 0.9264673794457778</code></pre>
+RandomForest Accuracy with Top 20 Features 20/80: 0.9266855771328824</code></pre>
 </div>
 </div>
-<div id="63897763" class="cell" data-execution_count="21">
+<div id="a8c6284d" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df_features is already created and sorted by feature importance</span></span>
@@ -5544,17 +5544,17 @@ RandomForest Accuracy with Top 20 Features 20/80: 0.9264673794457778</code></pre
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.87      0.86      0.87      1732
-           1       0.92      0.92      0.92      2851
+           0       0.88      0.86      0.87      1748
+           1       0.91      0.93      0.92      2835
 
     accuracy                           0.90      4583
-   macro avg       0.89      0.89      0.89      4583
+   macro avg       0.90      0.89      0.89      4583
 weighted avg       0.90      0.90      0.90      4583
 
-DecisionTreeClassifier Accuracy with Top 20 Features 20/80: 0.9046476107353262</code></pre>
+DecisionTreeClassifier Accuracy with Top 20 Features 20/80: 0.9000654593061314</code></pre>
 </div>
 </div>
-<div id="255d23e2" class="cell" data-execution_count="22">
+<div id="8b317685" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct the syntax for dropping columns and selecting the target variable</span></span>
@@ -5589,14 +5589,14 @@ XGboost Accuracy 20/80: 0.9312677285620773</code></pre>
 </div>
 </div>
 <p><em>Here I joined two data sets, the Neighborhood dwellings and dwellings ml.</em></p>
-<div id="b5bd907c" class="cell" data-execution_count="23">
+<div id="d9ece0d2" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>join <span class="op">=</span> df.join(df2, lsuffix<span class="op">=</span><span class="st">&quot;parcel&quot;</span>, rsuffix<span class="op">=</span><span class="st">&quot;parcel&quot;</span>)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># print(&quot;This is the joined dataframe of Neighborhood dwellings and dwellings ml. &quot;)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="fb3db296" class="cell" data-execution_count="24">
+<div id="0ca338fa" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> join.drop(join.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;parcelparcel|parce|yrbuilt|before1980&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
@@ -5609,7 +5609,7 @@ XGboost Accuracy 20/80: 0.9312677285620773</code></pre>
 <span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="9949992f" class="cell" data-execution_count="25">
+<div id="d59418f1" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # clf is a classifier.</span></span>
@@ -5624,7 +5624,7 @@ XGboost Accuracy 20/80: 0.9312677285620773</code></pre>
 <span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co"># XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="9c5081db" class="cell" data-execution_count="26">
+<div id="9396434e" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df_features <span class="op">=</span> pd.DataFrame(</span>
@@ -5632,7 +5632,7 @@ XGboost Accuracy 20/80: 0.9312677285620773</code></pre>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;f_values&#39;</span>: clf.feature_importances_}).sort_values(<span class="st">&#39;f_values&#39;</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="91d98400" class="cell" data-execution_count="27">
+<div id="8ac2ce37" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">110</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
@@ -5664,17 +5664,17 @@ XGboost Accuracy 20/80: 0.9312677285620773</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.93      0.94      0.94      2887
-           1       0.96      0.96      0.96      4904
+           0       0.94      0.94      0.94      2895
+           1       0.96      0.96      0.96      4896
 
     accuracy                           0.95      7791
    macro avg       0.95      0.95      0.95      7791
 weighted avg       0.95      0.95      0.95      7791
 
-RandomForest Accuracy with Top 20 Features 34/66: 0.9528943652932871</code></pre>
+RandomForest Accuracy with Top 20 Features 34/66: 0.9530227185213708</code></pre>
 </div>
 </div>
-<div id="91d8b21b" class="cell" data-execution_count="28">
+<div id="fb90907f" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span>
@@ -5690,7 +5690,7 @@ RandomForest Accuracy with Top 20 Features 34/66: 0.9528943652932871</code></pre
 <span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="co"># (x) is features </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="8cf9e1df" class="cell" data-execution_count="29">
+<div id="04a1365d" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># top_20_features = df_features.head(150)[&#39;f_names&#39;].tolist()</span></span>
@@ -5723,17 +5723,17 @@ RandomForest Accuracy with Top 20 Features 34/66: 0.9528943652932871</code></pre
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.93      0.93      0.93      2901
-           1       0.96      0.96      0.96      4890
+           0       0.93      0.93      0.93      2904
+           1       0.96      0.96      0.96      4887
 
     accuracy                           0.95      7791
    macro avg       0.94      0.94      0.94      7791
 weighted avg       0.95      0.95      0.95      7791
 
-Decision Tree Accuracy with Top 110 Features in Joined Data 34/66: 0.943139519958927</code></pre>
+Decision Tree Accuracy with Top 110 Features in Joined Data 34/66: 0.941470927993839</code></pre>
 </div>
 </div>
-<div id="4b030c64" class="cell" data-execution_count="30">
+<div id="4049f46b" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct the syntax for dropping columns and selecting the target variable</span></span>
@@ -5771,7 +5771,7 @@ XGboost Accuracy with Joined Data Frame 34/66: 0.9617507380310615</code></pre>
 </div>
 </div>
 <p><em>This next set of data shows how changing the test from 34|66 to 30|70 affected the accuracy. I found thatt accuracy would go up by .5-1.5% depending on the learning and algorithm.</em></p>
-<div id="e662a2a9" class="cell" data-execution_count="31">
+<div id="64b50acb" class="cell" data-execution_count="31">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> join.drop(join.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;parcelparcel|parce|yrbuilt|before1980&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
@@ -5784,7 +5784,7 @@ XGboost Accuracy with Joined Data Frame 34/66: 0.9617507380310615</code></pre>
 <span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="2b02e9a3" class="cell" data-execution_count="32">
+<div id="cad54ac5" class="cell" data-execution_count="32">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">110</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
@@ -5816,17 +5816,17 @@ XGboost Accuracy with Joined Data Frame 34/66: 0.9617507380310615</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.95      0.94      0.94      2611
-           1       0.97      0.97      0.97      4263
+           0       0.94      0.94      0.94      2607
+           1       0.97      0.97      0.97      4267
 
     accuracy                           0.96      6874
-   macro avg       0.96      0.96      0.96      6874
+   macro avg       0.95      0.95      0.95      6874
 weighted avg       0.96      0.96      0.96      6874
 
-RandomForest Accuracy with Top 20 Features 34/66: 0.9554844340995053</code></pre>
+RandomForest Accuracy with Top 20 Features 34/66: 0.9544661041606052</code></pre>
 </div>
 </div>
-<div id="20f5c2ff" class="cell" data-execution_count="33">
+<div id="1879d28f" class="cell" data-execution_count="33">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># top_20_features = df_features.head(150)[&#39;f_names&#39;].tolist()</span></span>
@@ -5859,17 +5859,17 @@ RandomForest Accuracy with Top 20 Features 34/66: 0.9554844340995053</code></pre
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.93      0.93      0.93      2611
-           1       0.96      0.96      0.96      4263
+           0       0.94      0.92      0.93      2639
+           1       0.95      0.96      0.96      4235
 
     accuracy                           0.95      6874
-   macro avg       0.95      0.94      0.95      6874
+   macro avg       0.95      0.94      0.94      6874
 weighted avg       0.95      0.95      0.95      6874
 
-Decision Tree Accuracy with Top 110 Features in Joined Data 30/70: 0.9444282804771603</code></pre>
+Decision Tree Accuracy with Top 110 Features in Joined Data 30/70: 0.9418097177771312</code></pre>
 </div>
 </div>
-<div id="79debd83" class="cell" data-execution_count="34">
+<div id="c7f878d8" class="cell" data-execution_count="34">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct the syntax for dropping columns and selecting the target variable</span></span>
@@ -5907,7 +5907,7 @@ XGboost Accuracy with Joined Data Frame 30/70: 0.9659586848996218</code></pre>
 </div>
 </div>
 <p><em>For this set I am using the 80/20 test and with this the accuracy went back up. The highest was XGboost reaching 96.5% accuracy. </em></p>
-<div id="5c6f6ce6" class="cell" data-execution_count="35">
+<div id="20685cb0" class="cell" data-execution_count="35">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> join.drop(join.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;parcelparcel|parce|yrbuilt|before1980&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
@@ -5920,7 +5920,7 @@ XGboost Accuracy with Joined Data Frame 30/70: 0.9659586848996218</code></pre>
 <span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="d614cb8d" class="cell" data-execution_count="36">
+<div id="c6921798" class="cell" data-execution_count="36">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>top_20_features <span class="op">=</span> df_features.head(<span class="dv">110</span>)[<span class="st">&#39;f_names&#39;</span>].tolist()</span>
@@ -5952,17 +5952,17 @@ XGboost Accuracy with Joined Data Frame 30/70: 0.9659586848996218</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.95      0.93      0.94      1739
-           1       0.96      0.97      0.96      2844
+           0       0.95      0.93      0.94      1732
+           1       0.96      0.97      0.96      2851
 
     accuracy                           0.96      4583
    macro avg       0.95      0.95      0.95      4583
-weighted avg       0.95      0.96      0.95      4583
+weighted avg       0.96      0.96      0.96      4583
 
-RandomForest Accuracy with Top 20 Features 20/80: 0.9548330787693651</code></pre>
+RandomForest Accuracy with Top 20 Features 20/80: 0.9561422648919922</code></pre>
 </div>
 </div>
-<div id="88e9bb56" class="cell" data-execution_count="37">
+<div id="867d5688" class="cell" data-execution_count="37">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># top_20_features = df_features.head(150)[&#39;f_names&#39;].tolist()</span></span>
@@ -5995,17 +5995,17 @@ RandomForest Accuracy with Top 20 Features 20/80: 0.9548330787693651</code></pre
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-           0       0.94      0.92      0.93      1741
-           1       0.95      0.96      0.96      2842
+           0       0.94      0.93      0.93      1736
+           1       0.95      0.96      0.96      2847
 
     accuracy                           0.95      4583
-   macro avg       0.95      0.94      0.94      4583
+   macro avg       0.95      0.94      0.95      4583
 weighted avg       0.95      0.95      0.95      4583
 
-Decision Tree Accuracy with Top 110 Features in Joined Data 20/80: 0.9469779620336024</code></pre>
+Decision Tree Accuracy with Top 110 Features in Joined Data 20/80: 0.9452323805367663</code></pre>
 </div>
 </div>
-<div id="09aaa762" class="cell" data-execution_count="38">
+<div id="23960e36" class="cell" data-execution_count="38">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct the syntax for dropping columns and selecting the target variable</span></span>
@@ -6047,7 +6047,7 @@ XGboost Accuracy with Joined Data Frame 20/80: 0.9657429631245908</code></pre>
 <h2 class="anchored" data-anchor-id="questiontask-3">QUESTION|TASK 3</h2>
 <p><strong>Justify your classification model by discussing the most important features selected by your model. This discussion should include a chart and a description of the features.</strong></p>
 <p><em>This Chart shows the features in order of percent influence on learning model. This is with the joined Data frame and XGboost. One Story Houses had the largest influence by over 15%. After this each features drops in importance to well below 1 percent. However, with XGboost I found that using all of the features produced the best result.</em></p>
-<div id="792c9b34" class="cell" data-execution_count="39">
+<div id="7facc739" class="cell" data-execution_count="39">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> join.drop(join.<span class="bu">filter</span>(regex <span class="op">=</span> <span class="st">&#39;parcelparcel|parce|yrbuilt|before1980&#39;</span>).columns, axis <span class="op">=</span> <span class="dv">1</span>)</span>
@@ -6060,7 +6060,7 @@ XGboost Accuracy with Joined Data Frame 20/80: 0.9657429631245908</code></pre>
 <span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#70, .30, 66, .34, 80,.20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="effe8f9d" class="cell" data-execution_count="40">
+<div id="293a20bf" class="cell" data-execution_count="40">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct the syntax for dropping columns and selecting the target variable</span></span>
@@ -6081,7 +6081,7 @@ XGboost Accuracy with Joined Data Frame 20/80: 0.9657429631245908</code></pre>
 <span id="cb58-16"><a href="#cb58-16" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> xgb_model.predict(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="460c0a34" class="cell" data-execution_count="41">
+<div id="72c3413d" class="cell" data-execution_count="41">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # clf is a classifier.</span></span>
@@ -6096,7 +6096,7 @@ XGboost Accuracy with Joined Data Frame 20/80: 0.9657429631245908</code></pre>
 <span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="co"># XGBoost no lower than 66/34, 70/30 or 80/20 (This is almost too much)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="a9f83616" class="cell" data-execution_count="42">
+<div id="8736287d" class="cell" data-execution_count="42">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>df_features <span class="op">=</span> pd.DataFrame(</span>
@@ -6122,9 +6122,9 @@ XGboost Accuracy with Joined Data Frame 20/80: 0.9657429631245908</code></pre>
 <span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a><span class="co"># (x) is features </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div id="q3" class="cell-output cell-output-display">
-<div>                            <div id="950c0c72-533d-453b-a536-1fd9482621cc" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("950c0c72-533d-453b-a536-1fd9482621cc")) {                    Plotly.newPlot(                        "950c0c72-533d-453b-a536-1fd9482621cc",                        [{"alignmentgroup":"True","hovertemplate":"f_values=%{x}\u003cbr\u003ef_names=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"h","showlegend":false,"textposition":"auto","x":[0.2431102991104126,0.09061430394649506,0.07588368654251099,0.0314745232462883,0.021571939811110497,0.01757713034749031,0.017231956124305725,0.016098452731966972,0.015924682840704918,0.015070896595716476,0.014561863616108894,0.01441209390759468,0.013865460641682148,0.012599574401974678,0.010425678454339504,0.010340826585888863,0.010213547386229038,0.009915833361446857,0.00947079062461853,0.009267969988286495,0.009121478535234928,0.008524774573743343,0.008500657975673676,0.00792199932038784,0.007726023439317942],"xaxis":"x","y":["arcstyle_ONE-STORY","quality_C","gartype_Att","nbhd_101","condition_AVG","arcstyle_ONE AND HALF-STORY","numbaths","status_I","nbhd_614","nbhd_4","nbhd_903","nbhd_3","nbhd_2","stories","abstrprd","nbhd_1","nbhd_5","nbhd_640","nocars","nbhd_625","nbhd_585","nbhd_522","nbhd_664","nbhd_656","nbhd_650"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"f_values"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"f_names"},"categoryorder":"total ascending"},"legend":{"tracegroupgap":0},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
+<div>                            <div id="b9388cdd-98c1-413a-8812-b242ed1544f3" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("b9388cdd-98c1-413a-8812-b242ed1544f3")) {                    Plotly.newPlot(                        "b9388cdd-98c1-413a-8812-b242ed1544f3",                        [{"alignmentgroup":"True","hovertemplate":"f_values=%{x}\u003cbr\u003ef_names=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"h","showlegend":false,"textposition":"auto","x":[0.2431102991104126,0.09061430394649506,0.07588368654251099,0.0314745232462883,0.021571939811110497,0.01757713034749031,0.017231956124305725,0.016098452731966972,0.015924682840704918,0.015070896595716476,0.014561863616108894,0.01441209390759468,0.013865460641682148,0.012599574401974678,0.010425678454339504,0.010340826585888863,0.010213547386229038,0.009915833361446857,0.00947079062461853,0.009267969988286495,0.009121478535234928,0.008524774573743343,0.008500657975673676,0.00792199932038784,0.007726023439317942],"xaxis":"x","y":["arcstyle_ONE-STORY","quality_C","gartype_Att","nbhd_101","condition_AVG","arcstyle_ONE AND HALF-STORY","numbaths","status_I","nbhd_614","nbhd_4","nbhd_903","nbhd_3","nbhd_2","stories","abstrprd","nbhd_1","nbhd_5","nbhd_640","nocars","nbhd_625","nbhd_585","nbhd_522","nbhd_664","nbhd_656","nbhd_650"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"f_values"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"f_names"},"categoryorder":"total ascending"},"legend":{"tracegroupgap":0},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('950c0c72-533d-453b-a536-1fd9482621cc');
+var gd = document.getElementById('b9388cdd-98c1-413a-8812-b242ed1544f3');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -6154,7 +6154,7 @@ if (outputEl) {{
 <h2 class="anchored" data-anchor-id="questiontask-4">Question|Task 4</h2>
 <p><strong>Describe the quality of your classification model using 2-3 different evaluation metrics. You also need to explain how to interpret each of the evaluation metrics you use.</strong></p>
 <p><em>The First Evaluation Metric is True positive. A true positive represents a correct positive prediction made by the classification model. Below you can see the Matrix for XGboost. True Positive is the Top Left of the confusion matrix. False Positive is the top Right corner of the Matrix. This is where the model predicted something that was incorrect.</em></p>
-<div id="2c0f97f2" class="cell" data-execution_count="44">
+<div id="f82da816" class="cell" data-execution_count="44">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct the syntax for dropping columns and selecting the target variable</span></span>
