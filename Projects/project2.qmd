@@ -88,54 +88,29 @@ missing_checks(flights, 'num_of_delays_weather')
 
 ```{python}
 # %%
-flights.num_of_delays_weather.describe()
+flights.replace({'num_of_delays_nas': {999: np.nan, -999: np.nan},
+                 'num_of_delays_late_aircraft': {999: np.nan, -999: np.nan},
+                 'num_of_delays_weather': {999: np.nan, -999: np.nan},
+                 'num_of_delays_security': {999: np.nan, -999: np.nan},
+                 'num_of_delays_carrier': {999: np.nan, -999: np.nan},
+                 'delayed': {999: np.nan, -999: np.nan},
+                 'day_of_month': {999: np.nan, -999: np.nan},
+                 'day_of_week': {999: np.nan, -999: np.nan},
+                 'month': {999: np.nan, -999: np.nan}
+                }, inplace=True)
+
+# Replace values over 1500 with 1500
+flights['num_of_delays_nas'].replace({1500: np.nan}, inplace=True)
+flights['num_of_delays_late_aircraft'].replace({1500: np.nan}, inplace=True)
+flights['num_of_delays_weather'].replace({1500: np.nan}, inplace=True)
+flights['num_of_delays_security'].replace({1500: np.nan}, inplace=True)
+flights['num_of_delays_carrier'].replace({1500: np.nan}, inplace=True)
+
+# Display the first few rows to verify changes
+print(flights.head())
 ```
 
 
-
-```{python}
-
-
-# %% assign function lets each of these columns get added to the data frame. 
-# makes the new column = to another column in the df. (Like excel)
-# So minutes total delays will be another affed colimn at the end (severe)
-# lambda just returns whatever you do to x, it is an inline function. 
-# weather = (flight_delays.assign(
-#     severe = flight_delays.num_of_delays_weather # no# missing, severe 
-#     nodla_nona = lambda x: (x.num_of_delays_late_aircraft
-#         .replace(-999, np.nan)), #missing is -999, this is taking any missing data and replacing it with nan, copies the data but gives nan for 999
-#     mild_late = lambda x: x.nodla_nona.fillna(x.nodla_nona.mean())*0.3,
-#     mild = np.where(
-#         flight_delays.month.isin(['April', 'May', 'June', 'July', 'August']), 
-#             flight_delays.num_of_delays_nas*0.4, 
-#             flight_delays.num_of_delays_nas*0.65),
-#     weather = lambda x: x.severe + x.mild_late + x.mild,
-#     proportion_weather_delay = lambda x: x.weather / x.num_of_delays_total,
-#     proportion_weather_total = lambda x:  x.weather / x.num_of_flights_total)
-#     .filter(['airport_code','month','year', 'severe','mild', 'mild_late',
-#     'weather', 'proportion_weather_total', 
-#     'proportion_weather_delay', 'num_of_flights_total', 'num_of_delays_total']))
-# weather.head()
-# weather = (flight_delays.assign(
-#     severe = flight_delays.num_of_delays_weather, # no# missing, severe 
-#     nodla_nona = lambda x: (x.num_of_delays_late_aircraft
-#         .replace(-999, np.nan)), #missing is -999, this is taking any missing data and replacing it with nan, copies the data but gives nan for 999
-#     mild_late = lambda x: x.nodla_nona.fillna(x.nodla_nona.mean())*0.3,
-#     mild = np.where(
-#         flight_delays.month.isin(['April', 'May', 'June', 'July', 'August']), 
-#             flight_delays.num_of_delays_nas*0.4, 
-#             flight_delays.num_of_delays_nas*0.65),
-#     weather = lambda x: x.severe + x.mild_late + x.mild,
-#     proportion_weather_delay = lambda x: x.weather / x.num_of_delays_total,
-#     proportion_weather_total = lambda x:  x.weather / x.num_of_flights_total)
-#     .filter(['airport_code','month','year', 'severe','mild', 'mild_late',
-#     'weather', 'proportion_weather_total', 
-#     'proportion_weather_delay', 'num_of_flights_total', 'num_of_delays_total']))
-# weather.head()
-
-
-
-```
 
 
 
@@ -149,30 +124,53 @@ _include figures in chunks and discuss your findings in the figure._
 
 __Which airport has the worst delays?__
 
-_type your results and analysis here_
+_I decided to find the worst delays by TOTAL minutes delayed. Then I put this in a bar chart to show the top 5 in terms of total minutes delayed. ORD is a little worse than ATL but both of these are almost twice as many minutes delayed than the rest._
 
 ```{python}
-#| label: Q2
-#| code-summary: Read and format data
-# Include and execute your code here
+worst_delayed_airport = flights.groupby('airport_code')['minutes_delayed_total'].sum().idxmax()
+
+# Display the result
+print("The airport with the worst delays based on total minutes delayed is:", worst_delayed_airport)
 
 ```
 
+```{python}
+total_minutes_delayed_by_airport = flights.groupby('airport_code')['minutes_delayed_total'].sum()
+
+# Sort the airports by total minutes delayed and select the top ten
+top_ten_worst_airports = total_minutes_delayed_by_airport.nlargest(5)
+
+# Convert the result to a DataFrame
+top_ten_worst_airports_df = top_ten_worst_airports.reset_index()
+
+# Plot the top ten worst airports
+fig = px.bar(top_ten_worst_airports_df, x='airport_code', y='minutes_delayed_total',
+             title='Top Ten Worst Airports in Terms of Total Minutes Delayed',
+             labels={'airport_code': 'Airport Code', 'minutes_delayed_total': 'Total Minutes Delayed'})
+fig.update_xaxes(title_font=dict(size=18), tickangle=45)
+fig.update_yaxes(title_font=dict(size=18))
+fig.show()
 ```
-
-_include figures in chunks and discuss your findings in the figure._
-
-
-
-
-
 
 ## QUESTION|TASK 3
 
 __What is the best month to fly if you want to avoid delays of any length?__
 
 
+```{python}
+total_minutes_delayed_by_month = flights.groupby('month')['minutes_delayed_total'].sum()
 
+# Find the best month to fly (the month with the lowest total minutes delayed)
+best_month_to_fly = total_minutes_delayed_by_month.idxmin()
+
+print("The best month to fly if you want to avoid delays of any length is:", best_month_to_fly)
+fig = px.bar(total_minutes_delayed_by_month.reset_index(), x='month', y='minutes_delayed_total',
+             title='Total Minutes Delayed by Month',
+             labels={'month': 'Month', 'minutes_delayed_total': 'Total Minutes Delayed'})
+fig.update_xaxes(title_font=dict(size=18), tickangle=45)
+fig.update_yaxes(title_font=dict(size=18))
+fig.show()
+```
 
 
 
