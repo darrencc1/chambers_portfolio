@@ -47,6 +47,10 @@ url_flights = 'https://github.com/byuidatascience/data4missing/raw/master/data-r
 flights = pd.read_json(url_flights)
 # replace 999 and -999 with the mean, 1500+ replace w/ 1500. 
 # 
+flights = flights.dropna(subset=['month'])
+
+# Display the head of the DataFrame to verify the removal
+print(flights.head())
 ```
 
 ```{python}
@@ -156,21 +160,21 @@ fig.show()
 
 __What is the best month to fly if you want to avoid delays of any length?__
 
-
 ```{python}
-total_minutes_delayed_by_month = flights.groupby('month')['minutes_delayed_total'].sum()
+print("The lowest ")
+# Sort the total minutes delayed by month in ascending order
+total_minutes_delayed_by_month_sorted = total_minutes_delayed_by_month.sort_values()
 
-# Find the best month to fly (the month with the lowest total minutes delayed)
-best_month_to_fly = total_minutes_delayed_by_month.idxmin()
-
-print("The best month to fly if you want to avoid delays of any length is:", best_month_to_fly)
-fig = px.bar(total_minutes_delayed_by_month.reset_index(), x='month', y='minutes_delayed_total',
-             title='Total Minutes Delayed by Month',
+# Plot the total minutes delayed for each month, ordered by lowest total minutes delayed
+fig = px.bar(total_minutes_delayed_by_month_sorted.reset_index(), x='month', y='minutes_delayed_total',
+             title='Total Minutes Delayed by Month (Ordered by Lowest Total Minutes Delayed)',
              labels={'month': 'Month', 'minutes_delayed_total': 'Total Minutes Delayed'})
 fig.update_xaxes(title_font=dict(size=18), tickangle=45)
 fig.update_yaxes(title_font=dict(size=18))
 fig.show()
 ```
+
+
 
 
 
